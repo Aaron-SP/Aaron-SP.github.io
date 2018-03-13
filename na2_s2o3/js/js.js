@@ -1,9 +1,9 @@
 function calculate() {
     // Get inputs
-    var in_cl_conc_mgL = document.getElementById('in_cl_conc_mgL').value;
-    var in_mix_vol_gal = document.getElementById('in_mix_vol_gal').value;
-    var in_tank_vol_gal = document.getElementById('in_tank_vol_gal').value;
-    var in_thio_g = document.getElementById('in_thio_g').value;
+    var in_cl_conc_mgL = Number(document.getElementById("in_cl_conc_mgL").value);
+    var in_mix_vol_gal = Number(document.getElementById("in_mix_vol_gal").value);
+    var in_tank_vol_gal = Number(document.getElementById("in_tank_vol_gal").value);
+    var in_thio_g = Number(document.getElementById("in_thio_g").value);
 
     // Calculate outputs
     var thio_conc_g_m3 = in_thio_g / (in_mix_vol_gal / 264.172);
@@ -25,11 +25,11 @@ function calculate() {
     var out_vol_ml = out_vol_m3 * 1000000.0;
 
     // Set output values
-    document.getElementById('out_cl_mol').value = cl_mol.toPrecision(4);
-    document.getElementById('out_cl_g').value = cl_g.toPrecision(4);
-    document.getElementById('out_thio_mol').value = thio_mol.toPrecision(4);
-    document.getElementById('out_thio_g').value = thio_g.toPrecision(4);
-    document.getElementById('out_vol_ml').value = out_vol_ml.toPrecision(4);
+    document.getElementById("out_cl_mol").value = cl_mol.toPrecision(4);
+    document.getElementById("out_cl_g").value = cl_g.toPrecision(4);
+    document.getElementById("out_thio_mol").value = thio_mol.toPrecision(4);
+    document.getElementById("out_thio_g").value = thio_g.toPrecision(4);
+    document.getElementById("out_vol_ml").value = out_vol_ml.toPrecision(4);
 
     // Return no form action
     return false;

@@ -49,9 +49,9 @@ function water_change(nh3_ppm) {
 
 function calculate() {
     // Get inputs
-    var in_nh3 = document.getElementById('in_nh3').value;
-    var ph = document.getElementById('in_ph').value;
-    var temp = document.getElementById('in_temperature').value;
+    var in_nh3 = Number(document.getElementById("in_nh3").value);
+    var ph = Number(document.getElementById("in_ph").value);
+    var temp = Number(document.getElementById("in_temperature").value);
 
     // Calculate outputs
     var ka = calc_ka(ph, temp);
@@ -64,13 +64,13 @@ function calculate() {
     var percent_change = water_change(nh3_ppm);
 
     // Set output values
-    document.getElementById('out_ka').value = ka.toExponential(5);
-    document.getElementById('out_h_molL').value = h_molL.toExponential(5);
-    document.getElementById('out_nh4_molL').value = nh4_molL.toExponential(5);
-    document.getElementById('out_nh3_molL').value = nh3_molL.toExponential(5);
-    document.getElementById('out_nh3_ppm').value = nh3_ppm.toPrecision(5);
-    document.getElementById('out_fish_status').innerHTML = status;
-    document.getElementById('out_water_change').innerHTML = percent_change;
+    document.getElementById("out_ka").value = ka.toExponential(5);
+    document.getElementById("out_h_molL").value = h_molL.toExponential(5);
+    document.getElementById("out_nh4_molL").value = nh4_molL.toExponential(5);
+    document.getElementById("out_nh3_molL").value = nh3_molL.toExponential(5);
+    document.getElementById("out_nh3_ppm").value = nh3_ppm.toPrecision(5);
+    document.getElementById("out_fish_status").innerHTML = status;
+    document.getElementById("out_water_change").innerHTML = percent_change;
 
     // Return no form action
     return false;
