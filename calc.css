@@ -1,0 +1,44 @@
+header{
+    border: 1px solid grey;
+    color:grey;
+    font-style: italic;
+    padding: 8px;
+}
+
+div.calc_click{
+    padding-top: 8px;
+}
+
+/* nh3 */
+form.nh3 fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 150px;
+}
+
+/* na2_s2o3 */
+form.na2_s2o3 fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 185px;
+}
+
+/* solubility */
+form.solubility fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 220px;
+}
+
+form fieldset div input, output{
+  display: inline-block;
+  float: left;
+  text-align: right;
+  width: 90px;
+}

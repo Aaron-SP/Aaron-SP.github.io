@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css.css">
-    <script src="js/js.js"></script>
+    <link rel="stylesheet" href="../calc.css">
+    <script src="js.js"></script>
     <title>Gas Solubility Calculator</title>
 </head>
 
@@ -19,7 +19,7 @@
                 even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
         </article>
         <article>
-            <form onsubmit="return calculate();">
+            <form class="solubility" onsubmit="return calculate();">
                 <fieldset>
                     <legend>Inputs</legend>
                     <label>Gas :</label>
@@ -29,31 +29,31 @@
                     <sub>2</sub>
                     <input type="radio" onclick="on_radio_select();" name="in_gas" value="2"> CO
                     <sub>2</sub>
-                    <div class="calc_item">
+                    <div>
                         <label>Molar (%):</label>
                         <input type="number" id="in_molar" name="in_molar" min="0.0" value="20.95" step="0.0001" required>
                     </div>
-                    <div class="calc_item">
+                    <div>
                         <label>Temperature (&#176;C):</label>
                         <input type="number" id="in_temperature" name="in_temperature" min="0.0" value="25.0" step="1.0" required>
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>Outputs</legend>
-                    <div class="calc_item">
+                    <div>
                         <label>Henry's Constant (mol/(kg*bar)):</label>
                         <output id='out_kh' name='out_kh' for="in_gas in_molar in_temperature"></output>
                     </div>
-                    <div class="calc_item">
+                    <div>
                         <label>Water Density (kg/m
                             <sup>3</sup>):</label>
                         <output id='out_water_density' name='out_water_density' for="in_gas in_molar in_temperature"></output>
                     </div>
-                    <div class="calc_item">
+                    <div>
                         <label>Dissolved Gas (mol/kg):</label>
                         <output id='out_conc_mol_kg' name='out_conc_mol_kg' for="in_gas in_molar in_temperature"></output>
                     </div>
-                    <div class="calc_item">
+                    <div>
                         <label>Dissolved Gas (mol/L):</label>
                         <output id='out_conc_mol_L' name='out_conc_mol_L' for="in_gas in_molar in_temperature"></output>
                     </div>
