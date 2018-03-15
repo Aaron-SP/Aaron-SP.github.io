@@ -47,7 +47,7 @@ function draw_graph(x_values, y_values, color, x_label, y_label) {
         // Draw minor axes and value strings
         {
             // Calculate axis label positions
-            var x_axis_y = y_start + graph_width + x_border_width;
+            var x_axis_y = y_start + graph_height + x_border_width;
             var y_axis_x = x_start - y_border_width;
 
             // Get the min/max x values
@@ -70,7 +70,7 @@ function draw_graph(x_values, y_values, color, x_label, y_label) {
             for (var i = 0, x = 0, x_val = x_min; i <= x_minor_count; i++ , x += dx, x_val += dx_val) {
 
                 // Create x axis value string
-                var x_str = x_val.toFixed(3).toString();
+                var x_str = x_val.toPrecision(4).toString();
 
                 // Calculate x minor position
                 var x_pos = x_start + x
@@ -85,12 +85,11 @@ function draw_graph(x_values, y_values, color, x_label, y_label) {
                 context.fillText(x_str, x_pos + x_offset, x_axis_y);
             }
 
-
             // Write y axis values
             for (var i = 0, y = 0, y_val = y_max; i <= y_minor_count; i++ , y += dy, y_val -= dy_val) {
 
                 // Create y axis value string
-                var y_str = y_val.toFixed(3).toString();
+                var y_str = y_val.toPrecision(3).toString();
 
                 // Calculate y minor position
                 var y_pos = y_start + y
