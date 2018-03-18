@@ -25,15 +25,15 @@
                     <legend>Inputs</legend>
                     <div>
                         <label>Temperature (&#176;C):</label>
-                        <input type="number" id="in_temperature" name="in_temperature" min="0" value="25.0" step="1.0" required>
+                        <input type="number" id="in_temperature" min="0" value="25.0" step="1.0" required>
                     </div>
                     <div>
                         <label>pH:</label>
-                        <input type="number" id="in_ph" name="in_ph" min="0" value="7.6" step="0.1" required>
+                        <input type="number" id="in_ph" min="0" value="7.6" step="0.1" required>
                     </div>
                     <div>
                         <label>Ammonia (ppm):</label>
-                        <input type="number" id="in_nh3" name="in_nh3" min="0" value="1" step="0.05" required>
+                        <input type="number" id="in_nh3" min="0" value="1" step="0.05" required>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -41,25 +41,25 @@
                     <div>
                         <label>K
                             <sub>a</sub>:</label>
-                        <output id='out_ka' name='out_ka' for="in_temperature in_ph in_nh3"></output>
+                        <output id='out_ka' for="in_temperature in_ph in_nh3"></output>
                     </div>
                     <div>
                         <label>[H
                             <sup>+</sup>] (mol/L):</label>
-                        <output id='out_h_molL' name='out_h_molL' for="in_temperature in_ph in_nh3"></output>
+                        <output id='out_h_molL' for="in_temperature in_ph in_nh3"></output>
                     </div>
                     <div>
                         <label>[NH4
                             <sup>+</sup>] (mol/L):</label>
-                        <output id='out_nh4_molL' name='out_nh4_molL' for="in_temperature in_ph in_nh3"></output>
+                        <output id='out_nh4_molL' for="in_temperature in_ph in_nh3"></output>
                     </div>
                     <div>
                         <label>[NH3] (mol/L):</label>
-                        <output id='out_nh3_molL' name='out_nh3_molL' for="in_temperature in_ph in_nh3"></output>
+                        <output id='out_nh3_molL' for="in_temperature in_ph in_nh3"></output>
                     </div>
                     <div>
                         <label>[NH3] (ppm):</label>
-                        <output id='out_nh3_ppm' name='out_nh3_ppm' for="in_temperature in_ph in_nh3"></output>
+                        <output id='out_nh3_ppm' for="in_temperature in_ph in_nh3"></output>
                     </div>
                 </fieldset>
                 <div class="calc_click">

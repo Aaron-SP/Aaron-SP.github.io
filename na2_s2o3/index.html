@@ -25,20 +25,20 @@
                     <legend>Inputs</legend>
                     <div>
                         <label>Mix Volume (gallons):</label>
-                        <input type="number" id="in_mix_vol_gal" name="in_mix_vol_gal" min="0" value="1.0" step="1.0" required>
+                        <input type="number" id="in_mix_vol_gal" min="0" value="1.0" step="1.0" required>
                     </div>
                     <div>
                         <label>Sodium Thiosulphate (g):</label>
-                        <input type="number" id="in_thio_g" name="in_thio_g" min="0" value="500.0" step="1.0" required>
+                        <input type="number" id="in_thio_g" min="0" value="500.0" step="1.0" required>
                     </div>
                     <div>
                         <label>Tank Volume (gallons):</label>
-                        <input type="number" id="in_tank_vol_gal" name="in_tank_vol_gal" min="0" value="10.0" step="1.0" required>
+                        <input type="number" id="in_tank_vol_gal" min="0" value="10.0" step="1.0" required>
                     </div>
                     <div>
                         <label>Cl
                             <sup>-</sup> Concentration (mg/L):</label>
-                        <input type="number" id="in_cl_conc_mgL" name="in_cl_conc_mgL" min="0" value="4.0" step="0.1" required>
+                        <input type="number" id="in_cl_conc_mgL" min="0" value="4.0" step="0.1" required>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -46,30 +46,30 @@
                     <div>
                         <label>Cl
                             <sup>-</sup> (mol): </label>
-                        <output id='out_cl_mol' name='out_cl_mol' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                        <output id='out_cl_mol' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
                     </div>
                     <div>
                         <label>Na
                             <sub>2 </sub>S
                             <sub>2 </sub>O
                             <sub>3 </sub> (mol):</label>
-                        <output id='out_thio_mol' name='out_thio_mol' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                        <output id='out_thio_mol' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
                     </div>
                     <div>
                         <label>Cl
                             <sup>-</sup> (g): </label>
-                        <output id='out_cl_g' name='out_cl_g' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                        <output id='out_cl_g' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
                     </div>
                     <div>
                         <label>Na
                             <sub>2 </sub>S
                             <sub>2 </sub>O
                             <sub>3 </sub> (g):</label>
-                        <output id='out_thio_g' name='out_thio_g' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                        <output id='out_thio_g' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
                     </div>
                     <div>
                         <label>Mix Volume Needed (mL): </label>
-                        <output id='out_vol_ml' name='out_vol_ml' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                        <output id='out_vol_ml' for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
                     </div>
                 </fieldset>
                 <div class="calc_click">
