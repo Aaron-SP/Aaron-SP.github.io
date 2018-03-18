@@ -27,6 +27,15 @@ form.na2_s2o3 fieldset div label{
     width: 185px;
 }
 
+/* sizing */
+form.sizing fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 170px;
+}
+
 /* solubility */
 form.solubility fieldset div label{
     clear: left;

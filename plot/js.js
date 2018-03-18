@@ -1,13 +1,13 @@
 function draw_graph(x_values, y_values, color, x_label, y_label) {
 
     // Get the canvas graph
-    var canvas = document.getElementById('graph');
+    var canvas = document.getElementById("graph");
 
     // Check if context exists
     if (canvas.getContext) {
 
         // Get the 2D context
-        var context = canvas.getContext('2d');
+        var context = canvas.getContext("2d");
 
         //INPUTS
         if (x_values === null) {
@@ -39,9 +39,9 @@ function draw_graph(x_values, y_values, color, x_label, y_label) {
         var graph_height = inner_height - 2 * y_start;
 
         // Draw canvas background
-        context.fillStyle = 'black';
+        context.fillStyle = "black";
         context.fillRect(0, 0, width, height);
-        context.fillStyle = 'white';
+        context.fillStyle = "white";
         context.fillRect(border_width / 2, border_width / 2, inner_width, inner_height);
 
         // Draw minor axes and value strings
@@ -141,7 +141,7 @@ function draw_graph(x_values, y_values, color, x_label, y_label) {
         // Draw axis labels
         {
             // Set axis text font
-            context.font = '16px "Arial", sans-serif';
+            context.font = "16px 'Arial', sans-serif";
 
             // Draw X axis label
             context.fillText(x_label, width / 2 + border_width, graph_height + x_start + x_str_offset);
@@ -160,13 +160,13 @@ function draw_graph(x_values, y_values, color, x_label, y_label) {
 function clear_graph() {
 
     // Get the canvas
-    var canvas = document.getElementById('graph');
+    var canvas = document.getElementById("graph");
 
     // Check if context exists
     if (canvas.getContext) {
 
         // Get the 2D context
-        var context = canvas.getContext('2d');
+        var context = canvas.getContext("2d");
 
         // Clear rect on canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
