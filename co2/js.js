@@ -1,0 +1,49 @@
+// Constants from http://www-naweb.iaea.org/napc/ih/documents/global_cycle/vol%20I/cht_i_09.pdf
+function calc_k0(in_temp) {
+    return Math.pow(10.0, ((-2622.38 / in_temp) - (0.0178471 * in_temp) + 15.5873) * -1.0);
+}
+
+function calc_k1(in_temp) {
+    return Math.pow(10.0, ((3404.71 / in_temp) + (0.032786 * in_temp) - 14.8435) * -1.0);
+}
+
+function calc_k2(in_temp) {
+    return Math.pow(10.0, ((2902.39 / in_temp) + (0.02379 * in_temp) - 6.4980) * -1.0);
+}
+
+function calc_h(in_ph) {
+    // Calculate [H+] concentration in mol/L
+    return Math.pow(10, in_ph * -1.0);
+}
+
+function calculate() {
+    // Get inputs
+    var in_ph = Number(document.getElementById("in_ph").value);
+    var in_temp_K = Number(document.getElementById("in_temperature").value) + 273.15;
+    var in_co2_molar = Number(document.getElementById("in_co2_molar").value) / 100.0;
+
+    // Calculate equilibrium constants
+    var k0 = calc_k0(in_temp_K);
+    var k1 = calc_k1(in_temp_K);
+    var k2 = calc_k2(in_temp_K);
+
+    // Calculate output concentrations
+    var h = calc_h(in_ph);
+    var pp_co2_atm = in_co2_molar * 1.0;
+    var conc_h2co3_mol_L = k0 * pp_co2_atm;
+    var conc_hco3_mol_L = k1 * conc_h2co3_mol_L / h;
+    var conc_co3_mol_L = k2 * conc_hco3_mol_L / h;
+    var alkalinity_mg_L = (conc_hco3_mol_L * 61.0168 + conc_co3_mol_L * 60.008 * 2.0) * 1000.0;
+
+    // Set output values
+    document.getElementById("out_k0").value = k0.toExponential(5);
+    document.getElementById("out_k1").value = k1.toExponential(5);
+    document.getElementById("out_k2").value = k2.toExponential(5);
+    document.getElementById("out_h2co3_mol_L").value = conc_h2co3_mol_L.toExponential(5);
+    document.getElementById("out_hco3_mol_L").value = conc_hco3_mol_L.toExponential(5);
+    document.getElementById("out_co3_mol_L").value = conc_co3_mol_L.toExponential(5);
+    document.getElementById("out_alkalinity_mg_L").value = alkalinity_mg_L.toFixed(3);
+
+    // Return no form action
+    return false;
+}

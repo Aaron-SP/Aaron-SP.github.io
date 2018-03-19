@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../calc.css">
+    <script src="js.js"></script>
+    <title>Carbon Dioxide Speciation Calculator</title>
+</head>
+
+<body>
+    <header>
+        <h1>Carbon Dioxide Speciation Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the speciation of carbon dioxide and the carbonate alkalinity, A
+                <sub>C</sub> in fresh water at atmospheric pressure. For reference, a total alkalinity level of 100-200 mg/L will
+                stabilize the pH level in a fresh water body.</p>
+            <p>Carbon Dioxide Speciation Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+                without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="co2" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <div>
+                        <label>Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature" min="0" value="25.0" step="1.0" required>
+                    </div>
+                    <div>
+                        <label>pH:</label>
+                        <input type="number" id="in_ph" min="0" value="7.6" step="0.1" required>
+                    </div>
+                    <div>
+                        <label>CO
+                            <sub>2</sub> Above Water (mol %):</label>
+                        <input type="number" id="in_co2_molar" min="0.0" value="0.04" step="0.01" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outputs</legend>
+                    <div>
+                        <label>K
+                            <sub>0</sub>:</label>
+                        <output id="out_k0" for="in_temperature in_ph in_co2_molar"></output>
+                    </div>
+                    <div>
+                        <label>K
+                            <sub>1</sub>:</label>
+                        <output id="out_k1" for="in_temperature in_ph in_co2_molar"></output>
+                    </div>
+                    <div>
+                        <label>K
+                            <sub>2</sub>:</label>
+                        <output id="out_k2" for="in_temperature in_ph in_co2_molar"></output>
+                    </div>
+                    <div>
+                        <label>[H
+                            <sub>2</sub>CO
+                            <sub>3</sub>] (mol/L):</label>
+                        <output id="out_h2co3_mol_L" for="in_temperature in_ph in_co2_molar"></output>
+                    </div>
+                    <div>
+                        <label>[HCO
+                            <sub>3</sub>
+                            <sup>-</sup>] (mol/L):</label>
+                        <output id="out_hco3_mol_L" for="in_temperature in_ph in_co2_molar"></output>
+                    </div>
+                    <div>
+                        <label>[CO
+                            <sub>3</sub>
+                            <sup>2-</sup>] (mol/L):</label>
+                        <output id="out_co3_mol_L" for="in_temperature in_ph in_co2_molar"></output>
+                    </div>
+                    <div>
+                        <label>A
+                            <sub>C</sub> (mg/L):</label>
+                        <output id="out_alkalinity_mg_L" for="in_temperature in_ph in_co2_molar"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

@@ -9,6 +9,15 @@ div.calc_click{
     padding-top: 8px;
 }
 
+/* co2 */
+form.co2 fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 190px;
+}
+
 /* nh3 */
 form.nh3 fieldset div label{
     clear: left;
