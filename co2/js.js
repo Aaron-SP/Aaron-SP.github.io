@@ -34,6 +34,7 @@ function calculate() {
     var conc_hco3_mol_L = k1 * conc_h2co3_mol_L / h;
     var conc_co3_mol_L = k2 * conc_hco3_mol_L / h;
     var alkalinity_mg_L = (conc_hco3_mol_L * 61.0168 + conc_co3_mol_L * 60.008 * 2.0) * 1000.0;
+    var kh_mg_L = (conc_hco3_mol_L * 61.0168 + conc_co3_mol_L * 60.008) * 1000.0;
 
     // Set output values
     document.getElementById("out_k0").value = k0.toExponential(5);
@@ -43,6 +44,7 @@ function calculate() {
     document.getElementById("out_hco3_mol_L").value = conc_hco3_mol_L.toExponential(5);
     document.getElementById("out_co3_mol_L").value = conc_co3_mol_L.toExponential(5);
     document.getElementById("out_alkalinity_mg_L").value = alkalinity_mg_L.toFixed(3);
+    document.getElementById("out_kh_mg_L").value = kh_mg_L.toFixed(3);
 
     // Return no form action
     return false;
