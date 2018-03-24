@@ -41,7 +41,7 @@ function sat_fugacity_coeff(Z, fL, P, Psat, T) {
 
 function peng_robinson(T, Tc, P, Pc, w) {
 
-    var out = [1.0, 1.0, 1.0, 1.0];
+    var out = [1.0, 1.0, 0.0, 0.0];
 
     // Calculate inputs (units: m3 Pa K mol)
     var R = 8.3144598;
