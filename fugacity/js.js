@@ -30,6 +30,15 @@ function fugacity(Z, A, B) {
     return Math.exp(ln_fug_coeff);
 }
 
+function sat_fugacity_coeff(Z, fL, P, Psat, T) {
+
+    // Calculate inputs (units: m3 Pa K mol)
+    var R = 8.3144598;
+    var V = (Z * R * T) / P;
+    var poynting_correction = Math.exp(V * (P - Psat) / (R * T));
+    return fL / (Psat * poynting_correction);
+}
+
 function peng_robinson(T, Tc, P, Pc, w) {
 
     var out = [1.0, 1.0, 1.0, 1.0];
@@ -93,19 +102,25 @@ function calculate() {
 
     // Calculate intermedaries
     var arr = peng_robinson(in_temp_K, 647.3, in_press_Pa, 221.2 * 100000.0, 0.344);
-    var press_sat_atm = antoine_water_bar(in_temp_K) / 1.01325;
+    var press_sat_Pa = antoine_water_bar(in_temp_K) * 100000.0;
 
     // Calculate outputs
-    var fug_vapor = arr[1] * in_press_atm;
-    var fug_liquid = arr[3] * in_press_atm;
-    var sat_mol_percent = (fug_liquid / fug_vapor) * 100.0;
+    var fug_vapor_Pa = arr[1] * in_press_Pa;
+    var fug_liquid_Pa = arr[3] * in_press_Pa;
+    var sat_mol_percent = Math.max(Math.min((fug_liquid_Pa / fug_vapor_Pa) * 100.0, 100.0), 0.0);
+    var fug_sat_coeff = sat_fugacity_coeff(arr[2], fug_liquid_Pa, in_press_Pa, press_sat_Pa, in_temp_K);
+
+    // Change units
+    var fug_vapor_atm = fug_vapor_Pa / 101325;
+    var fug_liquid_atm = fug_liquid_Pa / 101325;
 
     // Set output values
     document.getElementById("out_vapor_Z").value = arr[0].toFixed(4);
     document.getElementById("out_liquid_Z").value = arr[2].toFixed(4);
-    document.getElementById("out_vapor_fugacity").value = fug_vapor.toFixed(4);
-    document.getElementById("out_liquid_fugacity").value = fug_liquid.toFixed(4);
+    document.getElementById("out_vapor_fugacity_atm").value = fug_vapor_atm.toFixed(4);
+    document.getElementById("out_liquid_fugacity_atm").value = fug_liquid_atm.toFixed(4);
     document.getElementById("out_sat_conc_percent").value = sat_mol_percent.toFixed(4);
+    document.getElementById("out_fug_sat_coeff").value = fug_sat_coeff.toFixed(4);
 
     // Return no form action
     return false;

@@ -13,7 +13,8 @@
     </header>
     <section>
         <article>
-            <p>This calculator calculates the vapor fugacity of water at any temperature and pressure.</p>
+            <p>This calculator calculates the vapor/liquid fugacity of water, as well as the saturated fugacity coefficient
+                at any temperature and pressure.</p>
             <p>Water Fugacity Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
                 even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
         </article>
@@ -38,7 +39,7 @@
                     </div>
                     <div>
                         <label>Vapor Fugacity (atm):</label>
-                        <output id="out_vapor_fugacity" for="in_temperature in_pressure"></output>
+                        <output id="out_vapor_fugacity_atm" for="in_temperature in_pressure"></output>
                     </div>
                     <div>
                         <label>Liquid Compressibility:</label>
@@ -46,10 +47,14 @@
                     </div>
                     <div>
                         <label>Liquid Fugacity (atm):</label>
-                        <output id="out_liquid_fugacity" for="in_temperature in_pressure"></output>
+                        <output id="out_liquid_fugacity_atm" for="in_temperature in_pressure"></output>
                     </div>
                     <div>
-                        <label>Saturated Vapor (mol %):</label>
+                        <label>Sat. Fugacity Coefficient:</label>
+                        <output id="out_fug_sat_coeff" for="in_temperature in_pressure"></output>
+                    </div>
+                    <div>
+                        <label>Sat. Vapor (mol %):</label>
                         <output id="out_sat_conc_percent" for="in_temperature in_pressure"></output>
                     </div>
                 </fieldset>
