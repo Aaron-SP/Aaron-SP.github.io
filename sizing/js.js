@@ -29,12 +29,14 @@ function calculate() {
     var water_density_kg_m3 = rho_water(in_inv_temp_1_K, in_temp_1_K, in_temp_1_K2, in_temp_1_K3);
     var water_mass_g = water_density_kg_m3 * in_volume_m3 * 1000.0;
     var water_mol = water_mass_g / 18.01528;
-    var water_dU = (U_water(in_inv_temp_2_K, in_temp_2_K, in_temp_2_K2, in_temp_2_K3) - U_water(in_inv_temp_1_K, in_temp_1_K, in_temp_1_K2, in_temp_1_K3)) * water_mol;
-    var time_s = (water_dU * 1000.0) / in_heat_W;
+    var water_dU_kJ = (U_water(in_inv_temp_2_K, in_temp_2_K, in_temp_2_K2, in_temp_2_K3) - U_water(in_inv_temp_1_K, in_temp_1_K, in_temp_1_K2, in_temp_1_K3)) * water_mol;
+    var water_dU_kWh = water_dU_kJ * 0.000277778;
+    var time_s = (water_dU_kJ * 1000.0) / in_heat_W;
     var time_h = time_s / 3600.0;
 
     // Set output values
-    document.getElementById("out_water_energy_change_kj").value = water_dU.toFixed(2);
+    document.getElementById("out_water_energy_change_kJ").value = water_dU_kJ.toFixed(2);
+    document.getElementById("out_water_energy_change_kWh").value = water_dU_kWh.toFixed(2);
     document.getElementById("out_time_h").value = time_h.toFixed(2);
 
     // Return no form action
