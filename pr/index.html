@@ -42,15 +42,15 @@
                     <table id="pr_table" class="calc">
                         <thead>
                             <tr>
-                                <th class="name">Species Name</th>
-                                <th class="id">Mol Fraction (%)</th>
+                                <th class="id">Species Name</th>
+                                <th class="mol">Mol Fraction (%)</th>
                                 <th class="pc">Critical Pressure (bar)</th>
                                 <th class="tc">Critical Temperature (K)</th>
                                 <th class="w">Acentric Factor</th>
                                 <th class="space"></th>
-                                <th class="v_v">Vapor Vm (m3/mol)</th>
+                                <th class="vm_v">Vapor Vm (m3/mol)</th>
                                 <th class="rho_v">Vapor Rho (kg/m3)</th>
-                                <th class="v_l">Liquid Vm (m3/mol)</th>
+                                <th class="vm_l">Liquid Vm (m3/mol)</th>
                                 <th class="rho_l">Liquid Rho (kg/m3)</th>
                                 <th class="bp">Boiling Point (K)</th>
                             </tr>
@@ -167,6 +167,31 @@
                                 </td>
                             </tr>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="id">Sum</td>
+                                <td class="mol"></td>
+                                <td class="pc"></td>
+                                <td class="tc"></td>
+                                <td class="w"></td>
+                                <td class="space"></td>
+                                <td class="vm_v">
+                                    <output class="out_vm_v"></output>
+                                </td>
+                                <td class="rho_v">
+                                    <output class="out_rho_v"></output>
+                                </td>
+                                <td class="vm_l">
+                                    <output class="out_vm_l"></output>
+                                </td>
+                                <td class="rho_l">
+                                    <output class="out_rho_l"></output>
+                                </td>
+                                <td class="bp">
+                                    <output class="out_bp_K"></output>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </fieldset>
                 <div class="calc_click">

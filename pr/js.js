@@ -18,7 +18,7 @@ function add_rows(tbody, rows, count) {
     // Get the table body
     var tbody = table.getElementsByTagName("tbody")[0];
 
-    // For each row
+    // For each row clone last row
     for (var i = rows; i < rows + count; i++) {
 
         // Create clone of row
@@ -29,6 +29,15 @@ function add_rows(tbody, rows, count) {
 
         // Set the mol% to 0.0
         clone.getElementsByClassName("in_mol_percent")[0].value = 0.0;
+
+        // Set selected species
+        var select_index = row_clone.getElementsByClassName("in_id")[0].selectedIndex;
+
+        // Set the critical properties
+        clone.getElementsByClassName("in_id")[0].selectedIndex = select_index;
+        clone.getElementsByClassName("in_pc_bar")[0].value = pc_bar[select_index];
+        clone.getElementsByClassName("in_tc_K")[0].value = tc_K[select_index];
+        clone.getElementsByClassName("in_w")[0].value = w[select_index];
 
         // Add clone to the fragment
         fragment.appendChild(clone);
@@ -117,6 +126,62 @@ function format(out) {
     return out.toExponential(3);
 }
 
+function newton_solve(x0, x1, f0, func, set) {
+
+    // Solve equation equals zero
+    var fug, f1, dfdx;
+    for (var j = 0; j < 100; j++) {
+
+        // Calculate new F value
+        fug = func(x1);
+        f1 = (fug[1] / fug[3]) - 1.0;
+
+        // Calculate derivative
+        dfdx = (f1 - f0) / (x1 - x0);
+
+        // We failed so set bp to NaN
+        if (!fug[4] || x1 < 0.0) {
+            set.getElementsByClassName("out_bp_K")[0].value = NaN;
+            break;
+        }
+        else if (Math.abs(f1) < 0.001) {
+            // Tolerance reached, set boiling point
+            set.getElementsByClassName("out_bp_K")[0].value = format(x1);
+            break;
+        }
+
+        // Step next x value
+        x0 = x1;
+        f0 = f1;
+        x1 = x1 - (f1 / dfdx);
+    }
+}
+
+function calculate_eos(func, in_temp_K, in_press_Pa, mw, set) {
+
+    // Solve the eos func
+    var arr = func(in_temp_K);
+    var v_mol_vol = molar_volume(arr[0], in_press_Pa, in_temp_K);
+    var l_mol_vol = molar_volume(arr[2], in_press_Pa, in_temp_K);
+
+    // Set vapor properties
+    set.getElementsByClassName("out_vm_v")[0].value = format(v_mol_vol);
+    set.getElementsByClassName("out_rho_v")[0].value = format(density_kg_m3(v_mol_vol, mw));
+
+    // Set liquid properties
+    if (arr[4]) {
+        set.getElementsByClassName("out_vm_l")[0].value = format(l_mol_vol);
+        set.getElementsByClassName("out_rho_l")[0].value = format(density_kg_m3(l_mol_vol, mw));
+
+        // Solve equation
+        newton_solve(in_temp_K, in_temp_K + 0.001, (arr[1] / arr[3]) - 1.0, func, set);
+    }
+    else {
+        set.getElementsByClassName("out_vm_l")[0].value = NaN;
+        set.getElementsByClassName("out_rho_l")[0].value = NaN;
+        set.getElementsByClassName("out_bp_K")[0].value = NaN;
+    }
+}
 
 function calculate() {
 
@@ -134,6 +199,13 @@ function calculate() {
     // Get number of rows
     var rows = tbody.getElementsByTagName("tr").length;
 
+    var pc = new Array(rows);
+    var tc = new Array(rows);
+    var w = new Array(rows);
+    var mw = new Array(rows);
+    var x = new Array(rows);
+    var mw_avg = 0.0;
+
     // Calculate for each row
     for (var i = 0; i < rows; i++) {
 
@@ -141,62 +213,34 @@ function calculate() {
         var row = tbody.rows[i];
 
         // Get the critical properties
-        var pc = Number(row.getElementsByClassName("in_pc_bar")[0].value) * 100000.0;
-        var tc = Number(row.getElementsByClassName("in_tc_K")[0].value);
-        var w = Number(row.getElementsByClassName("in_w")[0].value);
-        var mw = mol_weight[Number(row.getElementsByClassName("in_id")[0].value)];
+        pc[i] = Number(row.getElementsByClassName("in_pc_bar")[0].value) * 100000.0;
+        tc[i] = Number(row.getElementsByClassName("in_tc_K")[0].value);
+        w[i] = Number(row.getElementsByClassName("in_w")[0].value);
+        mw[i] = mol_weight[Number(row.getElementsByClassName("in_id")[0].value)];
+        x[i] = Number(row.getElementsByClassName("in_mol_percent")[0].value) / 100.0;
 
-        // Calculate intermedaries
-        var arr = peng_robinson(in_temp_K, tc, in_press_Pa, pc, w);
-        var v_mol_vol = molar_volume(arr[0], in_press_Pa, in_temp_K);
-        var l_mol_vol = molar_volume(arr[2], in_press_Pa, in_temp_K);
+        // Calculate average mw
+        mw_avg += x[i] * mw[i];
 
-        // Set vapor properties
-        row.getElementsByClassName("out_vm_v")[0].value = format(v_mol_vol);
-        row.getElementsByClassName("out_rho_v")[0].value = format(density_kg_m3(v_mol_vol, mw));
+        // Lambda
+        var pure_func = function (T_K) {
+            return peng_robinson_pure(T_K, in_press_Pa, tc[i], pc[i], w[i]);
+        };
 
-        // Set liquid properties
-        if (arr[4]) {
-            row.getElementsByClassName("out_vm_l")[0].value = format(l_mol_vol);
-            row.getElementsByClassName("out_rho_l")[0].value = format(density_kg_m3(l_mol_vol, mw));
-
-            // Solve for boiling point
-            var x0 = in_temp_K;
-            var x1 = x0 + 0.001;
-            var f0 = (arr[1] / arr[3]) - 1.0;
-            var fug, f1, dfdx;
-            for (var j = 0; j < 100; j++) {
-
-                // Calculate new F value
-                fug = peng_robinson(x1, tc, in_press_Pa, pc, w);
-                f1 = (fug[1] / fug[3]) - 1.0;
-
-                // Calculate derivative
-                dfdx = (f1 - f0) / (x1 - x0);
-
-                // We failed so set bp to NaN
-                if (!fug[4] || x1 < 0.0) {
-                    row.getElementsByClassName("out_bp_K")[0].value = NaN;
-                    break;
-                }
-                else if (Math.abs(f1) < 0.001) {
-                    // Tolerance reached, set boiling point
-                    row.getElementsByClassName("out_bp_K")[0].value = format(x1);
-                    break;
-                }
-
-                // Step next x value
-                x0 = x1;
-                f0 = f1;
-                x1 = x1 - (f1 / dfdx);
-            }
-        }
-        else {
-            row.getElementsByClassName("out_vm_l")[0].value = NaN;
-            row.getElementsByClassName("out_rho_l")[0].value = NaN;
-            row.getElementsByClassName("out_bp_K")[0].value = NaN;
-        }
+        // Solve the pure fluid
+        calculate_eos(pure_func, in_temp_K, in_press_Pa, mw[i], row);
     }
+
+    // Get the table footer
+    var tfoot = table.getElementsByTagName("tfoot")[0];
+
+    // Lambda
+    var mix_func = function (T_K) {
+        return peng_robinson_mix(T_K, in_press_Pa, tc, pc, w, x);
+    };
+
+    // Solve the mixed fluid
+    calculate_eos(mix_func, in_temp_K, in_press_Pa, mw_avg, tfoot);
 
     // Return no form action
     return false;

@@ -1,14 +1,15 @@
-table.calc{
+table.calc {
     background:#CCC;
     border-spacing: 0px;
     width: 100%;
     table-layout:fixed;
+    border-collapse: collapse;
 }
 
 table.calc th, td {
     background: white;
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
     width: 120px;
 }
 
@@ -37,7 +38,7 @@ table.calc th:last-child, td:last-child {
     width: 100px;
 }
 
-table.calc th.name, td.name {
+table.calc th.id, td.id {
     background: white;
     width: 150px;
 }
@@ -45,4 +46,8 @@ table.calc th.name, td.name {
 table.calc th.space, td.space {
     background: #CCC;
     width: 50px;
+}
+
+table.calc tfoot {
+    border-top: 1px solid #000;
 }

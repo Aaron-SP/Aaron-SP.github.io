@@ -6,7 +6,7 @@ function calculate() {
     var in_press_Pa = in_press_atm * 101325.0;
 
     // Calculate intermedaries
-    var arr = peng_robinson(in_temp_K, 647.3, in_press_Pa, 221.2 * 100000.0, 0.344);
+    var arr = peng_robinson_pure(in_temp_K, in_press_Pa, 647.3, 221.2 * 100000.0, 0.344);
     var press_sat_Pa = antoine_water_bar(in_temp_K) * 100000.0;
 
     // Calculate outputs
