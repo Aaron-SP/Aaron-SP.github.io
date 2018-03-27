@@ -174,14 +174,14 @@ function calculate() {
                 // Calculate derivative
                 dfdx = (f1 - f0) / (x1 - x0);
 
-                // Do until tolerance reached
-                if (Math.abs(f1) < 0.001) {
-                    break;
-                }
-
                 // We failed so set bp to NaN
                 if (!fug[4] || x1 < 0.0) {
                     row.getElementsByClassName("out_bp_K")[0].value = NaN;
+                    break;
+                }
+                else if (Math.abs(f1) < 0.001) {
+                    // Tolerance reached, set boiling point
+                    row.getElementsByClassName("out_bp_K")[0].value = format(x1);
                     break;
                 }
 
@@ -190,9 +190,6 @@ function calculate() {
                 f0 = f1;
                 x1 = x1 - (f1 / dfdx);
             }
-
-            // Set boiling point
-            row.getElementsByClassName("out_bp_K")[0].value = format(x1);
         }
         else {
             row.getElementsByClassName("out_vm_l")[0].value = NaN;
