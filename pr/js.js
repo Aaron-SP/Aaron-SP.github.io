@@ -274,7 +274,7 @@ function calculate() {
 
         // Normalize mol fraction and update form
         z[i] /= z_sum;
-        row.getElementsByClassName("in_mol_percent")[0].value = format(z[i]);
+        row.getElementsByClassName("in_mol_percent")[0].value = format(z[i] * 100.0);
     }
 
     // Get the table footer
