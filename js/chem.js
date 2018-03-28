@@ -56,12 +56,20 @@ function sat_fugacity_coeff(Z, fL, P, Psat, T) {
     return fL / (Psat * poynting_correction);
 }
 
-function peng_robinson_solve(C2, C1, C0, Q1, P1, D, A, B) {
+function peng_robinson_solve(A, B) {
     var out = [1.0, 1.0, 0.0, 0.0, false];
+
+    // Solve polynomial equation, Z^3 + (B-1)*Z^2 + (A-3B^2-2B)*Z + (B^3+B^2-AB) = 0
+    // Z^3 + C2*Z^2 + C1*Z + C0 = 0;
+    var C2 = B - 1.0;
+    var C1 = A - (3.0 * B * B) - (2.0 * B);
+    var C0 = (B * B * B) + (B * B) - (A * B);
+    var Q1 = (C2 * C1 / 6.0) - (C0 / 2.0) - (C2 * C2 * C2 / 27.0);
+    var P1 = (C2 * C2 / 9.0) - (C1 / 3.0);
+    var D = (Q1 * Q1) - (P1 * P1 * P1);
 
     // Check for various solutions
     if (D >= 0) {
-        alert("One solution, assuming vapor");
         out[0] = Math.cbrt(Q1 + Math.sqrt(D)) + Math.cbrt(Q1 - Math.sqrt(D)) - (C2 / 3.0);
 
         // Flag one solution
@@ -108,17 +116,8 @@ function peng_robinson_pure(T, P, Tc, Pc, w) {
     var A = a * P / (R * R * T * T);
     var B = b * P / (R * T);
 
-    // Solve polynomial equation, Z^3 + (B-1)*Z^2 + (A-3B^2-2B)*Z + (B^3+B^2-AB) = 0
-    // Z^3 + C2*Z^2 + C1*Z + C0 = 0;
-    var C2 = B - 1.0;
-    var C1 = A - (3.0 * B * B) - (2.0 * B);
-    var C0 = (B * B * B) + (B * B) - (A * B);
-    var Q1 = (C2 * C1 / 6.0) - (C0 / 2.0) - (C2 * C2 * C2 / 27.0);
-    var P1 = (C2 * C2 / 9.0) - (C1 / 3.0);
-    var D = (Q1 * Q1) - (P1 * P1 * P1);
-
     // Return calculations
-    return peng_robinson_solve(C2, C1, C0, Q1, P1, D, A, B);
+    return peng_robinson_solve(A, B);
 }
 
 function peng_robinson_mix(T, P, Tc, Pc, w, x) {
@@ -167,15 +166,6 @@ function peng_robinson_mix(T, P, Tc, Pc, w, x) {
     var A = a_sum * P / (R * R * T * T);
     var B = b_sum * P / (R * T);
 
-    // Solve polynomial equation, Z^3 + (B-1)*Z^2 + (A-3B^2-2B)*Z + (B^3+B^2-AB) = 0
-    // Z^3 + C2*Z^2 + C1*Z + C0 = 0;
-    var C2 = B - 1.0;
-    var C1 = A - (3.0 * B * B) - (2.0 * B);
-    var C0 = (B * B * B) + (B * B) - (A * B);
-    var Q1 = (C2 * C1 / 6.0) - (C0 / 2.0) - (C2 * C2 * C2 / 27.0);
-    var P1 = (C2 * C2 / 9.0) - (C1 / 3.0);
-    var D = (Q1 * Q1) - (P1 * P1 * P1);
-
     // Return calculations
-    return peng_robinson_solve(C2, C1, C0, Q1, P1, D, A, B);
+    return peng_robinson_solve(A, B);
 }
