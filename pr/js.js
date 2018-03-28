@@ -119,45 +119,17 @@ function set_rows() {
 }
 
 function format(out) {
-    if (out > 1.0 && out < 1000000.0) {
+    if (out == undefined) {
+        return out;
+    }
+    if (out >= 0.1 && out <= 1000000.0) {
         return out.toFixed(3);
     }
 
     return out.toExponential(3);
 }
 
-function newton_solve(x0, x1, f0, func, set) {
-
-    // Solve equation equals zero
-    var fug, f1, dfdx;
-    for (var j = 0; j < 100; j++) {
-
-        // Calculate new F value
-        fug = func(x1);
-        f1 = (fug[1] / fug[3]) - 1.0;
-
-        // Calculate derivative
-        dfdx = (f1 - f0) / (x1 - x0);
-
-        // We failed so set bp to NaN
-        if (!fug[4] || x1 < 0.0) {
-            set.getElementsByClassName("out_bp_K")[0].value = NaN;
-            break;
-        }
-        else if (Math.abs(f1) < 0.001) {
-            // Tolerance reached, set boiling point
-            set.getElementsByClassName("out_bp_K")[0].value = format(x1);
-            break;
-        }
-
-        // Step next x value
-        x0 = x1;
-        f0 = f1;
-        x1 = x1 - (f1 / dfdx);
-    }
-}
-
-function calculate_eos(func, in_temp_K, in_press_Pa, mw, set) {
+function calculate_eos_pure(func, in_temp_K, in_press_Pa, mw, set) {
 
     // Solve the eos func
     var arr = func(in_temp_K);
@@ -168,18 +140,83 @@ function calculate_eos(func, in_temp_K, in_press_Pa, mw, set) {
     set.getElementsByClassName("out_vm_v")[0].value = format(v_mol_vol);
     set.getElementsByClassName("out_rho_v")[0].value = format(density_kg_m3(v_mol_vol, mw));
 
-    // Set liquid properties
+    // Set liquid properties and solve equation
     if (arr[4]) {
         set.getElementsByClassName("out_vm_l")[0].value = format(l_mol_vol);
         set.getElementsByClassName("out_rho_l")[0].value = format(density_kg_m3(l_mol_vol, mw));
 
-        // Solve equation
-        newton_solve(in_temp_K, in_temp_K + 0.001, (arr[1] / arr[3]) - 1.0, func, set);
+        // Newton func zero
+        var f0 = (arr[1] / arr[3]) - 1.0;
+        var f_zero = function (T_K) {
+
+            // Test for bad input   
+            if (T_K < 0.0) {
+                throw "BP zero failed";
+            }
+
+            // Solve zero function
+            var arr = func(T_K);
+
+            // No two phase so set bp to NaN
+            if (!arr[4]) {
+                throw "BP zero failed";
+            }
+
+            return (arr[1] / arr[3]) - 1.0;
+        }
+        set.getElementsByClassName("out_bp_K")[0].value = format(newton_solve(in_temp_K, in_temp_K + 0.001, f0, f_zero));
     }
     else {
-        set.getElementsByClassName("out_vm_l")[0].value = NaN;
-        set.getElementsByClassName("out_rho_l")[0].value = NaN;
-        set.getElementsByClassName("out_bp_K")[0].value = NaN;
+        set.getElementsByClassName("out_vm_l")[0].value = undefined;
+        set.getElementsByClassName("out_rho_l")[0].value = undefined;
+        set.getElementsByClassName("out_bp_K")[0].value = undefined;
+    }
+}
+
+function calculate_eos_mix(func, in_temp_K, in_press_Pa, z, mw, tbody, tfoot) {
+
+    // Solve the eos func 
+    var arr = func(in_temp_K);
+    var v_mol_vol = molar_volume(arr[0], in_press_Pa, in_temp_K);
+    var l_mol_vol = molar_volume(arr[2], in_press_Pa, in_temp_K);
+
+    // Calculate liquid and vapor mw
+    var y = arr[7], x = arr[8];
+    var mw_v = 0.0, mw_l = 0.0;
+    var size = z.length;
+    for (var i = 0; i < size; i++) {
+        mw_v += y[i] * mw[i];
+        mw_l += x[i] * mw[i];
+    }
+
+    // Set vapor/liquid mol fractions
+    var rows = tbody.rows.length;
+    for (var i = 0; i < rows; i++) {
+
+        // Get the table row
+        var row = tbody.rows[i];
+        row.getElementsByClassName("out_y")[0].value = format(arr[7][i] * 100.0);
+        row.getElementsByClassName("out_x")[0].value = format(arr[8][i] * 100.0);
+    }
+
+    // Set vapor and liquid fractions
+    tfoot.getElementsByClassName("out_y")[0].value = format(arr[5] * 100.0);
+    tfoot.getElementsByClassName("out_x")[0].value = format(arr[6] * 100.0);
+
+    // Set vapor properties
+    tfoot.getElementsByClassName("out_vm_v")[0].value = format(v_mol_vol);
+    tfoot.getElementsByClassName("out_rho_v")[0].value = format(density_kg_m3(v_mol_vol, mw_v));
+
+    // Set liquid properties
+    if (arr[4]) {
+        tfoot.getElementsByClassName("out_vm_l")[0].value = format(l_mol_vol);
+        tfoot.getElementsByClassName("out_rho_l")[0].value = format(density_kg_m3(l_mol_vol, mw_l));
+        tfoot.getElementsByClassName("out_bp_K")[0].value = undefined;
+    }
+    else {
+        tfoot.getElementsByClassName("out_vm_l")[0].value = undefined;
+        tfoot.getElementsByClassName("out_rho_l")[0].value = undefined;
+        tfoot.getElementsByClassName("out_bp_K")[0].value = undefined;
     }
 }
 
@@ -203,10 +240,10 @@ function calculate() {
     var tc = new Array(rows);
     var w = new Array(rows);
     var mw = new Array(rows);
-    var x = new Array(rows);
-    var mw_avg = 0.0;
+    var z = new Array(rows);
 
     // Calculate for each row
+    var z_sum = 0.0;
     for (var i = 0; i < rows; i++) {
 
         // Get the table row
@@ -217,10 +254,8 @@ function calculate() {
         tc[i] = Number(row.getElementsByClassName("in_tc_K")[0].value);
         w[i] = Number(row.getElementsByClassName("in_w")[0].value);
         mw[i] = mol_weight[Number(row.getElementsByClassName("in_id")[0].value)];
-        x[i] = Number(row.getElementsByClassName("in_mol_percent")[0].value) / 100.0;
-
-        // Calculate average mw
-        mw_avg += x[i] * mw[i];
+        z[i] = Number(row.getElementsByClassName("in_mol_percent")[0].value) / 100.0;
+        z_sum += z[i];
 
         // Lambda
         var pure_func = function (T_K) {
@@ -228,7 +263,18 @@ function calculate() {
         };
 
         // Solve the pure fluid
-        calculate_eos(pure_func, in_temp_K, in_press_Pa, mw[i], row);
+        calculate_eos_pure(pure_func, in_temp_K, in_press_Pa, mw[i], row);
+    }
+
+    // Normalize z inputs
+    for (var i = 0; i < rows; i++) {
+
+        // Get the table row
+        var row = tbody.rows[i];
+
+        // Normalize mol fraction and update form
+        z[i] /= z_sum;
+        row.getElementsByClassName("in_mol_percent")[0].value = format(z[i]);
     }
 
     // Get the table footer
@@ -236,11 +282,11 @@ function calculate() {
 
     // Lambda
     var mix_func = function (T_K) {
-        return peng_robinson_mix(T_K, in_press_Pa, tc, pc, w, x);
+        return peng_robinson_mix(T_K, in_press_Pa, tc, pc, w, z);
     };
 
     // Solve the mixed fluid
-    calculate_eos(mix_func, in_temp_K, in_press_Pa, mw_avg, tfoot);
+    calculate_eos_mix(mix_func, in_temp_K, in_press_Pa, z, mw, tbody, tfoot);
 
     // Return no form action
     return false;

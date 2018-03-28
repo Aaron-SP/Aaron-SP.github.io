@@ -18,7 +18,7 @@ table.calc td input,output{
     text-align: right;
 }
 
-table.calc th, td{
+table.calc th{
     text-align: left;
 }
 
@@ -39,8 +39,11 @@ table.calc th:last-child, td:last-child {
 }
 
 table.calc th.id, td.id {
-    background: white;
     width: 150px;
+}
+
+table.calc th.out, td.out {
+    width: 60px;
 }
 
 table.calc th.space, td.space {

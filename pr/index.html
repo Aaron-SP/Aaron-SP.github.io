@@ -25,7 +25,7 @@
                     <legend>Settings</legend>
                     <div>
                         <label>Number of Species:</label>
-                        <input type="number" id="in_count" min="0" value="1" step="1" required>
+                        <input type="number" id="in_count" min="1" value="1" step="1" required>
                     </div>
                     <div>
                         <label>Temperature (&#176;C):</label>
@@ -48,11 +48,13 @@
                                 <th class="tc">Critical Temperature (K)</th>
                                 <th class="w">Acentric Factor</th>
                                 <th class="space"></th>
-                                <th class="vm_v">Vapor Vm (m3/mol)</th>
-                                <th class="rho_v">Vapor Rho (kg/m3)</th>
-                                <th class="vm_l">Liquid Vm (m3/mol)</th>
-                                <th class="rho_l">Liquid Rho (kg/m3)</th>
-                                <th class="bp">Boiling Point (K)</th>
+                                <th class="y out">y (mol %)</th>
+                                <th class="vm_v out">V Vm (m3/mol)</th>
+                                <th class="rho_v out">V Rho (kg/m3)</th>
+                                <th class="x out">x (mol %)</th>
+                                <th class="vm_l out">L Vm (m3/mol)</th>
+                                <th class="rho_l out">L Rho (kg/m3)</th>
+                                <th class="bp out">Bp (K)</th>
                             </tr>
                         </thead>
                         <tbody id="rows">
@@ -150,44 +152,56 @@
                                     <input type="number" class="in_w" value="0.001" step="0.001" required>
                                 </td>
                                 <th class="space"></th>
-                                <td class="vm_v">
+                                <td class="y out">
+                                    <output class="out_y"></output>
+                                </td>
+                                <td class="vm_v out">
                                     <output class="out_vm_v"></output>
                                 </td>
-                                <td class="rho_v">
+                                <td class="rho_v  out">
                                     <output class="out_rho_v"></output>
                                 </td>
-                                <td class="vm_l">
+                                <td class="x out">
+                                    <output class="out_x"></output>
+                                </td>
+                                <td class="vm_l out">
                                     <output class="out_vm_l"></output>
                                 </td>
-                                <td class="rho_l">
+                                <td class="rho_l out">
                                     <output class="out_rho_l"></output>
                                 </td>
-                                <td class="bp">
+                                <td class="bp out">
                                     <output class="out_bp_K"></output>
                                 </td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td class="id">Sum</td>
+                                <td class="id">Mixed Properties</td>
                                 <td class="mol"></td>
                                 <td class="pc"></td>
                                 <td class="tc"></td>
                                 <td class="w"></td>
                                 <td class="space"></td>
-                                <td class="vm_v">
+                                <td class="y out">
+                                    <output class="out_y"></output>
+                                </td>
+                                <td class="vm_v out">
                                     <output class="out_vm_v"></output>
                                 </td>
-                                <td class="rho_v">
+                                <td class="rho_v out">
                                     <output class="out_rho_v"></output>
                                 </td>
-                                <td class="vm_l">
+                                <td class="x out">
+                                    <output class="out_x"></output>
+                                </td>
+                                <td class="vm_l out">
                                     <output class="out_vm_l"></output>
                                 </td>
-                                <td class="rho_l">
+                                <td class="rho_l out">
                                     <output class="out_rho_l"></output>
                                 </td>
-                                <td class="bp">
+                                <td class="bp out">
                                     <output class="out_bp_K"></output>
                                 </td>
                             </tr>
