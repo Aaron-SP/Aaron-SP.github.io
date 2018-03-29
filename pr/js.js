@@ -129,10 +129,10 @@ function format(out) {
     return out.toExponential(3);
 }
 
-function calculate_eos_pure(func, in_temp_K, in_press_Pa, mw, set) {
+function calculate_eos_pure(eos_pure, in_temp_K, in_press_Pa, mw, set) {
 
     // Solve the eos func
-    var arr = func(in_temp_K);
+    var arr = eos_pure(in_temp_K);
     var v_mol_vol = molar_volume(arr[0], in_press_Pa, in_temp_K);
     var l_mol_vol = molar_volume(arr[2], in_press_Pa, in_temp_K);
 
@@ -155,7 +155,7 @@ function calculate_eos_pure(func, in_temp_K, in_press_Pa, mw, set) {
             }
 
             // Solve zero function
-            var arr = func(T_K);
+            var arr = eos_pure(T_K);
 
             // No two phase so set bp to NaN
             if (!arr[4]) {
@@ -173,10 +173,10 @@ function calculate_eos_pure(func, in_temp_K, in_press_Pa, mw, set) {
     }
 }
 
-function calculate_eos_mix(func, in_temp_K, in_press_Pa, z, mw, tbody, tfoot) {
+function calculate_eos_mix(eos_mix, in_temp_K, in_press_Pa, z, mw, tbody, tfoot) {
 
     // Solve the eos func 
-    var arr = func(in_temp_K);
+    var arr = eos_mix(in_temp_K);
     var v_mol_vol = molar_volume(arr[0], in_press_Pa, in_temp_K);
     var l_mol_vol = molar_volume(arr[2], in_press_Pa, in_temp_K);
 
@@ -274,7 +274,7 @@ function calculate() {
 
         // Normalize mol fraction and update form
         z[i] /= z_sum;
-        row.getElementsByClassName("in_mol_percent")[0].value = format(z[i] * 100.0);
+        row.getElementsByClassName("in_mol_percent")[0].value = (z[i] * 100.0).toFixed(2);
     }
 
     // Get the table footer

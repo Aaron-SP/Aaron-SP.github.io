@@ -1,3 +1,5 @@
+var MAX_K = 1000000.0;
+
 function antoine_water_bar(T) {
     var A, B, C;
     if (T > 344.0) {
@@ -30,6 +32,71 @@ function density_g_m3(Vm, mw) {
 
 function density_kg_m3(Vm, mw) {
     return (mw / Vm) / 1000.0;
+}
+
+function flash_update(z, x, y, K, V, F) {
+
+    // Calculate vapor/liquid mol fractions
+    var size = x.length;
+    F[0] = 0.0, F[1] = 0.0;
+    for (var i = 0; i < size; i++) {
+
+        var km1 = K[i] - 1.0;
+        var denom = V * km1 + 1.0;
+
+        x[i] = z[i] / denom;
+        y[i] = K[i] * x[i];
+
+        // F(V) == 0
+        F[0] += x[i] * km1;
+
+        // dF(V)/dV
+        F[1] += (z[i] * (km1 * km1) * -1.0) / (denom * denom);
+    }
+}
+function flash(z, x, y, K, V0, iter, tol, func) {
+
+    // Get the number of components
+    var size = z.length;
+
+    var low_V = tol, high_V = 1.0 - tol;
+    var V = V0, F = [0.0, 0.0];
+    for (var k = 0; k < iter; k++) {
+
+        // Custom update function if supplied
+        if (!func != true) {
+            func(x, y, K);
+        }
+
+        // Solve mol fractions
+        flash_update(z, x, y, K, V, F);
+
+        // Test for convergence
+        if (Math.abs(F[0]) < tol) {
+            break;
+        }
+
+        // Step vapor fraction
+        V = V - F[0] / F[1];
+
+        // Bound vapor fraction
+        if (V <= low_V) {
+            V = 0.0;
+            flash_update(z, x, y, K, V, F);
+            y.fill(0.0);
+            F[0] = 0.0;
+            break;
+        }
+        else if (V >= high_V) {
+            V = 1.0;
+            flash_update(z, x, y, K, V, F);
+            x.fill(0.0);
+            F[0] = 0.0;
+            break;
+        }
+    }
+
+    return [V, F[0]];
 }
 
 // Ai = sum(xj * Aij) / A
@@ -189,10 +256,10 @@ function peng_robinson_mix(T, P, Tc, Pc, w, z) {
         // Pure component K values, Fug_L / Fug_V
         var arr = peng_robinson_solve(Ai, Bi, 1.0, 1.0, 1.0);
         if (arr[4]) {
-            K[i] = arr[3] / arr[1];
+            K[i] = Math.min(arr[3] / arr[1], MAX_K);
         }
         else {
-            K[i] = 1000.0;
+            K[i] = MAX_K;
         }
     }
 
@@ -222,105 +289,64 @@ function peng_robinson_mix(T, P, Tc, Pc, w, z) {
 
     // Calculate if in two phase region
     var out = peng_robinson_solve(A, B, 1.0, 1.0, 1.0);
-    var failed = true;
-    var low_V = 0.0001;
-    var high_V = 0.9999;
-    if (out[4] && size > 1) {
+    var tol = 1E-10;
+    var low_V = tol;
+    var high_V = 1.0 - tol;
+    var iter = 100;
 
-        // Assume vapor fraction
-        var V0 = 0.5, V1 = 0.5;
+    // Converge Vapor fraction with pure component K values
+    var fl_out = flash(z, x, y, K, 0.5, iter, tol, null);
 
-        // For k iterations
-        for (var k = 0; k < 100; k++) {
 
-            // Solve mol fractions
-            var F_V = 0.0, dF_V = 0.0;
-            for (var i = 0; i < size; i++) {
+    // Custom update function for mixture fugacities
+    var func = function (x0, y0, K0) {
 
-                var km1 = K[i] - 1.0;
-                var denom = V1 * km1 + 1.0;
+        // Update the K values
+        var size = x0.length;
+        for (var i = 0; i < size; i++) {
 
-                x[i] = z[i] / denom;
-                y[i] = K[i] * x[i];
-                F_V += x[i] * km1;
-                dF_V += (z[i] * (km1 * km1) * -1.0) / (denom * denom);
+            // Return pure eos calculations
+            var a_v = 0.0, a_l = 0.0;
+            for (var j = 0; j < size; j++) {
+
+                // Binary interaction parameter, 0 for no interaction
+                var kij = 0.0;
+
+                // Calculate a mixing for vapor and liquid
+                a_v += y0[i] * y0[j] * (1.0 - kij) * Math.sqrt(a[i] * a[j]);
+                a_l += x0[i] * x0[j] * (1.0 - kij) * Math.sqrt(a[i] * a[j]);
             }
+
+            a_v = a_v / a_sum;
+            a_l = a_l / a_sum;
 
             // Update the K values
-            // for (var i = 0; i < size; i++) {
-
-            //     // Return pure eos calculations
-            //     var a_v = 0.0, a_l = 0.0;
-            //     for (var j = 0; j < size; j++) {
-
-            //         // Binary interaction parameter, 0 for no interaction
-            //         var kij = 0.0;
-
-            //         // Calculate a mixing for vapor and liquid
-            //         a_v += y[i] * y[j] * (1.0 - kij) * Math.sqrt(a[i] * a[j]);
-            //         a_l += x[i] * x[j] * (1.0 - kij) * Math.sqrt(a[i] * a[j]);
-            //     }
-
-            //     a_v = a_v / a_sum;
-            //     a_l = a_l / a_sum;
-
-            //     // Update the K values
-            //     var arr = peng_robinson_solve(A, B, a_v, a_l, b[i] / b_sum);
-            //     if (arr[4]) {
-            //         K[i] = arr[3] / arr[1];
-            //     }
-            //     else {
-            //         K[i] = 1000.0;
-            //     }
-            // }
-
-            // Tolerance reached, return boiling point
-            if (Math.abs(F_V) < 1E-6) {
-                out.push(V1);
-                out.push(1.0 - V1);
-                out.push(y);
-                out.push(x);
-                failed = false;
-                break;
+            out = peng_robinson_solve(A, B, a_v, a_l, b[i] / b_sum);
+            if (out[4]) {
+                K0[i] = Math.min(out[3] / out[1], MAX_K);
             }
-            else if (V1 <= low_V) {
-                out.push(0.0);
-                out.push(1.0);
-                out.push(new Array(size).fill(0.0));
-                out.push(z.slice());
-                failed = false;
-                break;
-            }
-            else if (V1 >= high_V) {
-                out.push(1.0);
-                out.push(0.0);
-                out.push(z.slice());
-                out.push(new Array(size).fill(0.0));
-                failed = false;
-                break;
-            }
-
-            // Step vapor fraction
-            V0 = V1;
-            V1 = V1 - F_V / dF_V;
-
-            // Bound vapor fraction
-            if (V1 <= low_V) {
-                V1 = 0.0;
-            }
-            else if (V1 >= high_V) {
-                V1 = 1.0;
+            else {
+                K0[i] = MAX_K;
             }
         }
+    };
+
+    // Converge Vapor fraction with mixed component K values
+    fl_out = flash(z, x, y, K, fl_out[0], iter, tol, func);
+
+
+    // Alert that error is above tolerance
+    if (Math.abs(error) > tol) {
+        alert("Two phase solution failed with error: " + format(error));
     }
 
-    // Fallback feed is all vapor
-    if (failed) {
-        out.push(1.0);
-        out.push(0.0);
-        out.push(z.slice());
-        out.push(new Array(size).fill(0.0));
-    }
+    // Return two phase calculation results
+    var V = fl_out[0];
+    var error = fl_out[1];
+    out.push(V);
+    out.push(1.0 - V);
+    out.push(y);
+    out.push(x);
 
     // Return calculations
     return out;
