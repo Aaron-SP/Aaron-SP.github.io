@@ -80,7 +80,7 @@ function calc_hour(lat, lon, J, t) {
     return R_a * (1000000.0 / 3600.0);
 }
 
-function solar_irr(day) {
+function solar_irr(lat, lon, day) {
 
     // Calculate data
     let x = [];
@@ -89,7 +89,7 @@ function solar_irr(day) {
 
     for (let i = 0; i < 24; i++) {
         x.push(i);
-        y.push(calc_hour(28.0836, 80.6081, day, i));
+        y.push(calc_hour(lat, lon, day, i));
         color.push("rgb(255,0,0)");
     }
 
@@ -108,10 +108,12 @@ function y_format(y) {
 function calculate() {
 
     // Get inputs
+    let in_lat = Number(document.getElementById("in_lat").value);
+    let in_lon = Number(document.getElementById("in_lon").value);
     let in_day = Number(document.getElementById("in_day").value);
 
     // Calculate solar profile
-    let solar_data = solar_irr(in_day);
+    let solar_data = solar_irr(in_lat, in_lon, in_day);
 
     // Update the graph
     update_graph(solar_data, "t (hour)", "Irradiance (W/m2)", x_format, y_format);
