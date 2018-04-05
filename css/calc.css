@@ -81,6 +81,25 @@ form.solubility fieldset div label{
     width: 220px;
 }
 
+/* svm */
+form.svm fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 140px;
+}
+
+form.svm fieldset
+{
+    width:300px;
+}
+
+article.svm
+{
+    display:inline-block;
+}
+
 /* sun */
 form.sun fieldset div label{
     clear: left;
@@ -104,4 +123,12 @@ form fieldset div input, output{
   float: left;
   text-align: right;
   width: 90px;
+}
+
+form.svm fieldset div select
+{
+    display: inline-block;
+    float: left;
+    text-align: right;
+    width: 94px;
 }

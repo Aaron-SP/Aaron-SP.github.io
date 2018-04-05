@@ -116,7 +116,7 @@ function calculate() {
     let solar_data = solar_irr(in_lat, in_lon, in_day);
 
     // Update the graph
-    update_graph(solar_data, "t (hour)", "Irradiance (W/m2)", x_format, y_format);
+    update_graph([solar_data], "t (hour)", "Irradiance (W/m2)", x_format, y_format);
 
     // No form update
     return false;

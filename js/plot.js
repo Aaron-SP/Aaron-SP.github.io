@@ -30,9 +30,8 @@ function default_format(out) {
 function draw_graph(data, x_label, y_label, format_x = default_format, format_y = default_format) {
 
     // Unpack inputs
-    let x_values = data.x;
-    let y_values = data.y;
-    let color = data.color;
+    let x_values = data[0].x;
+    let y_values = data[0].y;
 
     // Get the canvas graph
     let canvas = document.getElementById("graph");
@@ -140,20 +139,27 @@ function draw_graph(data, x_label, y_label, format_x = default_format, format_y 
         }
 
         // Draw gradient line data
-        {
+        let curves = data.length;
+        for (let i = 0; i < curves; i++) {
+
+            // Get the x/y values
+            let x_val = data[i].x;
+            let y_val = data[i].y;
+            let color = data[i].color;
+
             // Calculate graph position value translation
             let xslope = graph_width / (x_max - x_min);
             let yslope = graph_height / (y_max - y_min);
 
             // Draw lines
             context.lineWidth = 3;
-            for (let i = 0; i < x_values.length - 1; i++) {
+            for (let i = 0; i < x_val.length - 1; i++) {
 
                 // Calculate line start and stop
-                let x0_point = xslope * (x_values[i] - x_min) + x_start;
-                let x1_point = xslope * (x_values[i + 1] - x_min) + x_start;
-                let y0_point = graph_height - yslope * (y_values[i] - y_min) + y_start;
-                let y1_point = graph_height - yslope * (y_values[i + 1] - y_min) + y_start;
+                let x0_point = xslope * (x_val[i] - x_min) + x_start;
+                let x1_point = xslope * (x_val[i + 1] - x_min) + x_start;
+                let y0_point = graph_height - yslope * (y_val[i] - y_min) + y_start;
+                let y1_point = graph_height - yslope * (y_val[i + 1] - y_min) + y_start;
 
                 // Create a line gradient
                 let grad = context.createLinearGradient(x0_point, y0_point, x1_point, y1_point);

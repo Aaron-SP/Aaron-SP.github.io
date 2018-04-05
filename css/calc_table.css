@@ -1,9 +1,12 @@
-table.calc {
+table.pr, table.svm {
     background:#CCC;
     border-spacing: 0px;
-    width: 100%;
     table-layout:fixed;
     border-collapse: collapse;
+}
+
+table.pr {
+    width: 100%;
 }
 
 table.calc th, td {

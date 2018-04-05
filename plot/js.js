@@ -14,4 +14,4 @@ let color = ["rgb(98,0,157)", "rgb(95,0,160)", "rgb(110,0,145)", "rgb(58,0,197)"
 let data = new plot_data(x, y, color);
 
 // Draw default graph
-update_graph(data, "Year", "Anomaly (\xB0C)", x_format, y_format);
+update_graph([data], "Year", "Anomaly (\xB0C)", x_format, y_format);
