@@ -38,7 +38,7 @@ table.calc th:last-child, td:last-child {
     width: 100px;
 }
 
-table.calc th.id, td.id {
+table.calc th.id, td.id select.in_id {
     width: 150px;
 }
 
