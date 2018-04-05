@@ -1,5 +1,5 @@
 function x_format(x) {
-    return x.toPrecision(4);
+    return x.toPrecision(3);
 }
 
 function y_format(y) {
@@ -179,7 +179,7 @@ function calculate() {
     let predict = new plot_data(x_data, y_predict, color_predict);
 
     // Draw the SVM fit
-    update_graph([data, predict], "Year", "Anomaly (\xB0C)", x_format, y_format);
+    update_graph([data, predict], "X Values", "Y Values", x_format, y_format);
 
     // Report number of support vectors
     document.getElementById("out_sv").innerHTML = "Number of support vectors in model solution: " + model.l;
