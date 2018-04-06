@@ -1,5 +1,5 @@
-@import url(../../Source/Widgets/widgets.css);
-@import url(../../Source/Widgets/lighter.css);
+@import url(../Cesium/Widgets/widgets.css);
+@import url(../Cesium/Widgets/lighter.css);
 
 html {
     height: 100%;
@@ -37,5 +37,5 @@ body {
     height: 66px;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(Images/ajax-loader.gif);
+    background-image: url(../img/ajax-loader.gif);
 }
