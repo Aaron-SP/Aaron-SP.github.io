@@ -100,6 +100,15 @@ article.svm
     display:inline-block;
 }
 
+/* salt */
+form.salt fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 75px;
+}
+
 /* sun */
 form.sun fieldset div label{
     clear: left;
