@@ -6,6 +6,51 @@ function y_format(y) {
     return y.toPrecision(3);
 }
 
+function power(x) {
+    return x * x;
+}
+
+function sin(x) {
+    return Math.sin(x);
+}
+
+function update_y_values(tbody, rows) {
+
+    // Get the fitting function
+    let func = Number(document.querySelector('input[name="in_function"]:checked').value);
+
+    // For each row in data table
+    for (let i = 0; i < rows; i++) {
+
+        // Get the table row
+        let row = tbody.rows[i];
+
+        // Select fit function
+        let y_val = 0.2 * i;
+        if (func == 0) {
+            row.getElementsByClassName("in_y")[0].value = power(y_val).toFixed(2);
+        }
+        else if (func == 1) {
+            row.getElementsByClassName("in_y")[0].value = sin(y_val).toFixed(2);
+        }
+    }
+}
+
+function on_radio_select() {
+
+    // Get the table
+    let table = document.getElementById("fit_table");
+
+    // Get the table body
+    let tbody = table.getElementsByTagName("tbody")[0];
+
+    // Get number of rows
+    let rows = tbody.getElementsByTagName("tr").length;
+
+    // Update the y values
+    update_y_values(tbody, rows);
+}
+
 function add_rows(tbody, rows, count) {
 
     // Create a document fragment
@@ -25,9 +70,7 @@ function add_rows(tbody, rows, count) {
 
         // Populate rows with unique values
         let x_val = 0.1 * i;
-        let y_val = 0.2 * i;
         clone.getElementsByClassName("in_x")[0].value = x_val.toFixed(1);
-        clone.getElementsByClassName("in_y")[0].value = (y_val * y_val).toFixed(2);
 
         // Add clone to the fragment
         fragment.appendChild(clone);
@@ -48,7 +91,7 @@ function delete_rows(tbody, count) {
 function set_rows() {
 
     // Get the table
-    let table = document.getElementById("svm_table");
+    let table = document.getElementById("fit_table");
 
     // Get the table body
     let tbody = table.getElementsByTagName("tbody")[0];
@@ -65,6 +108,9 @@ function set_rows() {
 
         // Add rows
         add_rows(tbody, rows, count);
+
+        // Update the y values
+        update_y_values(tbody, rows);
     }
     else if (in_count < rows) {
 
@@ -78,6 +124,15 @@ function set_rows() {
 
 function calculate() {
 
+    // Get the table
+    let table = document.getElementById("fit_table");
+
+    // Get the table body
+    let tbody = table.getElementsByTagName("tbody")[0];
+
+    // Get number of rows
+    let rows = tbody.getElementsByTagName("tr").length;
+
     // Get inputs
     let kernel = Number(document.getElementById("in_kernel").value);
     let coef = Number(document.getElementById("in_coef").value);
@@ -85,15 +140,6 @@ function calculate() {
     let gam = Number(document.getElementById("in_gam").value);
     let C = Number(document.getElementById("in_C").value);
     let p = Number(document.getElementById("in_p").value);
-
-    // Get the table
-    let table = document.getElementById("svm_table");
-
-    // Get the table body
-    let tbody = table.getElementsByTagName("tbody")[0];
-
-    // Get number of rows
-    let rows = tbody.getElementsByTagName("tr").length;
 
     // Get the tabulated data
     let x_data = new Array(rows);

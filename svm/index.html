@@ -9,7 +9,7 @@
     <title>Support Vector Regression Calculator</title>
 </head>
 
-<body onload="set_rows();">
+<body onload="set_rows();on_radio_select();">
     <header>
         <h1>Support Vector Regression Calculator</h1>
     </header>
@@ -20,12 +20,15 @@
             <p>Support Vector Regression Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
                 without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
         </article>
-        <article class="svm">
-            <form class="svm" onsubmit="return calculate();">
+        <article class="fit">
+            <form class="fit" onsubmit="return calculate();">
                 <fieldset>
                     <legend>Settings</legend>
+                    <label>Fit Function: </label>
+                    <input type="radio" onclick="on_radio_select();" name="in_function" value="0" checked> Power
+                    <input type="radio" onclick="on_radio_select();" name="in_function" value="1"> Sin
                     <div>
-                        <label>Number of Rows:</label>
+                        <label>Number of Rows: </label>
                         <input type="number" id="in_count" min="1" value="15" step="1" required>
                     </div>
                     <div>
@@ -61,7 +64,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Table</legend>
-                    <table id="svm_table" class="calc svm">
+                    <table id="fit_table" class="calc fit">
                         <thead>
                             <tr>
                                 <th class="x">X Values</th>
@@ -84,7 +87,7 @@
             </form>
             <p id="out_sv"></p>
         </article>
-        <article class="svm">
+        <article class="fit">
             <canvas id="graph" width="640" height="480"></canvas>
         </article>
     </section>

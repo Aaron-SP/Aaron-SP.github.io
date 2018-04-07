@@ -1,20 +1,3 @@
-function select_gas() {
-    // Get all radio inputs
-    var radios = document.getElementsByName("in_gas");
-
-    // Iterate through gas types
-    for (var i = 0, length = radios.length; i < length; i++) {
-
-        // If selected return index
-        if (radios[i].checked) {
-            return i;
-        }
-    }
-
-    // Default selection
-    return 0;
-}
-
 function calc_henry(in_gas, in_temp_K) {
 
     // Calculate henry's law constant for gas and temperature
@@ -54,7 +37,7 @@ function density_water(in_temp_K) {
 
 function calculate() {
     // Get inputs
-    var in_gas = select_gas();
+    var in_gas = Number(document.querySelector('input[name="in_gas"]:checked').value);
     var in_molar = Number(document.getElementById("in_molar").value) / 100.0;
     var in_temp_degC = Number(document.getElementById("in_temperature").value);
     var in_temp_K = in_temp_degC + 273.15;
@@ -79,7 +62,7 @@ function calculate() {
 }
 
 function on_radio_select() {
-    var in_gas = select_gas();
+    var in_gas = Number(document.querySelector('input[name="in_gas"]:checked').value);
     switch (in_gas) {
         case 0:
             document.getElementById("in_molar").value = 20.95;
