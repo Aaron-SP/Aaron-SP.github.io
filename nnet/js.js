@@ -134,7 +134,7 @@ function calculate() {
     let rows = tbody.getElementsByTagName("tr").length;
 
     // Get inputs
-    let depth = Number(document.getElementById("in_depth").value);
+    let depth = Number(document.getElementById("in_feature").value);
     let width = Number(document.getElementById("in_width").value);
     let step = Number(document.getElementById("in_step").value);
     let iter = Number(document.getElementById("in_iter").value);
@@ -142,10 +142,12 @@ function calculate() {
     // Get the tabulated data
     let x_data = new Array(rows);
     let y_data = new Array(rows);
+    let color_data = new Array(rows);
     for (let i = 0; i < rows; i++) {
         let row = tbody.rows[i];
         x_data[i] = Number(row.getElementsByClassName("in_x")[0].value);
         y_data[i] = Number(row.getElementsByClassName("in_y")[0].value);
+        color_data[i] = "rgb(0,0,0)";
     }
 
     // Check X/Y data lengths
@@ -190,29 +192,43 @@ function calculate() {
     }
 
     // Test model prediction
-    let y_predict = new Array(y_size);
-    let color_data = new Array(y_size);
-    let color_predict = new Array(y_size);
+    let inner = 4;
+    let interp = 1 / inner;
+    let p_size = inner * (y_size - 1);
+    let x_predict = new Array(p_size);
+    let y_predict = new Array(p_size);
+    let color_predict = new Array(p_size);
 
     // Get model predictions
-    for (let j = 0; j < y_size; j++) {
+    for (let i = 1; i < y_size; i++) {
 
-        // Calculate input array
-        input[0] = x_data[j];
-        for (let k = 1; k < depth; k++) {
-            input[k] = input[k - 1] * input[0];
+        // Interpolate between X values
+        let dx = x_data[i] - x_data[i - 1];
+        for (let j = 0; j < inner; j++) {
+
+            // Calculate index
+            let index = (i - 1) * inner + j;
+
+            // Interpolate position
+            let m = interp * j;
+            input[0] = m * dx + x_data[i - 1];
+
+            // Calculate input array
+            for (let k = 1; k < depth; k++) {
+                input[k] = input[k - 1] * input[0];
+            }
+
+            // Calculate network prediction
+            net.set_input(input);
+            x_predict[index] = input[0];
+            y_predict[index] = net.calculate_sigmoid()[0];
+            color_predict[index] = "rgb(255,0,0)";
         }
-
-        // Calculate network prediction
-        net.set_input(input);
-        y_predict[j] = net.calculate_sigmoid()[0];
-        color_data[j] = "rgb(0,0,0)";
-        color_predict[j] = "rgb(255,0,0)";
     }
 
     // Graph two curves
     let data = new plot_data(x_data, y_data, color_data);
-    let predict = new plot_data(x_data, y_predict, color_predict);
+    let predict = new plot_data(x_predict, y_predict, color_predict);
 
     // Draw the SVM fit
     update_graph([data, predict], "X Values", "Y Values", x_format, y_format);

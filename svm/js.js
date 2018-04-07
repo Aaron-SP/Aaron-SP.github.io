@@ -134,6 +134,7 @@ function calculate() {
     let rows = tbody.getElementsByTagName("tr").length;
 
     // Get inputs
+    let depth = Number(document.getElementById("in_feature").value);
     let kernel = Number(document.getElementById("in_kernel").value);
     let coef = Number(document.getElementById("in_coef").value);
     let deg = Number(document.getElementById("in_deg").value);
@@ -144,10 +145,12 @@ function calculate() {
     // Get the tabulated data
     let x_data = new Array(rows);
     let y_data = new Array(rows);
+    let color_data = new Array(rows);
     for (let i = 0; i < rows; i++) {
         let row = tbody.rows[i];
         x_data[i] = Number(row.getElementsByClassName("in_x")[0].value);
         y_data[i] = Number(row.getElementsByClassName("in_y")[0].value);
+        color_data[i] = "rgb(0,0,0)";
     }
 
     // Check X/Y data lengths
@@ -157,7 +160,6 @@ function calculate() {
 
     // Extract data dimensions
     let y_size = y_data.length;
-    let x_width = 1;
 
     // Create parameter
     let param = new libsvm.svm_parameter();
@@ -185,14 +187,20 @@ function calculate() {
     prob.x = new Array(y_size);
     for (let i = 0; i < y_size; i++) {
 
-        // Fill in x values
-        let arr = new Array(x_width);
-        arr[0] = new libsvm.svm_node();
-        arr[0].index = i;
-        arr[0].value = x_data[i];
+        // Create input array
+        let input = new Array(depth);
+
+        // Calculate input array
+        let accum = 1.0;
+        for (let k = 0; k < depth; k++) {
+            accum *= x_data[i];
+            input[k] = new libsvm.svm_node();
+            input[k].index = k;
+            input[k].value = accum;
+        }
 
         // Assign into array
-        prob.x[i] = arr;
+        prob.x[i] = input;
     }
 
     // Fill in y values
@@ -211,18 +219,49 @@ function calculate() {
     let model = libsvm.svm.svm_train(prob, param);
 
     // Test model prediction
-    let y_predict = new Array(y_size);
-    let color_data = new Array(y_size);
-    let color_predict = new Array(y_size);
-    for (let i = 0; i < y_size; i++) {
-        y_predict[i] = libsvm.svm.svm_predict(model, prob.x[i]);
-        color_data[i] = "rgb(0,0,0)";
-        color_predict[i] = "rgb(255,0,0)";
+    let inner = 4;
+    let interp = 1 / inner;
+    let p_size = inner * (y_size - 1);
+    let x_predict = new Array(p_size);
+    let y_predict = new Array(p_size);
+    let color_predict = new Array(p_size);
+    let input = new Array(depth);
+    for (let i = 0; i < depth; i++) {
+        input[i] = new libsvm.svm_node();
+    }
+
+    // Get model predictions
+    for (let i = 1; i < y_size; i++) {
+
+        // Interpolate between X values
+        let dx = x_data[i] - x_data[i - 1];
+        for (let j = 0; j < inner; j++) {
+
+            // Calculate index
+            let index = (i - 1) * inner + j;
+
+            // Interpolate position
+            let m = interp * j;
+            let x = m * dx + x_data[i - 1];
+
+            // Calculate input array
+            let accum = 1.0;
+            for (let k = 0; k < depth; k++) {
+                accum *= x;
+                input[k].index = k;
+                input[k].value = accum;
+            }
+
+            // Calculate network prediction
+            x_predict[index] = input[0].value;
+            y_predict[index] = libsvm.svm.svm_predict(model, input);
+            color_predict[index] = "rgb(255,0,0)";
+        }
     }
 
     // Graph two curves
     let data = new plot_data(x_data, y_data, color_data);
-    let predict = new plot_data(x_data, y_predict, color_predict);
+    let predict = new plot_data(x_predict, y_predict, color_predict);
 
     // Draw the SVM fit
     update_graph([data, predict], "X Values", "Y Values", x_format, y_format);

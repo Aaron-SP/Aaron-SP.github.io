@@ -32,6 +32,10 @@
                         <input type="number" id="in_count" min="1" value="15" step="1" required>
                     </div>
                     <div>
+                        <label>Features: </label>
+                        <input type="number" id="in_feature" min="1" value="1" step="1" required>
+                    </div>
+                    <div>
                         <label>Kernel: </label>
                         <select id="in_kernel">
                             <option value="0">Linear</option>
@@ -42,7 +46,7 @@
                     </div>
                     <div>
                         <label>Coefficient: </label>
-                        <input type="number" id="in_coef" value="0.0" step="any" required>
+                        <input type="number" id="in_coef" value="0.0" step="0.1" required>
                     </div>
                     <div>
                         <label>Degree: </label>
@@ -50,7 +54,7 @@
                     </div>
                     <div>
                         <label>Gamma: </label>
-                        <input type="number" id="in_gam" min="0.0" value="0.1" step="any" required>
+                        <input type="number" id="in_gam" min="0.0" value="0.1" step="0.1" required>
                     </div>
                     <div>
                         <label>Epsilon: </label>
@@ -58,7 +62,7 @@
                     </div>
                     <div>
                         <label>Cost: </label>
-                        <input type="number" id="in_C" min="0.0" value="1.0" step="any" required>
+                        <input type="number" id="in_C" min="0.25" value="1.0" step="0.25" required>
                     </div>
                     <input type="button" value="Update" onclick="set_rows();">
                 </fieldset>
