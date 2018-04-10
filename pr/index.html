@@ -30,11 +30,11 @@
                     </div>
                     <div>
                         <label>Temperature (&#176;C):</label>
-                        <input type="number" id="in_temperature" min="0.0" value="25.0" step="0.1" required>
+                        <input type="number" id="in_temperature" min="0.0" value="25.0" step="any" required>
                     </div>
                     <div>
                         <label>Pressure (atm):</label>
-                        <input type="number" id="in_pressure" min="0.0" value="1.0" step="1.0" required>
+                        <input type="number" id="in_pressure" min="0.0" value="1.0" step="any" required>
                     </div>
                     <input type="button" value="Update" onclick="set_rows();">
                 </fieldset>
@@ -141,16 +141,16 @@
                                     </select>
                                 </td>
                                 <td class="mol">
-                                    <input type="number" class="in_mol_percent" min="0.0" value="100.0" step="0.0001" required>
+                                    <input type="number" class="in_mol_percent" min="0.0" value="100.0" step="any" required>
                                 </td>
                                 <td class="pc">
-                                    <input type="number" class="in_pc_bar" value="48.7" step="0.001" required>
+                                    <input type="number" class="in_pc_bar" value="48.7" step="any" required>
                                 </td>
                                 <td class="tc">
-                                    <input type="number" class="in_tc_K" value="150.8" step="0.001" required>
+                                    <input type="number" class="in_tc_K" value="150.8" step="any" required>
                                 </td>
                                 <td class="w">
-                                    <input type="number" class="in_w" value="0.001" step="0.001" required>
+                                    <input type="number" class="in_w" value="0.001" step="any" required>
                                 </td>
                                 <th class="space"></th>
                                 <td class="y out">
