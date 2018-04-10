@@ -126,6 +126,15 @@ form.sun fieldset div label{
     width: 100px;
 }
 
+/* thermal */
+form.thermal fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 180px;
+}
+
 /* thermo */
 form.thermo fieldset div label{
     clear: left;

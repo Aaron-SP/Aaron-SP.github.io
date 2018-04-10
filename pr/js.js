@@ -158,7 +158,7 @@ function calculate_eos_pure(eos_pure, in_temp_K, in_press_Pa, mw, set) {
 
             return (arr[1] / arr[3]) - 1.0;
         }
-        set.getElementsByClassName("out_bp_K")[0].value = format(newton_solve(in_temp_K, in_temp_K + 0.001, f0, f_zero));
+        set.getElementsByClassName("out_bp_K")[0].value = format(newton_solve(in_temp_K, in_temp_K + 0.001, f0, f_zero, 100));
     }
     else {
         set.getElementsByClassName("out_vm_l")[0].value = undefined;
