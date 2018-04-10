@@ -6,7 +6,7 @@ function y_format(y) {
     return y.toPrecision(3);
 }
 
-function h_air(T_inf, T_surf, L_m) {
+function h_air(T_inf, T_surf, vel_m_s, L_m) {
 
     // Calculate regression constants, temperatures in K
     let T_film = (T_inf + T_surf) * 0.5;
@@ -19,12 +19,13 @@ function h_air(T_inf, T_surf, L_m) {
     let Gr = (gr_n2(inv_T_film, T_film, T_film2, T_film3, T_inf, T_surf, L_m) * 0.79) + (gr_o2(inv_T_film, T_film, T_film2, T_film3, T_inf, T_surf, L_m) * 0.21);
     let Pr = (pr_n2(inv_T_film, T_film, T_film2, T_film3) * 0.79) + (pr_o2(inv_T_film, T_film, T_film2, T_film3) * 0.21);
     let Ra = Gr * Pr;
+    let Re = (re_n2(inv_T_film, T_film, T_film2, T_film3, vel_m_s, L_m) * 0.79) + (re_o2(inv_T_film, T_film, T_film2, T_film3, vel_m_s, L_m) * 0.21);
 
     // Return air convection heat transfer
-    return nu_vertical_plate(Ra, Pr) * (k / L_m);
+    return (nu_free_vertical_plate(Ra, Pr) + nu_forced_flat_plate(Re, Pr)) * (k / L_m);
 }
 
-function h_water(T_inf, T_surf, L_m) {
+function h_water(T_inf, T_surf, vel_m_s, L_m) {
 
     // Calculate regression constants, temperatures in K
     let T_film = (T_inf + T_surf) * 0.5;
@@ -37,12 +38,13 @@ function h_water(T_inf, T_surf, L_m) {
     let Gr = gr_water(inv_T_film, T_film, T_film2, T_film3, T_inf, T_surf, L_m);
     let Pr = pr_water(inv_T_film, T_film, T_film2, T_film3);
     let Ra = Gr * Pr;
+    let Re = re_water(inv_T_film, T_film, T_film2, T_film3, vel_m_s, L_m);
 
     // Return Nusselt number for air
-    return nu_vertical_plate(Ra, Pr) * (k / L_m);
+    return (nu_free_vertical_plate(Ra, Pr) + nu_forced_flat_plate(Re, Pr)) * (k / L_m);
 }
 
-function solve_tank(A_m2, V_m3, L_m, thick_m, temp_air_K, temp_water_K, step, iter) {
+function solve_tank(A_m2, V_m3, L_m, thick_m, temp_air_K, temp_water_K, vel_m_s, step, iter) {
 
     // Temperature guess
     let K_glass = 0.8;
@@ -72,14 +74,14 @@ function solve_tank(A_m2, V_m3, L_m, thick_m, temp_air_K, temp_water_K, step, it
         let func = function (T1_K) {
 
             // Calculate air convection coefficient
-            h[0] = h_air(temp_air_K, T1_K, L_m);
+            h[0] = h_air(temp_air_K, T1_K, vel_m_s, L_m);
             let q1 = h[0] * A_m2 * (temp_air_K - T1_K);
 
             // Calculate water wall temperature
             let T2_K = T1_K - ((q1 * thick_m) / (K_glass * A_m2));
 
             // Calculate water convection coefficient
-            h[1] = h_water(Tw_K, T2_K, L_m);
+            h[1] = h_water(Tw_K, T2_K, vel_m_s, L_m);
 
             // Calculate heat through water convection
             let q2 = h[1] * A_m2 * (T2_K - Tw_K);
@@ -128,9 +130,10 @@ function calculate() {
     let length_in = Number(document.getElementById("in_length_in").value);
     let width_in = Number(document.getElementById("in_width_in").value);
     let depth_in = Number(document.getElementById("in_depth_in").value);
-    let temp_air_K = Number(document.getElementById("in_temp_air").value) + 273.15;
-    let temp_water_K = Number(document.getElementById("in_temp_water").value) + 273.15;
-    let thick_m = Number(document.getElementById("in_thickness_in").value) * 0.0254;;
+    let thick_m = Number(document.getElementById("in_thickness_in").value) * 0.0254;
+    let temp_air_K = Number(document.getElementById("in_temp_air_C").value) + 273.15;
+    let temp_water_K = Number(document.getElementById("in_temp_water_C").value) + 273.15;
+    let vel_m_s = Number(document.getElementById("in_velocity_m_s").value);
     let step = Number(document.getElementById("in_step").value);
     let iter = Number(document.getElementById("in_iter").value);
 
@@ -141,7 +144,7 @@ function calculate() {
     // Characteristic length is height of vertical plate
     let L_m = depth_in * 0.0254;
 
-    let tank_data = solve_tank(A_m2, V_m3, L_m, thick_m, temp_air_K, temp_water_K, step, iter);
+    let tank_data = solve_tank(A_m2, V_m3, L_m, thick_m, temp_air_K, temp_water_K, vel_m_s, step, iter);
 
     // Get the tabulated data
     let x_data = tank_data[0];

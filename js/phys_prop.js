@@ -42,6 +42,9 @@ function gr_water(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K,
 function ra_water(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K, L_m) {
     return pr_water(inv_temp_K, temp_K, temp_K2, temp_K3) * gr_water(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K, L_m);
 }
+function re_water(inv_temp_K, temp_K, temp_K2, temp_K3, v, L_m) {
+    return (rho_water(inv_temp_K, temp_K, temp_K2, temp_K3) * v * L_m) / mew_water(inv_temp_K, temp_K, temp_K2, temp_K3);
+}
 
 // N2
 function rho_n2(inv_temp_K, temp_K, temp_K2, temp_K3) {
@@ -80,6 +83,9 @@ function gr_n2(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K, L_
 }
 function ra_n2(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K, L_m) {
     return pr_n2(inv_temp_K, temp_K, temp_K2, temp_K3) * gr_n2(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K, L_m);
+}
+function re_n2(inv_temp_K, temp_K, temp_K2, temp_K3, v, L_m) {
+    return (rho_n2(inv_temp_K, temp_K, temp_K2, temp_K3) * v * L_m) / mew_n2(inv_temp_K, temp_K, temp_K2, temp_K3);
 }
 
 // O2
@@ -120,8 +126,11 @@ function gr_o2(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K, L_
 function ra_o2(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K, L_m) {
     return pr_o2(inv_temp_K, temp_K, temp_K2, temp_K3) * gr_o2(inv_temp_K, temp_K, temp_K2, temp_K3, temp_inf_K, temp_surf_K, L_m);
 }
+function re_o2(inv_temp_K, temp_K, temp_K2, temp_K3, v, L_m) {
+    return (rho_o2(inv_temp_K, temp_K, temp_K2, temp_K3) * v * L_m) / mew_o2(inv_temp_K, temp_K, temp_K2, temp_K3);
+}
 
-function nu_vertical_plate(Ra, Pr) {
+function nu_free_vertical_plate(Ra, Pr) {
 
     let nu = 0.0;
 
@@ -140,4 +149,8 @@ function nu_vertical_plate(Ra, Pr) {
 
     // Return the nusselt number, accurate for laminar and turbulent flow
     return nu;
+}
+
+function nu_forced_flat_plate(Re, Pr) {
+    return 0.664 * Math.pow(Pr, 1.0 / 3.0) * Math.pow(Re, 0.5);
 }

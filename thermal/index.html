@@ -6,17 +6,18 @@
     <script src="../js/phys_prop.js"></script>
     <script src="../js/plot.js"></script>
     <script src="../js/zero.js"></script>
-    <title>Thermal Tank Calculator</title>
+    <title>Aquarium Convection Calculator</title>
 </head>
 
 <body>
     <header>
-        <h1>Thermal Tank Calculator</h1>
+        <h1>Aquarium Convection Calculator</h1>
     </header>
     <section>
         <article>
-            <p> This calculator calculates how long a tank of water will take to equilibrate with the surrounding air temperature.</p>
-            <p>Thermal Tank Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+            <p> This calculator calculates how long a tank of water will take to equilibrate with the surrounding air temperature.
+                The top and bottom of the aquarium is assumed to be well insulated.</p>
+            <p>Aquarium Convection Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
                 even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
         </article>
         <article class="fit">
@@ -41,11 +42,15 @@
                     </div>
                     <div>
                         <label>Temperature Air (&#176;C):</label>
-                        <input type="number" id="in_temp_air" min="0" value="25.0" step="1.0" required>
+                        <input type="number" id="in_temp_air_C" min="0" value="25.0" step="1.0" required>
                     </div>
                     <div>
                         <label>Temperature Water (&#176;C):</label>
-                        <input type="number" id="in_temp_water" min="0" value="20.0" step="1.0" required>
+                        <input type="number" id="in_temp_water_C" min="0" value="20.0" step="1.0" required>
+                    </div>
+                    <div>
+                        <label>Fluid Velocity (m/s):</label>
+                        <input type="number" id="in_velocity_m_s" min="0" value="0.5" step="0.1" required>
                     </div>
                     <div>
                         <label>Step Size (s): </label>
@@ -53,7 +58,7 @@
                     </div>
                     <div>
                         <label>Iterations: </label>
-                        <input type="number" id="in_iter" min="1" value="8000" step="1" required>
+                        <input type="number" id="in_iter" min="1" value="1000" step="1" required>
                     </div>
                 </fieldset>
                 <div class="calc_click">
