@@ -10,6 +10,7 @@
 </head>
 
 <body onload="set_rows();on_radio_select();">
+    <a href="../index.html">Menu</a>
     <header>
         <h1>Support Vector Regression Calculator</h1>
     </header>
@@ -20,7 +21,7 @@
             <p>Support Vector Regression Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
                 without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
         </article>
-        <article class="fit">
+        <article class="span">
             <form class="fit" onsubmit="return calculate();">
                 <fieldset>
                     <legend>Settings</legend>
@@ -91,7 +92,7 @@
             </form>
             <p id="out_sv"></p>
         </article>
-        <article class="fit">
+        <article class="span">
             <canvas id="graph" width="640" height="480"></canvas>
         </article>
     </section>

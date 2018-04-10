@@ -5,6 +5,12 @@ header{
     padding: 8px;
 }
 
+article.span
+{
+    display:inline-block;
+    vertical-align: top;
+}
+
 div.calc_click{
     padding-top: 8px;
 }
@@ -27,6 +33,28 @@ form.co2 fieldset div label{
     width: 190px;
 }
 
+/* fit */
+form.fit fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 140px;
+}
+
+form.fit fieldset
+{
+    width:300px;
+}
+
+form.fit fieldset div select
+{
+    display: inline-block;
+    float: left;
+    text-align: right;
+    width: 94px;
+}
+
 /* fugacity */
 form.fugacity fieldset div label{
     clear: left;
@@ -36,15 +64,6 @@ form.fugacity fieldset div label{
     width: 170px;
 }
 
-/* nh3 */
-form.nh3 fieldset div label{
-    clear: left;
-    display: inline-block;
-    float: left;
-    text-align: left;
-    width: 150px;
-}
-
 /* na2_s2o3 */
 form.na2_s2o3 fieldset div label{
     clear: left;
@@ -52,6 +71,15 @@ form.na2_s2o3 fieldset div label{
     float: left;
     text-align: left;
     width: 185px;
+}
+
+/* nh3 */
+form.nh3 fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 150px;
 }
 
 /* pr */
@@ -88,33 +116,6 @@ form.solubility fieldset div label{
     float: left;
     text-align: left;
     width: 220px;
-}
-
-/* fit */
-form.fit fieldset div label{
-    clear: left;
-    display: inline-block;
-    float: left;
-    text-align: left;
-    width: 140px;
-}
-
-form.fit fieldset
-{
-    width:300px;
-}
-
-article.fit
-{
-    display:inline-block;
-}
-
-form.fit fieldset div select
-{
-    display: inline-block;
-    float: left;
-    text-align: right;
-    width: 94px;
 }
 
 /* sun */
