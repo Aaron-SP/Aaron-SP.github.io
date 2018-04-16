@@ -16,6 +16,14 @@ function calc_h(in_ph) {
     return Math.pow(10, in_ph * -1.0);
 }
 
+function format(out) {
+    if (out >= 0.1 && out <= 1000000.0) {
+        return out.toFixed(3);
+    }
+
+    return out.toExponential(3);
+}
+
 function calculate() {
     // Get inputs
     var in_ph = Number(document.getElementById("in_ph").value);
@@ -27,26 +35,33 @@ function calculate() {
     var k1 = calc_k1(in_temp_K);
     var k2 = calc_k2(in_temp_K);
 
-    // Calculate output concentrations
+    // Calculate Henry's Law
     var h = calc_h(in_ph);
     var pp_co2_atm = in_co2_molar * 1.0;
     var conc_h2co3_mol_L = k0 * pp_co2_atm;
     var conc_hco3_mol_L = k1 * conc_h2co3_mol_L / h;
     var conc_co3_mol_L = k2 * conc_hco3_mol_L / h;
+
+    // Calculate output concentrations
+    var conc_h2co3_mg_L = conc_h2co3_mol_L * (1000.0 * 62.024);
+    var conc_hco3_mg_L = conc_hco3_mol_L * (1000.0 * 61.0168);
+    var conc_co3_mg_L = conc_co3_mol_L * (1000.0 * 60.008);
+
+    // Calculate alkalinity and water hardness
     var alkalinity_mmol_L = (conc_hco3_mol_L + conc_co3_mol_L * 2.0) * 1000.0;
     var kh_mg_L = (conc_hco3_mol_L * 0.5 + conc_co3_mol_L) * 100.0869 * 1000.0;
     var dkh = kh_mg_L / 17.848;
 
     // Set output values
-    document.getElementById("out_k0").value = k0.toExponential(5);
-    document.getElementById("out_k1").value = k1.toExponential(5);
-    document.getElementById("out_k2").value = k2.toExponential(5);
-    document.getElementById("out_h2co3_mol_L").value = conc_h2co3_mol_L.toExponential(5);
-    document.getElementById("out_hco3_mol_L").value = conc_hco3_mol_L.toExponential(5);
-    document.getElementById("out_co3_mol_L").value = conc_co3_mol_L.toExponential(5);
-    document.getElementById("out_alkalinity_mmol_L").value = alkalinity_mmol_L.toFixed(3);
-    document.getElementById("out_kh_mg_L").value = kh_mg_L.toFixed(3);
-    document.getElementById("out_dkh").value = dkh.toFixed(3);
+    document.getElementById("out_k0").value = format(k0);
+    document.getElementById("out_k1").value = format(k1);
+    document.getElementById("out_k2").value = format(k2);
+    document.getElementById("out_h2co3_mg_L").value = format(conc_h2co3_mg_L);
+    document.getElementById("out_hco3_mg_L").value = format(conc_hco3_mg_L);
+    document.getElementById("out_co3_mg_L").value = format(conc_co3_mg_L);
+    document.getElementById("out_alkalinity_mmol_L").value = format(alkalinity_mmol_L);
+    document.getElementById("out_kh_mg_L").value = format(kh_mg_L);
+    document.getElementById("out_dkh").value = format(dkh);
 
     // Return no form action
     return false;
