@@ -2,69 +2,52 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/menu.css">
-    <title>Chemical Calculators</title>
+    <link rel="stylesheet" href="css/bds.css">
+    <title>Beyond Dying Skies</title>
 </head>
 
-<body>
-    <header>
-        <h1>Chemical Calculators</h1>
-    </header>
-    <section class="menu">
+<body class="bg_gray">
+    <header class="bg_black">
         <nav>
-            <ul>
-                <li>
-                    <a href="air/index.html">Air Density</a>
-                </li>
-                <li>
-                    <a href="nh3/index.html">Ammonia Speciation</a>
-                </li>
-                <li>
-                    <a href="thermal/index.html">Aquarium Convection</a>
-                </li>
-                <li>
-                    <a href="co2/index.html">Carbon Dioxide Speciation</a>
-                </li>
-                <li>
-                    <a href="cesium/index.html">Cesium Viewer</a>
-                </li>
-                <li>
-                    <a href="plot/index.html">Earth Climate Change</a>
-                </li>
-                <li>
-                    <a href="solubility/index.html">Gas Solubility</a>
-                </li>
-                <li>
-                    <a href="nnet/index.html">Neural Networks</a>
-                </li>
-                <li>
-                    <a href="pr/index.html">Peng-Robinson EOS</a>
-                </li>
-                <li>
-                    <a href="salt/index.html">Salt Water Mixing</a>
-                </li>
-                <li>
-                    <a href="na2_s2o3/index.html">Sodium Thiosulphate</a>
-                </li>
-                <li>
-                    <a href="sun/index.html">Solar Irradiance</a>
-                </li>
-                <li>
-                    <a href="svm/index.html">Support Vector Machines</a>
-                </li>
-                <li>
-                    <a href="thermo/index.html">Thermodynamic Property</a>
-                </li>
-                <li>
-                    <a href="fugacity/index.html">Water Fugacity</a>
-                </li>
-                <li>
-                    <a href="sizing/index.html">Water Heater Sizing</a>
-                </li>
-            </ul>
+            <div class="back">
+                <a href="index.html">Home</a>
+            </div>
+            <a href="https://github.com/Aaron-Sp/bds">Github</a>
+            <a href="https://www.youtube.com/channel/UCAhKW5ju7ijrRmguEoLTxwQ">Youtube</a>
+            <a href="chem/index.html">Chemical Calculators</a>
         </nav>
+    </header>
+
+    <section class="bds_bg">
+        <article>
+            <img src="bds/bds_bg.jpg">
+            <div class="center">
+                <img src="bds/title.png">
+                <h1>Version 0.1.217 Update!</h1>
+        </article>
     </section>
-    <footer>Copyright &copy; Aaron Springstroh</footer>
+    <section class="content">
+        <article class="content">
+            <h1>Welcome</h1>
+            <p>20th April 2018</p>
+            <p>The latest development update video has been posted to the Beyond Dying Skies Youtube channel!</p>
+            <div class="hwrap">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VGnlxhbVDbs" frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
+            </div>
+            <p>Various new recipes and bug fixes have been added to the game. A comprehensive list is detailed below:</p>
+            <ul>
+                <li>New weapon type: Scatter Beam</li>
+                <li>Single beam cost reduced by 50%</li>
+                <li>New blue crystal shards recipes allow converting ionic items to the non-ionic form</li>
+                <li>New green crystal shard recipes allow "upping" block type to a higher block level</li>
+                <li>Modified item decay production counts to avoid duping items</li>
+                <li>Fixed drone AI pathing bug resulting in memory corruption</li>
+                <li>Added ability to damage drones with energy weapons</li>
+            </ul>
+        </article>
+    </section>
+    <footer class="bg_black">Copyright &copy; Aaron Springstroh</footer>
 </body>
 
 </html>
