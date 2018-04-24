@@ -88,15 +88,14 @@ section.content
 }
 
 section.content h1 {
+    color: white;
     font-size: 30px;
 }
 
 article.content
 {
-    color: white;
     font-size: 20px;
 }
-
 
 article.content p
 {
