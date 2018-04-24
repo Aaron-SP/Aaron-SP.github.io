@@ -87,7 +87,7 @@ section.content
     max-width: 1425px;
 }
 
-section.content h1 {
+section.content h2 {
     color: white;
     font-size: 30px;
 }
@@ -97,7 +97,7 @@ article.content
     font-size: 20px;
 }
 
-article.content p
+article.content h3, p
 {
     color: #CCC;
 }
