@@ -1,12 +1,10 @@
-.bg_gray
-{
+.bg_gray {
     background-image: url("../bds/hurl.png");
     background-repeat: repeat;
     background-color: #242424;
 }
 
-.bg_black
-{
+.bg_black {
     background:
     linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
     linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
@@ -25,21 +23,19 @@ header, footer {
     text-align: center;
 }
 
-header nav{
+header nav {
     text-align: center;
 }
 
-header nav div
-{
+header nav div {
     display: inline-block;
 }
 
-header nav div.back
-{
+header nav div.back {
     float:left;
 }
 
-header nav a{
+header nav a {
     background:black;
     border: 1px solid #555;
     color: white;
@@ -51,7 +47,7 @@ header nav a{
     padding-right: 10px;
 }
 
-header nav a:visited, header nav a:hover, header nav a:visited:hover{
+header nav a:visited, header nav a:hover, header nav a:visited:hover {
     color: white;
 }
 
@@ -59,8 +55,7 @@ header nav a:hover {
     background: #BBB;
 }
 
-section.bds_bg h1
-{
+section.bds_bg h1 {
     font-size: 50px;
 }
 
@@ -80,8 +75,7 @@ section.bds_bg img {
     padding-bottom: 20px;
 }
 
-section.content
-{
+section.content {
     font-family:Arial, Helvetica, sans-serif;
     margin: 0 auto;
     max-width: 1425px;
@@ -92,18 +86,15 @@ section.content h2 {
     font-size: 30px;
 }
 
-article.content
-{
+article.content {
     font-size: 20px;
 }
 
-article.content h3, p
-{
+article.content h3, p {
     color: #CCC;
 }
 
-article.content ul li
-{
+article.content ul li {
     color: #777;
 }
 
