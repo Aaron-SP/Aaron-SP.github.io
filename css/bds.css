@@ -75,13 +75,34 @@ section.bds_bg img {
     padding-bottom: 20px;
 }
 
-section.content {
+section.blog {
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    max-width: 768px;
+}
+
+section.main {
     font-family:Arial, Helvetica, sans-serif;
     margin: 0 auto;
     max-width: 1425px;
 }
 
-section.content h2 {
+section a {
+    background:black;
+    border: 1px solid #555;
+    color: white;
+    text-decoration: none;
+}
+
+section a:visited, header nav a:hover, header nav a:visited:hover {
+    color: white;
+}
+
+section a:hover {
+    background: #BBB;
+}
+
+section h2 {
     color: white;
     font-size: 30px;
 }
