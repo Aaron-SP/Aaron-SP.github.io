@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Beyond Dying Skies Patch Updates</title>
+    <link>https://aaron-sp.github.io/</link>
+    <description>List of patch updates for Beyond Dying Skies</description>
+    <item>
+      <title>Build 0.1.304-308 Released</title>
+      <description>Added CHANGElog.md to the project. Changed physics spatial database to octree from grid. Removed bundled GLEW library and set makefile to link with system GLEW. Optimized ray and grid traversals in MGL and updated function signatures for compatibility.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>13 July 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.297-304 Released</title>
+      <description>Optimized application launch code. Fixed ray bug on physics entities. Reworked stats and stat attributes. Refactors to minimize particle bloat. Fixed UI hover bug. Window opens after loading game to minimize boring load times.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>6th July 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.285-297 Released</title>
+      <description>Added dynamic linking to MGL lib in default build. Added precompiled headers to build. Greatly increased robustness of makefiles. Removed all warnings and errors on clang-6++ and g++. Fixed double jump bugs. Hunting down bugs and undefined behavior.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>1st July 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.280-284 Released</title>
+      <description>Fixed compilation on clang-3.5. Fixed compilation on clang-6. Ran UBSAN on code and fixed undefined behavior.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>27th June 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.276-279 Released</title>
+      <description>Created new game mode: Creative. Created ability to select game type from title menu. Title menu allows creating new games, loading games and deleting games from GUI.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>25th June 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.273-275 Released</title>
+      <description>Added game menu at title screen. Added new game and load game options in title menu. Fixed drone pathing bug and title screen saving bug.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>24th June 2018</pubDate>
+    </item>
+  </channel>
+</rss>

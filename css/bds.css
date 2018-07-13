@@ -1,5 +1,5 @@
 .bg_gray {
-    background-image: url("../bds/hurl.png");
+    background-image: url("../bds/images/hurl.png");
     background-repeat: repeat;
     background-color: #242424;
 }
@@ -101,18 +101,18 @@ section.main {
     max-width: 1425px;
 }
 
-section a {
+section a:not(.image-border) {
     background:black;
     border: 1px solid #555;
     color: white;
     text-decoration: none;
 }
 
-section a:visited, header nav a:hover, header nav a:visited:hover {
+section a:not(.image-border):visited, header nav a:hover, header nav a:visited:hover {
     color: white;
 }
 
-section a:hover {
+section a:not(.image-border):hover {
     background: #BBB;
 }
 
