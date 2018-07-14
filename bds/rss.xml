@@ -148,5 +148,35 @@
       <link>https://github.com/Aaron-Sp/bds</link>
       <pubDate>4 May 2018</pubDate>
     </item>
+    <item>
+      <title>Build 0.1.221 Released</title>
+      <description>Explosions now drop multiple blocks instead of just one. Level up UI alert added. Player stat attributes added to UI. Player stat attributes scale with player level. Drone spawn count increases with player level. Reduced efficiency of starter beam weapon. Fall damage now scales with player velocity. Stat points now persist between saves. Block drops now grant experience points. Crafting and using consumables now grant experience points. Fixed experience bar rendering artifact. Cooldown reduction applied to skills. Damage multiplier applied to offensive attacks. Drone health is randomly adjusted based on player level. Added player dash ability on LSHIFT key.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>1 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.220 Released</title>
+      <description>Added copy/paste terrain editor tool using Ether as currency. LSHIFT now applies crafting/decay in 4x multiples. Default behavior is now 1x. Fixed drone spawning bug where drone event instantly ends.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>30 April 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.219 Released</title>
+      <description>Added colored tooltip item descriptions. Drones now respawn if stuck inside terrain geometry. Drones now despawn if player dies. Bug fixed where drones fly inside terrain geometry. Drones now explode on death. Drones now track player position. Drones now play a flying sound and a sound when attacking the player. New background track added. The number of simultaneous missile explosion sounds have been increased to 10. Consuming food now decays into [H+] and [Cl-] and boosts health only. Added ability to craft batteries that can be consumed to boost energy. Pausing the game now closes inventory screen. All nonmetal blocks now decay into Ether.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>29 April 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.218 Released</title>
+      <description>Added mandelbulb portals using F key (Temporary). Synchronized drone damage response with all weapon systems. Charge beam now does more damage than single beam. Added ability to eat vegetables. Eating vegetables overcharges health and energy systems.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>25 April 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.217 Released</title>
+      <description>New weapon type: Scatter Beam. Single beam cost reduced by 50%. New blue crystal shards recipes allow converting ionic items to the non-ionic form. New green crystal shard recipes allow "upping" block type to a higher block level. Modified item decay production counts to avoid duping items. Fixed drone AI pathing bug resulting in memory corruption. Added ability to damage drones with energy weapons.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>20 April 2018</pubDate>
+    </item>
   </channel>
 </rss>
