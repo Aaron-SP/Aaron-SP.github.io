@@ -14,31 +14,97 @@
       <title>Build 0.1.297-304 Released</title>
       <description>Optimized application launch code. Fixed ray bug on physics entities. Reworked stats and stat attributes. Refactors to minimize particle bloat. Fixed UI hover bug. Window opens after loading game to minimize boring load times.</description>
       <link>https://github.com/Aaron-Sp/bds</link>
-      <pubDate>6th July 2018</pubDate>
+      <pubDate>6 July 2018</pubDate>
     </item>
     <item>
       <title>Build 0.1.285-297 Released</title>
       <description>Added dynamic linking to MGL lib in default build. Added precompiled headers to build. Greatly increased robustness of makefiles. Removed all warnings and errors on clang-6++ and g++. Fixed double jump bugs. Hunting down bugs and undefined behavior.</description>
       <link>https://github.com/Aaron-Sp/bds</link>
-      <pubDate>1st July 2018</pubDate>
+      <pubDate>1 July 2018</pubDate>
     </item>
     <item>
       <title>Build 0.1.280-284 Released</title>
       <description>Fixed compilation on clang-3.5. Fixed compilation on clang-6. Ran UBSAN on code and fixed undefined behavior.</description>
       <link>https://github.com/Aaron-Sp/bds</link>
-      <pubDate>27th June 2018</pubDate>
+      <pubDate>27 June 2018</pubDate>
     </item>
     <item>
       <title>Build 0.1.276-279 Released</title>
       <description>Created new game mode: Creative. Created ability to select game type from title menu. Title menu allows creating new games, loading games and deleting games from GUI.</description>
       <link>https://github.com/Aaron-Sp/bds</link>
-      <pubDate>25th June 2018</pubDate>
+      <pubDate>25 June 2018</pubDate>
     </item>
     <item>
       <title>Build 0.1.273-275 Released</title>
       <description>Added game menu at title screen. Added new game and load game options in title menu. Fixed drone pathing bug and title screen saving bug.</description>
       <link>https://github.com/Aaron-Sp/bds</link>
-      <pubDate>24th June 2018</pubDate>
+      <pubDate>24 June 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.271-272 Released</title>
+      <description>Added support for DVORAK keyboards. Allow remapping key controls within game. Persist key mappings between game execution.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>21 June 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.269-270 Released</title>
+      <description>Added desktop icon and desktop file</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>18 June 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.259-268 Released</title>
+      <description>Minor bug fixes</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>10 June 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.258 Released</title>
+      <description>Gamma corrected all colors. Added new light sources and fixed shader bugs resulting in deeper shadows.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>8 June 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.246-257 Released</title>
+      <description>Face rendering optimization to increase render speed. Dropped support for instance rendering (MGL_INST_RENDER). GCC 6 and clang-3.5 fixes. Added pause menu with return to game, return to title, and quit options. Recoil frame rate bug fix. Better error handling, win32 messagebox alert. Added new shot and thruster sound. freetype-config upgraded to pkg-config. Flushed out dynamic abilities and energy costs.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>7 June 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.245 Released</title>
+      <description>Fixed mouse cursor bug on some systems. Adjusted strength of default beam weapon.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>30 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.244 Released</title>
+      <description>Added focus sound on focus. Added critical hits. Fixed fatal crash when looking in vertical direction.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>29 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.243 Released</title>
+      <description>Equipping skill items now affects stat attributes. Portals have been pregenerated to improve portal performance. Drops now trigger sodium block explosions.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>28 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.242 Released</title>
+      <description>Skill items now display primary and secondary stat points. Skill item stat points randomness is affected by player level. Refactored world block atlas to generate better looking portal worlds. Added iridium block type.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>25 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.241 Released</title>
+      <description>Chests now spawn in all world types. Opening a chest with a key grants a random item. Hardcore and normal modes added.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>24 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.240 Released</title>
+      <description>Stat points are now allocatable. Health and energy now scale with player level. UI and text refactor. Explosion bug fixes and drone damage nerf.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>21 May 2018</pubDate>
     </item>
   </channel>
 </rss>
