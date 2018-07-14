@@ -106,5 +106,47 @@
       <link>https://github.com/Aaron-Sp/bds</link>
       <pubDate>21 May 2018</pubDate>
     </item>
+    <item>
+      <title>Build 0.1.236 Released</title>
+      <description>New skill type: Speed Boots. Drones now fire missiles at player level 5. Drones now explode on terrain impact if offline after level 10. Drones now tunnel through terrain after player level 15. Right clicking now tracks physics objects as well as terrain blocks. Added focus UI element which shows player focus when right clicking. Fixed missile bugs and tweaked explosive damage system.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>17 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.235 Released</title>
+      <description>Drones now explode on terrain impact if offline after level 5. Drones now tunnel through terrain after player level 10. Added chests static instances and key items. Added ray tracing scanner to identify player focus. Major static instance and ray tracking refactor. Added debug text to test ray tracing scanner. Drops, explosives, and missiles now react to being hit with an energy weapon. Asteroids no longer drop blocks on impact.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>15 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.234 Released</title>
+      <description>New skill type: Portal Beam. Portal Beam allows access to three new fractal world types. Added UI overlay decorations.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>11 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.228-233 Released</title>
+      <description>New weapon type: Auto Beam. Added recoil to weapons. Fixed mandelbulb random distribution. README clarifications.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>8 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.227 Released</title>
+      <description>Added breathing sounds when oxygen is low. Fixed damage stream display bug.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>7 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.226 Released</title>
+      <description>Oxygen system with UI elements. Added carbonate anions, calcium carbonate and magnesium carbonate to item system. Added recipes for crafting oxygen. Consuming oxygen item adds oxygen to tank. Health, energy, and oxygen now persist between saves. Block drop count increased to 50 simultaneous drops. Added walk animation to player gun when walking. Added streaming text when taking damage or missing shots.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>5 May 2018</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.222-225 Released</title>
+      <description>Added level up alert system. Lowered ore spawn rate. Fixed building using clang++. Added frustum culling to static instances and particles. Fixed grid bugs resulting in memory corruption.</description>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>4 May 2018</pubDate>
+    </item>
   </channel>
 </rss>
