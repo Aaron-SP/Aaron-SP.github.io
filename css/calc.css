@@ -82,6 +82,15 @@ form.nh3 fieldset div label{
     width: 150px;
 }
 
+/* pfos */
+form.pfos fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 170px;
+}
+
 /* pr */
 form.pr fieldset div label{
     clear: left;
