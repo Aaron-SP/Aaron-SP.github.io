@@ -66,12 +66,10 @@
             var script = document.createElement("script");
             script.src = "bin/index.js";
             script.onload = function () {
-                Module.canvas = document.getElementById("tool_render_canvas");
-
-                // Load canvas at fullscreen
                 var canvas = document.getElementById("tool_render_canvas");
                 canvas.width = boxA.clientWidth;
                 canvas.height = boxA.clientHeight;
+                Module.canvas = canvas;
             }
             document.body.appendChild(script);
         }
