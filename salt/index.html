@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="../js/phys_prop.js"></script>
+    <script src="js.js"></script>
+    <title>Salt Water Mixing Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Salt Water Mixing Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the amount of salt needed to achieve a certain salinity (g/kg). The density of salt
+                is assumed to be 1.25 g/mL which corresponds to the density of canning and pickling salt.
+            </p>
+            <p>Salt Water Mixing Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="salt" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <div>
+                        <label>Salinity (g/kg): </label>
+                        <input type="number" id="in_ppt_g_kg" min="0.0" value="35.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature" min="0.0" value="25.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Volume (gallons): </label>
+                        <input type="number" id="in_vol_gal" min="0.0" value="10.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Salt Density (g/mL): </label>
+                        <input type="number" id="in_salt_g_mL" min="0.0" value="1.25" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outputs</legend>
+                    <div>
+                        <label>Add Salt (g): </label>
+                        <output id="out_salt_g" for="in_sg in_vol_gal"></output>
+                    </div>
+                    <div>
+                        <label>Add Salt (mL): </label>
+                        <output id="out_salt_ml" for="in_sg in_vol_gal"></output>
+                    </div>
+                    <div>
+                        <label>Add Salt (tbsp): </label>
+                        <output id="out_salt_tbsp" for="in_sg in_vol_gal"></output>
+                    </div>
+                    <div>
+                        <label>Add Salt (cups): </label>
+                        <output id="out_salt_cup" for="in_sg in_vol_gal"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

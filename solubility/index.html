@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="js.js"></script>
+    <title>Gas Solubility Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Gas Solubility Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the equilibrium concentration of a gas in water. It is assumed that the pressure above
+                the water is 1.0 atmosphere.</p>
+            <p>Gas Solubility Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="solubility" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <label>Gas :</label>
+                    <input type="radio" onclick="on_radio_select();" name="in_gas" value="0" checked> O
+                    <sub>2</sub>
+                    <input type="radio" onclick="on_radio_select();" name="in_gas" value="1"> N
+                    <sub>2</sub>
+                    <input type="radio" onclick="on_radio_select();" name="in_gas" value="2"> CO
+                    <sub>2</sub>
+                    <div>
+                        <label>Molar (%):</label>
+                        <input type="number" id="in_molar" min="0.0" value="20.95" step="any" required>
+                    </div>
+                    <div>
+                        <label>Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature" min="0.0" value="25.0" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outputs</legend>
+                    <div>
+                        <label>Henry's Constant (mol/(kg*bar)):</label>
+                        <output id="out_kh" for="in_gas in_molar in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Water Density (kg/m
+                            <sup>3</sup>):</label>
+                        <output id="out_water_density" for="in_gas in_molar in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Dissolved Gas (mol/kg):</label>
+                        <output id="out_conc_mol_kg" for="in_gas in_molar in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Dissolved Gas (mol/L):</label>
+                        <output id="out_conc_mol_L" for="in_gas in_molar in_temperature"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="js.js"></script>
+    <title>Sodium Thiosulphate Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Sodium Thiosulphate Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator specifies the amount of sodium thiosulphate needed to remove chlorinated compounds from your
+                aquarium. This calculator assumes that the speciation of sodium thiosulphate is in the pentahydrate form.
+                A safety factor of 2x is applied on the calculated output mix volume.</p>
+            <p>Sodium Thiosulphate Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="na2_s2o3" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <div>
+                        <label>Mix Volume (gallons):</label>
+                        <input type="number" id="in_mix_vol_gal" min="0" value="1.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Sodium Thiosulphate (g):</label>
+                        <input type="number" id="in_thio_g" min="0" value="500.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Tank Volume (gallons):</label>
+                        <input type="number" id="in_tank_vol_gal" min="0" value="10.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Cl
+                            <sup>-</sup> Concentration (mg/L):</label>
+                        <input type="number" id="in_cl_conc_mgL" min="0" value="4.0" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outputs</legend>
+                    <div>
+                        <label>Cl
+                            <sup>-</sup> (mol): </label>
+                        <output id="out_cl_mol" for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                    </div>
+                    <div>
+                        <label>Na
+                            <sub>2 </sub>S
+                            <sub>2 </sub>O
+                            <sub>3 </sub> (mol):</label>
+                        <output id="out_thio_mol" for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                    </div>
+                    <div>
+                        <label>Cl
+                            <sup>-</sup> (g): </label>
+                        <output id="out_cl_g" for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                    </div>
+                    <div>
+                        <label>Na
+                            <sub>2 </sub>S
+                            <sub>2 </sub>O
+                            <sub>3 </sub> (g):</label>
+                        <output id="out_thio_g" for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                    </div>
+                    <div>
+                        <label>Mix Volume Needed (mL): </label>
+                        <output id="out_vol_ml" for="in_cl_conc_mgL in_mix_vol_gal in_thio_g in_tank_vol_gal"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="js.js"></script>
+    <title>Ammonia Speciation Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Ammonia Speciation Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the speciation of ammonia in water. Different pH and temperature affect the toxicity
+                of ammonia in your aquarium. All forms of nitrogen in your aquarium are toxic to fish to some degree. Different
+                species of fish may tolerate different levels of nitrogen in the water.</p>
+            <p>Ammonia Speciation Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="nh3" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <div>
+                        <label>Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature" min="0" value="25.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>pH:</label>
+                        <input type="number" id="in_ph" min="0" value="7.6" step="any" required>
+                    </div>
+                    <div>
+                        <label>Ammonia (ppm):</label>
+                        <input type="number" id="in_nh3" min="0" value="1" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outputs</legend>
+                    <div>
+                        <label>K
+                            <sub>a</sub>:</label>
+                        <output id="out_ka" for="in_temperature in_ph in_nh3"></output>
+                    </div>
+                    <div>
+                        <label>[H
+                            <sup>+</sup>] (mol/L):</label>
+                        <output id="out_h_molL" for="in_temperature in_ph in_nh3"></output>
+                    </div>
+                    <div>
+                        <label>[NH4
+                            <sup>+</sup>] (mol/L):</label>
+                        <output id="out_nh4_molL" for="in_temperature in_ph in_nh3"></output>
+                    </div>
+                    <div>
+                        <label>[NH3] (mol/L):</label>
+                        <output id="out_nh3_molL" for="in_temperature in_ph in_nh3"></output>
+                    </div>
+                    <div>
+                        <label>[NH3] (ppm):</label>
+                        <output id="out_nh3_ppm" for="in_temperature in_ph in_nh3"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+            <p id="out_fish_status">Calculate result to get recommendations.</p>
+            <p id="out_water_change">Required Water change percentage.</p>
+        </article>
+    </section>
+</body>
+
+</html>

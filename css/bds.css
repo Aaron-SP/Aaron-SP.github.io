@@ -1,0 +1,165 @@
+.bg_gray {
+    background-image: url("../bds/images/hurl.png");
+    background-repeat: repeat;
+    background-color: #242424;
+}
+
+.bg_black {
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+}
+
+header, footer {
+    padding: 1em;
+    color: white;
+    clear: left;
+    text-align: center;
+}
+
+header nav {
+    text-align: center;
+}
+
+header nav div {
+    display: inline-block;
+}
+
+header nav div.back {
+    float:left;
+}
+
+header nav a {
+    background:black;
+    border: 1px solid #555;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+header nav a:visited, header nav a:hover, header nav a:visited:hover {
+    color: white;
+}
+
+header nav a:hover {
+    background: #BBB;
+}
+
+section.img_bg h1 {
+    font-size: 50px;
+}
+
+section.img_bg {
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+    position:relative;
+}
+
+section.img_bg img {
+    max-width: 1425px;
+    max-height:764px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 1425px) {
+    section.img_bg img {
+        max-width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+section.blog {
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    max-width: 768px;
+}
+
+section.blog img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section.recipe {
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+section.main {
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    max-width: 1425px;
+}
+
+section.main img {
+    max-width: 700px;
+    max-height:350px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+section a:not(.image-border) {
+    background:black;
+    border: 1px solid #555;
+    color: white;
+    text-decoration: none;
+}
+
+section a:not(.image-border):visited, header nav a:hover, header nav a:visited:hover {
+    color: white;
+}
+
+section a:not(.image-border):hover {
+    background: #BBB;
+}
+
+section h2 {
+    color: white;
+    font-size: 30px;
+}
+
+article.content {
+    font-size: 20px;
+}
+
+article.content h3, p, th{
+    color: #CCC;
+}
+
+article.content ul li {
+    color: #777;
+}
+
+article.content td {
+    color: #777;
+}
+
+.center {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    height:50%;
+}
+
+.hwrap {
+    text-align: center;
+}

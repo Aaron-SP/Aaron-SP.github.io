@@ -1,0 +1,42 @@
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+section.menu
+{
+    margin: auto;
+    width: 25%;
+    min-width: 248px;
+}
+
+section.menu nav ul{
+    list-style-type: none;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+section.menu nav ul li a{
+    text-decoration: none;
+    color: black;
+    display:block;
+}
+
+section.menu nav ul li a:visited, section nav ul li a:hover, section nav ul li a:visited:hover{
+    color: black;
+}
+
+section.menu nav ul li:nth-child(odd) {
+    background: #DDD;
+}
+
+section.menu nav ul li:nth-child(even) {
+    background: #EEE;
+}
+
+section.menu nav ul li:hover {
+    background: #BBB;
+}

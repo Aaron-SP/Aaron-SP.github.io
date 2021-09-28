@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <link rel="stylesheet" href="../css/calc_table.css">
+    <script src="../js/libsvm.js"></script>
+    <script src="../js/plot.js"></script>
+    <title>Support Vector Regression Calculator</title>
+</head>
+
+<body onload="set_rows();on_radio_select();">
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Support Vector Regression Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>Support Vector Regression Calculator is an implementation of
+                <a href="https://github.com/cjlin1/libsvm">libSVM</a> transpiled to javascript.</p>
+            <p>Support Vector Regression Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+                without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article class="span">
+            <form class="fit" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Settings</legend>
+                    <label>Fit Function: </label>
+                    <input type="radio" onclick="on_radio_select();" name="in_function" value="0" checked> Power
+                    <input type="radio" onclick="on_radio_select();" name="in_function" value="1"> Sin
+                    <div>
+                        <label>Number of Rows: </label>
+                        <input type="number" id="in_count" min="1" value="15" step="1" required>
+                    </div>
+                    <div>
+                        <label>Features: </label>
+                        <input type="number" id="in_feature" min="1" value="1" step="1" required>
+                    </div>
+                    <div>
+                        <label>Kernel: </label>
+                        <select id="in_kernel">
+                            <option value="0">Linear</option>
+                            <option value="1">Poly</option>
+                            <option value="2">RBF</option>
+                            <option value="3">Sigmoid</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Coefficient: </label>
+                        <input type="number" id="in_coef" value="0.0" step="0.1" required>
+                    </div>
+                    <div>
+                        <label>Degree: </label>
+                        <input type="number" id="in_deg" min="1.0" value="3" step="1" required>
+                    </div>
+                    <div>
+                        <label>Gamma: </label>
+                        <input type="number" id="in_gam" min="0.0" value="0.1" step="0.1" required>
+                    </div>
+                    <div>
+                        <label>Epsilon: </label>
+                        <input type="number" id="in_p" min="0.0" value="0.001" step="any" required>
+                    </div>
+                    <div>
+                        <label>Cost: </label>
+                        <input type="number" id="in_C" min="0.25" value="1.0" step="0.25" required>
+                    </div>
+                    <input type="button" value="Update" onclick="set_rows();">
+                </fieldset>
+                <fieldset>
+                    <legend>Table</legend>
+                    <table id="fit_table" class="calc fit">
+                        <thead>
+                            <tr>
+                                <th class="x">X Values</th>
+                                <th class="y">Y Values</th>
+                            </tr>
+                        </thead>
+                        <td class="x">
+                            <input type="number" class="in_x" value="0.0" step="any" required>
+                        </td>
+                        <td class="y">
+                            <input type="number" class="in_y" value="0.0" step="any" required>
+                        </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+            <p id="out_sv"></p>
+        </article>
+        <article class="span">
+            <canvas id="graph" width="640" height="480"></canvas>
+        </article>
+    </section>
+    <script src="js.js"></script>
+</body>
+
+</html>

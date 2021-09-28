@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="web.js"></script>
+</head>
+
+<body onload="loadScript()">
+    <div class="wrapper">
+        <div class="box">
+            <canvas id="tool_render_canvas" tabindex="-1" onclick="focus_canvas()"></canvas>
+        </div>
+        <div class="handler"></div>
+        <div class="box">
+            <button id="update_shader" onclick="update_shader()">Update Shader</button>
+            <textarea id="tool_shader_text" tabindex="0"></textarea>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var handler = document.querySelector('.handler');
+        var wrapper = handler.closest('.wrapper');
+        var boxA = wrapper.querySelector('.box');
+        var isHandlerDragging = false;
+
+        document.addEventListener('mousedown', function (e) {
+            if (e.target === handler) {
+                isHandlerDragging = true;
+            }
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            // Debounce
+            if (!isHandlerDragging) {
+                return;
+            }
+            var containerOffsetLeft = wrapper.offsetLeft;
+            var pointerRelativeXpos = e.clientX - containerOffsetLeft;
+            var boxAminWidth = 60;
+            boxA.style.width = (Math.max(boxAminWidth, pointerRelativeXpos - 8)) + 'px';
+            boxA.style.flexGrow = 0;
+        });
+
+        document.addEventListener('mouseup', function (e) {
+            // Debounce
+            if (!isHandlerDragging) {
+                return;
+            }
+            isHandlerDragging = false;
+            var canvas = document.getElementById("tool_render_canvas");
+            canvas.width = boxA.clientWidth;
+            canvas.height = boxA.clientHeight;
+            window.dispatchEvent(new Event('resize'));
+        });
+
+        function loadScript() {
+            Module = {};
+            Module.preRun = new Array();
+            Module.preRun.push(function () {
+                ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = "#canvas";
+            });
+
+            // Load the demo script
+            var script = document.createElement("script");
+            script.src = "bin/index.js";
+            script.onload = function () {
+                var canvas = document.getElementById("tool_render_canvas");
+                canvas.width = boxA.clientWidth;
+                canvas.height = boxA.clientHeight;
+                Module.canvas = canvas;
+            }
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+
+</html>

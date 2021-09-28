@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+    <button id="bds_start" onclick="loadScript()">Load Game!</button>
+    <canvas id="bds_canvas" style="width:100%; height:100%"></canvas>
+    <script type="text/javascript">
+        function loadScript() {
+            // Remove right click context menu
+            document.addEventListener('contextmenu', event => event.preventDefault());
+
+            // Delete the load button
+            var load_button = document.getElementById("bds_start");
+            load_button.remove();
+
+            // Load the game script
+            var script = document.createElement("script");
+            script.src = "../bin/index.js";
+            script.onload = function () {
+                Module.canvas = document.getElementById("bds_canvas");
+
+                // Load canvas at fullscreen
+                var canvas = document.getElementById("bds_canvas");
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            document.body.appendChild(script);
+        }
+
+    </script>
+</body>
+
+</html>

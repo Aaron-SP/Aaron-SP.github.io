@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="../js/phys_prop.js"></script>
+    <script src="js.js"></script>
+    <title>Thermodynamic Property Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Thermodynamic Property Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates thermodynamic properties of liquid water at 1 atmosphere.</p>
+            <p>Water Thermodynamic Property Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+                without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="thermo" onsubmit="return calculate();">
+                <fieldset>
+                    <div>
+                        <label>Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature" min="0.0" value="25.0" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Water Outputs</legend>
+                    <div>
+                        <label>Density (kg/m
+                            <sup>3</sup>):</label>
+                        <output id="out_water_density" for="in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Internal Energy (kJ/mol):</label>
+                        <output id="out_water_internal_energy" for="in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Enthalpy (kJ/mol):</label>
+                        <output id="out_water_enthalpy" for="in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Entropy (J/(mol*K)):</label>
+                        <output id="out_water_entropy" for="in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Cv (J/(mol*K)):</label>
+                        <output id="out_water_cv" for="in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Cp (J/(mol*K)):</label>
+                        <output id="out_water_cp" for="in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Viscosity (Pa*s):</label>
+                        <output id="out_water_viscosity" for="in_temperature"></output>
+                    </div>
+                    <div>
+                        <label>Thermal Conductivity (W/(m*K)):</label>
+                        <output id="out_water_thermal_cond" for="in_temperature"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

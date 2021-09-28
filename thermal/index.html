@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="../js/phys_prop.js"></script>
+    <script src="../js/plot.js"></script>
+    <script src="../js/zero.js"></script>
+    <title>Aquarium Convection Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Aquarium Convection Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p> This calculator calculates how long a tank of water will take to equilibrate with the surrounding air temperature.
+                The top and bottom of the aquarium is assumed to be well insulated.</p>
+            <p>Aquarium Convection Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article class="span">
+            <form class="thermal" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Settings</legend>
+                    <div>
+                        <label>Length (in): </label>
+                        <input type="number" id="in_length_in" min="1" value="20.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Width (in): </label>
+                        <input type="number" id="in_width_in" min="1" value="10.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Depth (in): </label>
+                        <input type="number" id="in_depth_in" min="1" value="12.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Thickness (in): </label>
+                        <input type="number" id="in_thickness_in" min="0.01" value="0.125" step="any" required>
+                    </div>
+                    <div>
+                        <label>Temperature Air (&#176;C):</label>
+                        <input type="number" id="in_temp_air_C" min="0" value="25.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Temperature Water (&#176;C):</label>
+                        <input type="number" id="in_temp_water_C" min="0" value="20.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Fluid Velocity (m/s):</label>
+                        <input type="number" id="in_velocity_m_s" min="0" value="0.5" step="any" required>
+                    </div>
+                    <div>
+                        <label>Step Size (s): </label>
+                        <input type="number" id="in_step" min="0.0" value="120.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Iterations: </label>
+                        <input type="number" id="in_iter" min="1" value="1000" step="1" required>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+        <article class="span">
+            <canvas id="graph" width="640" height="480"></canvas>
+        </article>
+    </section>
+    <script src="js.js"></script>
+</body>
+
+</html>

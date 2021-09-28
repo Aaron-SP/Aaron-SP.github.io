@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <link rel="stylesheet" href="../../css/bds.css">
+    <title>Beyond Dying Skies</title>
+</head>
+
+<body class="bg_gray">
+    <header class="bg_black">
+        <nav>
+            <div class="back">
+                <a href="../../index.html">Home</a>
+            </div>
+            <a href="https://github.com/Aaron-Sp/bds">GitHub</a>
+            <a href="https://www.youtube.com/channel/UCAhKW5ju7ijrRmguEoLTxwQ">YouTube</a>
+            <a href="../../chem/index.html">Chemical Calculators</a>
+        </nav>
+    </header>
+
+    <section class="img_bg">
+        <article>
+            <img src="../../bds/images/bds_bg.jpg" alt="Game Screenshot">
+            <div class="center">
+                <img src="../../bds/images/title.png" alt="Beyond Dying Skies">
+                <h1>Development Blog 1 Update!</h1>
+            </div>
+        </article>
+    </section>
+    <section class="blog">
+        <h2>Welcome</h2>
+        <article class="content">
+            <h3>7th May 2018</h3>
+            <p>This sprint turned out to be quite successful for the project. For the last month, I was plagued with “coder’s
+                block” and had little motivation to work on the project. After coming back into the project refreshed and
+                ready to improve things, I stumbled upon one key problem with the game, it simply was not an enjoyable experience.
+            </p>
+            <p>The first question on my mind was, “Why didn’t I notice this problem earlier?”. It was quite simple. I had spent
+                an enormous amount time optimizing hot code paths and running the game on low-end hardware as well as spending
+                even more time making custom textures and audio samples so I could give the game a polished feel, that I
+                neglected the “fun” aspect of the game. I wanted the game to be fast so badly that I withheld critical quality
+                of life issues from the game. The first example of this was only allowing 10 block drops to be in the world
+                at any one time. After increasing this number to 50, which still is quite low, I realized that game seemed
+                to be more “fun”, yet I could not put my finger on “why”. </p>
+            <p>The next big realization I had about why the game was not enjoyable was because the upgrades were too easy to
+                acquire and there was no “skill” component in the game. Why play when there is not an incentive to improve?
+                This realization led me to flushing out the crafting system, which I had left abandoned for weeks, and thinking
+                up a decent component system so players could acquire upgrades at the optimal rate. Unfortunately, I have
+                made the game too difficult but I think that is a big improvement from two weeks ago. In this time I also
+                added a leveling system and flushed out how attribute points and attribute properties work, creating a diminished
+                returns model to describe how these stats would scale as the player progressed in the game and eventually
+                came to the idea of adding unlockable suit upgrades. Currently the only upgrade is at level 3 in which you
+                unlock double jump / boosters but this idea of “unlocking” gives the player a stronger desire to progress.
+                I am planning more unlockable abilities in the future.</p>
+            <p>The last thing that immediately came to my attention were the bugs. Drones would constantly get stuck inside
+                the terrain and make it impossible to level up. Drones were completely silent and would surprise kill you
+                before the player realized he was in danger. Asteroids would soak up all available drops and make it impossible
+                to pick up items until the event stopped (still an issue). The UI system seemed clunky and desperately needed
+                quality of life improvements. After I realized the vastness of these issues, I immediately started working
+                on removing these problems. As I removed problems, I started adding new features and I quickly got locked
+                into an organic, healthy, and productive flow.</p>
+            <p>After looking back on the last two weeks, I see tremendous improvement in the user experience and hopefully I
+                am on the right track for tackling more long term issues that need to be addressed. Sometimes you just have
+                to take a break and recharge before you can crack some of the toughest bugs or design issues or even just
+                noticing that things are lackluster and need to be improved. </p>
+            <p>Some things that are exciting me about future sprints are the ether subsystem. The ether subsystem allows you
+                to downgrade any block into ether which is a currency item. This currency powers new terrain editing features
+                such as placing 5x5 swatches through a copy/paste mechanism. New items and recipes also give the game more
+                of a dynamic feel and different strategies and play styles are starting to emerge. I am excited to begin
+                working on the new dynamic block interaction subsystem which will allow creation of automated machines and
+                other exciting contraptions. </p>
+        </article>
+    </section>
+    <footer class="bg_black">Copyright &copy; Aaron Springstroh</footer>
+</body>
+
+</html>

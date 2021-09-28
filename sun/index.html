@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="../js/plot.js"></script>
+    <title>Solar Irradiance Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Solar Irradiance Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the extraterrestrial radiation of a provided latitude and longitude on Earth in watts
+                per square meter.</p>
+            <p>Solar Irradiance Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="sun" onsubmit="return calculate();">
+                <canvas id="graph" width="640" height="480"></canvas>
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <div>
+                        <label>Latitude (&deg;):</label>
+                        <input type="number" id="in_lat" min="-90.0" max="90.0" value="0.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Longitude (&deg;):</label>
+                        <input type="number" id="in_lon" min="0.0" max="360.0" value="0.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Day of Year:</label>
+                        <input type="number" id="in_day" min="1" max="365" value="1" step="1" required>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+    <script src="js.js"></script>
+</body>
+
+</html>

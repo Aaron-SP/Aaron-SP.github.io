@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="../js/chem.js"></script>
+    <script src="js.js"></script>
+    <title>Water Fugacity Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Water Fugacity Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the vapor/liquid fugacity of water, as well as the saturated fugacity coefficient
+                at any temperature and pressure.</p>
+            <p>Water Fugacity Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="fugacity" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <div>
+                        <label>Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature" min="0.0" value="25.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Pressure (atm):</label>
+                        <input type="number" id="in_pressure" min="0.0" value="1.0" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outputs</legend>
+                    <div>
+                        <label>Vapor Compressibility:</label>
+                        <output id="out_vapor_Z" for="in_temperature in_pressure"></output>
+                    </div>
+                    <div>
+                        <label>Vapor Fugacity (atm):</label>
+                        <output id="out_vapor_fugacity_atm" for="in_temperature in_pressure"></output>
+                    </div>
+                    <div>
+                        <label>Liquid Compressibility:</label>
+                        <output id="out_liquid_Z" for="in_temperature in_pressure"></output>
+                    </div>
+                    <div>
+                        <label>Liquid Fugacity (atm):</label>
+                        <output id="out_liquid_fugacity_atm" for="in_temperature in_pressure"></output>
+                    </div>
+                    <div>
+                        <label>Sat. Fugacity Coefficient:</label>
+                        <output id="out_fug_sat_coeff" for="in_temperature in_pressure"></output>
+                    </div>
+                    <div>
+                        <label>Sat. Vapor (mol %):</label>
+                        <output id="out_sat_conc_percent" for="in_temperature in_pressure"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

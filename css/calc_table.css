@@ -1,0 +1,59 @@
+table.pr, table.svm {
+    background:#CCC;
+    border-spacing: 0px;
+    table-layout:fixed;
+    border-collapse: collapse;
+}
+
+table.pr {
+    width: 100%;
+}
+
+table.calc th, td {
+    background: white;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    width: 120px;
+}
+
+table.calc td input,output{
+    width: 90px;
+    text-align: right;
+}
+
+table.calc th{
+    text-align: left;
+}
+
+table.calc td{
+    text-align: right;
+}
+
+table.calc th:first-child, td:first-child {
+    background: white;
+    border-left: none;
+    width: 100px;
+}
+
+table.calc th:last-child, td:last-child {
+    background: white;
+    border-right: none;
+    width: 100px;
+}
+
+table.calc th.id, td.id select.in_id {
+    width: 150px;
+}
+
+table.calc th.out, td.out {
+    width: 60px;
+}
+
+table.calc th.space, td.space {
+    background: #CCC;
+    width: 50px;
+}
+
+table.calc tfoot {
+    border-top: 1px solid #000;
+}

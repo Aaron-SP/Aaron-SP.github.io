@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <link rel="stylesheet" href="../css/calc_table.css">
+    <script src="../js/chem.js"></script>
+    <script src="../js/zero.js"></script>
+    <script src="js.js"></script>
+    <title>Water Fugacity Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Peng-Robinson Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the vapor/liquid VLE of a mixture.</p>
+            <p>Peng-Robinson Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="pr" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Settings</legend>
+                    <div>
+                        <label>Number of Species:</label>
+                        <input type="number" id="in_count" min="1" value="1" step="1" required>
+                    </div>
+                    <div>
+                        <label>Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature" min="0.0" value="25.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Pressure (atm):</label>
+                        <input type="number" id="in_pressure" min="0.0" value="1.0" step="any" required>
+                    </div>
+                    <input type="button" value="Update" onclick="set_rows();">
+                </fieldset>
+                <fieldset>
+                    <legend>Table</legend>
+                    <table id="pr_table" class="calc pr">
+                        <thead>
+                            <tr>
+                                <th class="id">Species Name</th>
+                                <th class="mol">Mol Fraction (%)</th>
+                                <th class="pc">Critical Pressure (bar)</th>
+                                <th class="tc">Critical Temperature (K)</th>
+                                <th class="w">Acentric Factor</th>
+                                <th class="space"></th>
+                                <th class="y out">y (mol %)</th>
+                                <th class="vm_v out">V Vm (m3/mol)</th>
+                                <th class="rho_v out">V Rho (kg/m3)</th>
+                                <th class="x out">x (mol %)</th>
+                                <th class="vm_l out">L Vm (m3/mol)</th>
+                                <th class="rho_l out">L Rho (kg/m3)</th>
+                                <th class="bp out">Bp (K)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rows">
+                            <tr id="row0">
+                                <td class="id">
+                                    <select class="in_id" onchange="select_species(this);">
+                                        <option value="0">Argon</option>
+                                        <option value="1">Bromine</option>
+                                        <option value="2">Chlorine</option>
+                                        <option value="3">Fluorine</option>
+                                        <option value="4">Helium-4</option>
+                                        <option value="5">Hydrogen</option>
+                                        <option value="6">Iodine</option>
+                                        <option value="7">Krypton</option>
+                                        <option value="8">Neon</option>
+                                        <option value="9">Nitrogen</option>
+                                        <option value="10">Oxygen</option>
+                                        <option value="11">Xenon</option>
+                                        <option value="12">Acetylene</option>
+                                        <option value="13">Benzene</option>
+                                        <option value="14">n-Butane</option>
+                                        <option value="15">1-Butene</option>
+                                        <option value="16">Cyclobutane</option>
+                                        <option value="17">Cyclohexane</option>
+                                        <option value="18">Cyclopropane</option>
+                                        <option value="19">Ethane</option>
+                                        <option value="20">Ethylene</option>
+                                        <option value="21">n-Heptane</option>
+                                        <option value="22">n-Hexane</option>
+                                        <option value="23">Isobutane</option>
+                                        <option value="24">Isobutylene</option>
+                                        <option value="25">Isopentane</option>
+                                        <option value="26">Methane</option>
+                                        <option value="27">Naphthalene</option>
+                                        <option value="28">n-Octane</option>
+                                        <option value="29">n-Pentane</option>
+                                        <option value="30">Propadiene</option>
+                                        <option value="31">Propane</option>
+                                        <option value="32">Propylene</option>
+                                        <option value="33">Toluene</option>
+                                        <option value="34">m-Xylene</option>
+                                        <option value="35">o-Xylene</option>
+                                        <option value="36">p-Xylene</option>
+                                        <option value="37">Ammonia</option>
+                                        <option value="38">Carbon dioxide</option>
+                                        <option value="39">Carbon disulfide</option>
+                                        <option value="40">Carbon monoxide</option>
+                                        <option value="41">Carbon tetrachloride</option>
+                                        <option value="42">Carbon tetrafluoride</option>
+                                        <option value="43">Chloroform</option>
+                                        <option value="44">Hydrazine</option>
+                                        <option value="45">Hydrogen chloride</option>
+                                        <option value="46">Hydrogen fluoride</option>
+                                        <option value="47">Hydrogen sulfide</option>
+                                        <option value="48">Nitric oxide</option>
+                                        <option value="49">Nitrous oxide</option>
+                                        <option value="50">Sulfur dioxide</option>
+                                        <option value="51">Sulfur trioxide</option>
+                                        <option value="52">Water</option>
+                                        <option value="53">Acetaldehyde</option>
+                                        <option value="54">Acetic acid</option>
+                                        <option value="55">Acetone</option>
+                                        <option value="56">Acetonitrile</option>
+                                        <option value="57">Aniline</option>
+                                        <option value="58">n-Butanol</option>
+                                        <option value="59">Chlorobenzene</option>
+                                        <option value="60">Dichlorodifluoromethane</option>
+                                        <option value="61">Diethyl ether</option>
+                                        <option value="62">Dimethyl ether</option>
+                                        <option value="63">Ethanol</option>
+                                        <option value="64">Ethylene oxide</option>
+                                        <option value="65">Isobutanol</option>
+                                        <option value="66">Isopropyl alcohol</option>
+                                        <option value="67">Methanol</option>
+                                        <option value="68">Methyl chloride</option>
+                                        <option value="69">Methyl ethyl ketone</option>
+                                        <option value="70">Phenol</option>
+                                        <option value="71">1-Propanol</option>
+                                        <option value="72">Pyridine</option>
+                                        <option value="73">Trichlorotrifluoroethane</option>
+                                        <option value="74">Trichlorofluoromethane</option>
+                                        <option value="75">Trimethylamine</option>
+                                    </select>
+                                </td>
+                                <td class="mol">
+                                    <input type="number" class="in_mol_percent" min="0.0" value="100.0" step="any" required>
+                                </td>
+                                <td class="pc">
+                                    <input type="number" class="in_pc_bar" value="48.7" step="any" required>
+                                </td>
+                                <td class="tc">
+                                    <input type="number" class="in_tc_K" value="150.8" step="any" required>
+                                </td>
+                                <td class="w">
+                                    <input type="number" class="in_w" value="0.001" step="any" required>
+                                </td>
+                                <th class="space"></th>
+                                <td class="y out">
+                                    <output class="out_y"></output>
+                                </td>
+                                <td class="vm_v out">
+                                    <output class="out_vm_v"></output>
+                                </td>
+                                <td class="rho_v  out">
+                                    <output class="out_rho_v"></output>
+                                </td>
+                                <td class="x out">
+                                    <output class="out_x"></output>
+                                </td>
+                                <td class="vm_l out">
+                                    <output class="out_vm_l"></output>
+                                </td>
+                                <td class="rho_l out">
+                                    <output class="out_rho_l"></output>
+                                </td>
+                                <td class="bp out">
+                                    <output class="out_bp_K"></output>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="id">Mixed Properties</td>
+                                <td class="mol"></td>
+                                <td class="pc"></td>
+                                <td class="tc"></td>
+                                <td class="w"></td>
+                                <td class="space"></td>
+                                <td class="y out">
+                                    <output class="out_y"></output>
+                                </td>
+                                <td class="vm_v out">
+                                    <output class="out_vm_v"></output>
+                                </td>
+                                <td class="rho_v out">
+                                    <output class="out_rho_v"></output>
+                                </td>
+                                <td class="x out">
+                                    <output class="out_x"></output>
+                                </td>
+                                <td class="vm_l out">
+                                    <output class="out_vm_l"></output>
+                                </td>
+                                <td class="rho_l out">
+                                    <output class="out_rho_l"></output>
+                                </td>
+                                <td class="bp out">
+                                    <output class="out_bp_K"></output>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

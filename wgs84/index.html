@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body onload="loadScript()" style="background-color:black;">
+    <canvas id="demo_canvas" style="width:100%; height:100%"></canvas>
+    <script type="text/javascript">
+        function loadScript() {
+            // Load the demo script
+            var script = document.createElement("script");
+            script.src = "bin/index.js";
+            script.onload = function () {
+                Module.canvas = document.getElementById("demo_canvas");
+
+                // Load canvas at fullscreen
+                var canvas = document.getElementById("demo_canvas");
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+
+</html>

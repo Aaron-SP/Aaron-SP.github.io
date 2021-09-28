@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="js.js"></script>
+    <title>Air Density Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Air Density Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the density of air at any temperature and pressure.</p>
+            <p>Air Density Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+                the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="air" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <div>
+                        <label>Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature" min="0.0" value="25.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Pressure (atm):</label>
+                        <input type="number" id="in_pressure" min="0.0" value="1.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>N2 (mol %):</label>
+                        <input type="number" id="in_n2" min="0.0" value="78.08" step="any" required>
+                    </div>
+                    <div>
+                        <label>O2 (mol %):</label>
+                        <input type="number" id="in_o2" min="0.0" value="20.95" step="any" required>
+                    </div>
+                    <div>
+                        <label>Ar (mol %):</label>
+                        <input type="number" id="in_ar" min="0.0" value="0.93" step="any" required>
+                    </div>
+                    <div>
+                        <label>CO2 (mol %):</label>
+                        <input type="number" id="in_co2" min="0.0" value="0.04" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outputs</legend>
+                    <div>
+                        <label>Molar Volume (m
+                            <sup>3</sup>/mol):</label>
+                        <output id="out_molar_volume_L_mol" for="in_n2 in_o2 in_ar in_co2 in_temperature in_pressure"></output>
+                    </div>
+                    <div>
+                        <label>Density (kg/m
+                            <sup>3</sup>):</label>
+                        <output id="out_density_kg_m3" for="in_n2 in_o2 in_ar in_co2 in_temperature in_pressure"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

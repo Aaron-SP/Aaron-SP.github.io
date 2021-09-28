@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="js.js"></script>
+    <title>PFOS Bioaccumulation Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>PFOS Bioaccumulation Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p> On 8/2/2018, Satellite Beach, FL released a report summarizing ground water contamination from PFOS and PFOA
+                leachate. It is important to point out that Satellite Beach receives drinking water from Melbourne, FL sourced
+                from Lake Washington.
+            </p>
+            <p>This calculator calculates the blood concentration of PFOS for fish exposed to an environmental concentration
+                of PFOS, Perfluorooctanesulfonic acid. Bioaccumulation is expressed through a bioconcentration factor (BCF)
+                and a biomagnification factor (BMF). A 2008 paper estimates a BAF of (3.4 x 10
+                <sup>4</sup>) for trout in Lake Ontario that suggests a BMF around 13.6.
+                <a href="https://www.ncbi.nlm.nih.gov/pubmed/19174922">Link to abstract here</a>.</p>
+            <p>PFOS Bioaccumulation Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+                without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+            <p>
+                <strong>Fun Fact</strong> - A blood serum concentration of 91.5 ppb of PFOS was shown to affect the immune system
+                of male mice.
+            </p>
+        </article>
+        <article>
+            <form class="pfos" onsubmit="return calculate();">
+                <fieldset>
+                    <legend>Inputs</legend>
+                    <div>
+                        <label>Exposure (ug/L):</label>
+                        <input type="number" id="in_exp_ug_L" min="0.0" value="0.0228" step="any" required>
+                        <label>BCF (L/kg):</label>
+                        <input type="number" id="in_bcf_L_kg" min="0.0" value="2500.0" step="any" required>
+                        <label>BMF:</label>
+                        <input type="number" id="in_bmf" min="0.0" value="1.0" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outputs</legend>
+                    <div>
+                        <label>Blood % (ppb):</label>
+                        <output id="out_ppb" for="in_bcf_L_kg in_bmf"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>

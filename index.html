@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <link rel="stylesheet" href="css/bds.css" />
+    <link rel="alternate" type="application/rss+xml" href="bds/rss.xml" />
+    <title>Beyond Dying Skies</title>
+</head>
+
+<body class="bg_gray">
+    <header class="bg_black">
+        <nav>
+            <div class="back">
+                <a href="index.html">Home</a>
+            </div>
+            <a href="https://github.com/Aaron-Sp/bds">GitHub</a>
+            <a href="https://www.youtube.com/channel/UCAhKW5ju7ijrRmguEoLTxwQ">YouTube</a>
+            <a href="chem/index.html">Chemistry, Math, &amp; 3D Projects</a>
+        </nav>
+    </header>
+    <section class="img_bg">
+        <article>
+            <img src="bds/images/portal.jpg" alt="Game Screenshot">
+            <div class="center">
+                <img src="bds/images/title.png" alt="Beyond Dying Skies">
+                <h1>Version 0.1.328 Update!</h1>
+                <h1>
+                    <a href="bds/play">Play the demo today! Click here!</a>
+                </h1>
+            </div>
+        </article>
+    </section>
+    <section class="main">
+        <img src="bds/images/ship_render.jpg" align="right" alt="PBR Material Path Tracing Render">
+        <h2>Latest News</h2>
+        <article class="content">
+            <h3>Development of BDS2 has begun!</h3>
+            <p>We have struck ground on building a new 3D engine to add game play elements to BDS. So far we have focused on
+                space ship modeling, rendering, simulating accurate satellite orbits, and creating accurate solar system
+                simulations. We are using the latest WebGL2 technology to share the development process by posting rendering
+                demos here on the main project site!
+            </p>
+            <h3>Live Demos</h3>
+            <p>Check out the BDS2 nebula shader editor demo (WASD + Arrow controls)
+                <a href="nebula/index.html">here</a>. 
+            </p>
+            <p>Check out the BDS2 ship material demo (WASD + Arrow controls)
+                <a href="ship/index.html">here</a>. 
+            </p>
+            <p>Check out the BDS2 WGS84 satellite demo
+                <a href="wgs84/index.html">here</a>.
+            </p>
+            <p>Check out the BDS2 space ship navigation demo
+                <a href="space/index.html">here</a>.
+            </p>
+            <p>Check out the BDS2 procedural water FFT demo
+                <a href="water_tessendorf/index.html">here</a>.
+            </p>
+            <p>Check out the BDS2 procedural water ray tracing demo
+                <a href="water_raytrace/index.html">here</a>.
+            </p>
+        </article>
+    </section>
+    <section class="main">
+        <h2>Welcome</h2>
+        <a class="image-border" rel="alternate" type="application/rss+xml" href="bds/rss.xml">
+            <img src="bds/images/feed.png" title="RSS Feed" alt="RSS Feed">
+        </a>
+        <article class="content">
+            <p>What is Beyond Dying Skies?</p>
+            <p>You have crash-landed on an alien planet in search of the next habitable world for humanity. Pollution, global
+                warming, and socioeconomic issues are leading to the destruction of Earth. The government has hired you to
+                save humanity from the brink of extinction by finding new worlds in outer space that are suitable to sustain
+                human life. However your survival is now at stake as you fight against the elements trying to repair your
+                spacecraft so you can return home!</p>
+            <p>Beyond Dying Skies is a free and open source (FOSS), 3D FPS-RPG game in active development primarily for the
+                GNU/Linux operating system. It supports the GNU/Clang C++ toolchain and builds for Linux and Windows operating
+                systems. It contains voxel, survival elements fused with a technologically enhanced futuristic setting. The
+                game focuses on exploration of randomly generated worlds along with crafting items to enhance the ability
+                of your character. The game is not merely survival, crafting sandbox, or RPG but a hybrid of all three. The
+                game focuses on skillful movement similar to old school FPS shooters from the early 1990s, a progressive
+                RPG like leveling system, and permadeath like mechanics similar to old school RPGs.
+            </p>
+            <p>The FPS-RPG element needs to be emphasized. This isn't a game with a ton of art/music/developer man hours but
+                a simplistic, efficiency focused fusion of a few good ideas. This game is tiny only 20MB! The idea originally
+                was inspired from the glut of survival games on the market (none being fully FOSS by the way). Those games
+                felt grindy and heavily focused on attaining "wealth" i.e game hours invested in the game to make any progress.
+                This quickly became unsustainable and I quickly lost interest. I later asked the question why isn't this
+                concept an RPG with jet packs, grappling hooks and an obsessive focus on blowing things up? Why not give
+                the player some skillful movement like we had back in the 1990s? What could a single player game look like
+                in 2018? Why does every game need to be multiplayer to be interesting? These questions motivated me to explore
+                what is possible and what is reality.</p>
+            <p>Check out this week's development blog
+                <a href="bds/blog/blog3.html">here</a>.
+            </p>
+            <p>Check out the updated crafting recipe tables
+                <a href="bds/pages/recipes.html">here</a>.
+            </p>
+        </article>
+        <article class="content">
+            <h3>27 March 2020</h3>
+            <p>Build 0.1.328 Released!</p>
+            <ul>
+                <li>Added web assembly support using Emscripten</li>
+                <li>Launched BDS web assembly demo</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>6 August 2018</h3>
+            <p>Build 0.1.316 Released!</p>
+            <ul>
+                <li>Added CMAKE support</li>
+                <li>Added MSVC support</li>
+                <li>Added MGL git submodules</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>26 July 2018</h3>
+            <p>Build 0.1.313-315 Released!</p>
+            <ul>
+                <li>MGL improvements</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>19 July 2018</h3>
+            <p>Build 0.1.309-312 Released!</p>
+            <ul>
+                <li>First pass at standardizing the makefile</li>
+                <li>Fixed minor bug fixes</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>13 July 2018</h3>
+            <p>Build 0.1.304-308 Released!</p>
+            <ul>
+                <li>Added CHANGElog.md to the project</li>
+                <li>Changed physics spatial database to octree from grid</li>
+                <li>Removed bundled GLEW library and set makefile to link with system GLEW</li>
+                <li>Optimized ray and grid traversals in MGL and updated function signatures for compatibility</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>6 July 2018</h3>
+            <p>Build 0.1.297-304 Released!</p>
+            <ul>
+                <li>Optimized application launch code</li>
+                <li>Fixed ray bug on physics entities</li>
+                <li>Reworked stats and stat attributes</li>
+                <li>Refactors to minimize particle bloat</li>
+                <li>Fixed UI hover bug</li>
+                <li>Window opens after loading game to minimize boring load times</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>1 July 2018</h3>
+            <p>Build 0.1.285-297 Released!</p>
+            <ul>
+                <li>Added dynamic linking to MGL lib in default build</li>
+                <li>Added precompiled headers to build</li>
+                <li>Greatly increased robustness of makefiles</li>
+                <li>Removed all warnings and errors on clang-6++ and g++</li>
+                <li>Fixed double jump bugs</li>
+                <li>Hunting down bugs and undefined behavior</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>27 June 2018</h3>
+            <p>Build 0.1.280-284 Released!</p>
+            <ul>
+                <li>Fixed compilation on clang-3.5</li>
+                <li>Fixed compilation on clang-6</li>
+                <li>Ran UBSAN on code and fixed undefined behavior</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>25 June 2018</h3>
+            <p>Build 0.1.276-279 Released!</p>
+            <ul>
+                <li>Created new game mode: Creative</li>
+                <li>Created ability to select game type from title menu</li>
+                <li>Title menu allows creating new games, loading games and deleting games from GUI</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>24 June 2018</h3>
+            <p>Build 0.1.273-275 Released!</p>
+            <ul>
+                <li>Added game menu at title screen</li>
+                <li>Added new game and load game options in title menu</li>
+                <li>Fixed drone pathing bug and title screen saving bug</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>21 June 2018</h3>
+            <p>Build 0.1.271-272 Released!</p>
+            <ul>
+                <li>Added support for DVORAK keyboards</li>
+                <li>Allow remapping key controls within game</li>
+                <li>Persist key mappings between game execution</li>
+            </ul>
+
+            <p>Development update video released! Check it out on our YouTube channel!</p>
+            <div class="hwrap">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/kFtGP4A2ehM" frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
+            </div>
+        </article>
+        <article class="content">
+            <h3>18 June 2018</h3>
+            <p>Build 0.1.269-270 Released!</p>
+            <ul>
+                <li>Added desktop icon and desktop file</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>10 June 2018</h3>
+            <p>Build 0.1.259-268 Released!</p>
+            <ul>
+                <li>Minor bug fixes</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>8 June 2018</h3>
+            <p>Build 0.1.258 Released!</p>
+            <ul>
+                <li>Gamma corrected all colors</li>
+                <li>Added new light sources and fixed shader bugs resulting in deeper shadows</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>7 June 2018</h3>
+            <p>Build 0.1.246-257 Released!</p>
+            <ul>
+                <li>Face rendering optimization to increase render speed</li>
+                <li>Dropped support for instance rendering (MGL_INST_RENDER)</li>
+                <li>GCC 6 and clang-3.5 fixes</li>
+                <li>Added pause menu with return to game, return to title, and quit options</li>
+                <li>Recoil frame rate bug fix</li>
+                <li>Better error handling, win32 messagebox alert</li>
+                <li>Added new shot and thruster sound</li>
+                <li>freetype-config upgraded to pkg-config</li>
+                <li>Flushed out dynamic abilities and energy costs</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>30 May 2018</h3>
+            <p>Build 0.1.245 Released!</p>
+            <ul>
+                <li>Fixed mouse cursor bug on some systems</li>
+                <li>Adjusted strength of default beam weapon</li>
+            </ul>
+
+            <p>Development update video released! Check it out on our YouTube channel!</p>
+            <div class="hwrap">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4mlX-AyX8Vk" frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
+            </div>
+        </article>
+        <article class="content">
+            <h3>29 May 2018</h3>
+            <p>Build 0.1.244 Released!</p>
+            <ul>
+                <li>Added focus sound on focus</li>
+                <li>Added critical hits</li>
+                <li>Fixed fatal crash when looking in vertical direction</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>28 May 2018</h3>
+            <p>Build 0.1.243 Released!</p>
+            <ul>
+                <li>Equipping skill items now affects stat attributes</li>
+                <li>Portals have been pregenerated to improve portal performance</li>
+                <li>Drops now trigger sodium block explosions</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>25 May 2018</h3>
+            <p>Build 0.1.242 Released!</p>
+            <ul>
+                <li>Skill items now display primary and secondary stat points</li>
+                <li>Skill item stat points randomness is affected by player level</li>
+                <li>Refactored world block atlas to generate better looking portal worlds</li>
+                <li>Added iridium block type</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>24 May 2018</h3>
+            <p>Build 0.1.241 Released!</p>
+            <ul>
+                <li>Chests now spawn in all world types</li>
+                <li>Opening a chest with a key grants a random item</li>
+                <li>Hardcore and normal modes added</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>21 May 2018</h3>
+            <p>Build 0.1.240 Released!</p>
+            <ul>
+                <li>Stat points are now allocatable</li>
+                <li>Health and energy now scale with player level</li>
+                <li>UI and text refactor</li>
+                <li>Explosion bug fixes and drone damage nerf</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>17 May 2018</h3>
+            <p>Build 0.1.236 Released!</p>
+            <ul>
+                <li>New skill type: Speed Boots</li>
+                <li>Drones now fire missiles at player level 5</li>
+                <li>Drones now explode on terrain impact if offline after level 10</li>
+                <li>Drones now tunnel through terrain after player level 15</li>
+                <li>Right clicking now tracks physics objects as well as terrain blocks</li>
+                <li>Added focus UI element which shows player focus when right clicking</li>
+                <li>Fixed missile bugs and tweaked explosive damage system</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>15 May 2018</h3>
+            <p>Build 0.1.235 Released!</p>
+            <ul>
+                <li>Drones now explode on terrain impact if offline after level 5</li>
+                <li>Drones now tunnel through terrain after player level 10</li>
+                <li>Added chests static instances and key items</li>
+                <li>Added ray tracing scanner to identify player focus</li>
+                <li>Major static instance and ray tracking refactor</li>
+                <li>Added debug text to test ray tracing scanner</li>
+                <li>Drops, explosives, and missiles now react to being hit with an energy weapon</li>
+                <li>Asteroids no longer drop blocks on impact</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>11 May 2018</h3>
+            <p>Build 0.1.234 Released!</p>
+            <ul>
+                <li>New skill type: Portal Beam</li>
+                <li>Portal Beam allows access to three new fractal world types</li>
+                <li>Added UI overlay decorations</li>
+            </ul>
+            <p>Development update video released! Check it out on our YouTube channel!</p>
+            <div class="hwrap">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/DmUdkuS76o8" frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
+            </div>
+        </article>
+        <article class="content">
+            <h3>10 May 2018</h3>
+            <p>Want to build the game from source code on Linux? Check out our latest YouTube video!</p>
+            <div class="hwrap">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7z46_webK90" frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
+            </div>
+        </article>
+        <article class="content">
+            <h3>8 May 2018</h3>
+            <p>Build 0.1.228-233 Released!</p>
+            <ul>
+                <li>New weapon type: Auto Beam</li>
+                <li>Added recoil to weapons</li>
+                <li>Fixed mandelbulb random distribution</li>
+                <li>README clarifications</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>7 May 2018</h3>
+            <p>Build 0.1.227 Released!</p>
+            <ul>
+                <li>Added breathing sounds when oxygen is low</li>
+                <li>Fixed damage stream display bug</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>5 May 2018</h3>
+            <p>Build 0.1.226 Released!</p>
+            <ul>
+                <li>Oxygen system with UI elements</li>
+                <li>Added carbonate anions, calcium carbonate and magnesium carbonate to item system</li>
+                <li>Added recipes for crafting oxygen</li>
+                <li>Consuming oxygen item adds oxygen to tank</li>
+                <li>Health, energy, and oxygen now persist between saves</li>
+                <li>Block drop count increased to 50 simultaneous drops</li>
+                <li>Added walk animation to player gun when walking</li>
+                <li>Added streaming text when taking damage or missing shots</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>4 May 2018</h3>
+            <p>Build 0.1.222-225 Released!</p>
+            <ul>
+                <li>Added level up alert system</li>
+                <li>Lowered ore spawn rate</li>
+                <li>Fixed building using clang++</li>
+                <li>Added frustum culling to static instances and particles</li>
+                <li>Fixed grid bugs resulting in memory corruption</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>1 May 2018</h3>
+            <p>Build 0.1.221 Released!</p>
+            <ul>
+                <li>Explosions now drop multiple blocks instead of just one</li>
+                <li>Level up UI alert added</li>
+                <li>Player stat attributes added to UI</li>
+                <li>Player stat attributes scale with player level</li>
+                <li>Drone spawn count increases with player level</li>
+                <li>Reduced efficiency of starter beam weapon</li>
+                <li>Fall damage now scales with player velocity</li>
+                <li>Stat points now persist between saves</li>
+                <li>Block drops now grant experience points</li>
+                <li>Crafting and using consumables now grant experience points</li>
+                <li>Fixed experience bar rendering artifact</li>
+                <li>Cooldown reduction applied to skills</li>
+                <li>Damage multiplier applied to offensive attacks</li>
+                <li>Drone health is randomly adjusted based on player level</li>
+                <li>Added player dash ability on LSHIFT key</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>30 April 2018</h3>
+            <p>Build 0.1.220 Released!</p>
+            <ul>
+                <li>Added copy/paste terrain editor tool using Ether as currency</li>
+                <li>LSHIFT now applies crafting/decay in 4x multiples. Default behavior is now 1x</li>
+                <li>Fixed drone spawning bug where drone event instantly ends</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>29 April 2018</h3>
+            <p>Build 0.1.219 Released!</p>
+            <ul>
+                <li>Added colored tooltip item descriptions</li>
+                <li>Drones now respawn if stuck inside terrain geometry</li>
+                <li>Drones now despawn if player dies</li>
+                <li>Bug fixed where drones fly inside terrain geometry</li>
+                <li>Drones now explode on death</li>
+                <li>Drones now track player position</li>
+                <li>Drones now play a flying sound and a sound when attacking the player</li>
+                <li>New background track added</li>
+                <li>The number of simultaneous missile explosion sounds have been increased to 10</li>
+                <li>Consuming food now decays into [H+] and [Cl-] and boosts health only</li>
+                <li>Added ability to craft batteries that can be consumed to boost energy</li>
+                <li>Pausing the game now closes inventory screen</li>
+                <li>All nonmetal blocks now decay into Ether</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>25 April 2018</h3>
+            <p>Build 0.1.218 Released!</p>
+            <ul>
+                <li>Added mandelbulb portals using F key (Temporary)</li>
+                <li>Synchronized drone damage response with all weapon systems</li>
+                <li>Charge beam now does more damage than single beam</li>
+                <li>Added ability to eat vegetables</li>
+                <li>Eating vegetables overcharges health and energy systems</li>
+            </ul>
+        </article>
+        <article class="content">
+            <h3>23 April 2018</h3>
+            <p>Explore randomly generated fractal worlds in our latest YouTube video, Mandelbulb Monday 1!</p>
+            <div class="hwrap">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/d9qKh1nVgIg" frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
+            </div>
+        </article>
+        <article class="content">
+            <h3>20 April 2018</h3>
+            <p>Build 0.1.217 Released! Check it out on our YouTube channel!</p>
+            <div class="hwrap">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VGnlxhbVDbs" frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen></iframe>
+            </div>
+            <p>Various new recipes and bug fixes have been added to the game. A comprehensive list is detailed below:</p>
+            <ul>
+                <li>New weapon type: Scatter Beam</li>
+                <li>Single beam cost reduced by 50%</li>
+                <li>New blue crystal shards recipes allow converting ionic items to the non-ionic form</li>
+                <li>New green crystal shard recipes allow "upping" block type to a higher block level</li>
+                <li>Modified item decay production counts to avoid duping items</li>
+                <li>Fixed drone AI pathing bug resulting in memory corruption</li>
+                <li>Added ability to damage drones with energy weapons</li>
+            </ul>
+        </article>
+    </section>
+    <footer class="bg_black">Copyright &copy; Aaron Springstroh</footer>
+</body>
+
+</html>

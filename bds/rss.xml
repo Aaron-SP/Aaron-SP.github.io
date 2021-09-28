@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>Beyond Dying Skies Patch Updates</title>
+    <atom:link href="https://aaron-sp.github.io/bds/rss.xml" rel="self" type="application/rss+xml"/>
+    <link>https://aaron-sp.github.io/</link>
+    <description>List of patch updates for Beyond Dying Skies</description>
+    <item>
+      <title>Development Blog 3 Update</title>
+      <description>Whoa! It's July and I haven't updated this blog in over a month! What have I been doing? The truth is that I have no idea![...]</description>
+      <content:encoded><![CDATA[<p>As I am writing this, I am reviewing the commit log from the last blog entry until now. I have pushed a commit to this project almost every day and yet I feel like I haven't really achieved anything promising. Therefore I chose to list all of the improvements and let you be the judge <a href="https://aaron-sp.github.io/bds/blog/blog3.html">here</a>.</p><img src="http://aaron-sp.github.io/bds/images/portal.jpg" alt="Beyond Dying Skies">]]></content:encoded>
+      <guid>https://aaron-sp.github.io/bds/blog/blog3.html</guid>
+      <link>https://aaron-sp.github.io/bds/blog/blog3.html</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.304-308 Released</title>
+      <description>Added CHANGElog.md to the project. Changed physics spatial database to octree from grid. Removed bundled GLEW library and set makefile to link with system GLEW. Optimized ray and grid traversals in MGL and updated function signatures for compatibility.</description>
+      <guid isPermaLink="false">RELEASE/308</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.297-304 Released</title>
+      <description>Optimized application launch code. Fixed ray bug on physics entities. Reworked stats and stat attributes. Refactors to minimize particle bloat. Fixed UI hover bug. Window opens after loading game to minimize boring load times.</description>
+      <guid isPermaLink="false">RELEASE/304</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Fri, 6 Jul 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.285-297 Released</title>
+      <description>Added dynamic linking to MGL lib in default build. Added precompiled headers to build. Greatly increased robustness of makefiles. Removed all warnings and errors on clang-6++ and g++. Fixed double jump bugs. Hunting down bugs and undefined behavior.</description>
+      <guid isPermaLink="false">RELEASE/297</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Sun, 1 Jul 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.280-284 Released</title>
+      <description>Fixed compilation on clang-3.5. Fixed compilation on clang-6. Ran UBSAN on code and fixed undefined behavior.</description>
+      <guid isPermaLink="false">RELEASE/284</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.276-279 Released</title>
+      <description>Created new game mode: Creative. Created ability to select game type from title menu. Title menu allows creating new games, loading games and deleting games from GUI.</description>
+      <guid isPermaLink="false">RELEASE/279</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Mon, 25 Jun 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.273-275 Released</title>
+      <description>Added game menu at title screen. Added new game and load game options in title menu. Fixed drone pathing bug and title screen saving bug.</description>
+      <guid isPermaLink="false">RELEASE/275</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Sun, 24 Jun 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.271-272 Released</title>
+      <description>Added support for DVORAK keyboards. Allow remapping key controls within game. Persist key mappings between game execution.</description>
+      <guid isPermaLink="false">RELEASE/272</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.269-270 Released</title>
+      <description>Added desktop icon and desktop file</description>
+      <guid isPermaLink="false">RELEASE/270</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.259-268 Released</title>
+      <description>Minor bug fixes</description>
+      <guid isPermaLink="false">RELEASE/268</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Sun, 10 Jun 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.258 Released</title>
+      <description>Gamma corrected all colors. Added new light sources and fixed shader bugs resulting in deeper shadows.</description>
+      <guid isPermaLink="false">RELEASE/258</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Fri, 8 Jun 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.246-257 Released</title>
+      <description>Face rendering optimization to increase render speed. Dropped support for instance rendering (MGL_INST_RENDER). GCC 6 and clang-3.5 fixes. Added pause menu with return to game, return to title, and quit options. Recoil frame rate bug fix. Better error handling, win32 messagebox alert. Added new shot and thruster sound. freetype-config upgraded to pkg-config. Flushed out dynamic abilities and energy costs.</description>
+      <guid isPermaLink="false">RELEASE/257</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Thu, 7 Jun 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.245 Released</title>
+      <description>Fixed mouse cursor bug on some systems. Adjusted strength of default beam weapon.</description>
+      <guid isPermaLink="false">RELEASE/245</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Wed, 30 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.244 Released</title>
+      <description>Added focus sound on focus. Added critical hits. Fixed fatal crash when looking in vertical direction.</description>
+      <guid isPermaLink="false">RELEASE/244</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Tue, 29 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.243 Released</title>
+      <description>Equipping skill items now affects stat attributes. Portals have been pregenerated to improve portal performance. Drops now trigger sodium block explosions.</description>
+      <guid isPermaLink="false">RELEASE/243</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Mon, 28 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.242 Released</title>
+      <description>Skill items now display primary and secondary stat points. Skill item stat points randomness is affected by player level. Refactored world block atlas to generate better looking portal worlds. Added iridium block type.</description>
+      <guid isPermaLink="false">RELEASE/242</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Fri, 25 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.241 Released</title>
+      <description>Chests now spawn in all world types. Opening a chest with a key grants a random item. Hardcore and normal modes added.</description>
+      <guid isPermaLink="false">RELEASE/241</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Thu, 24 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.240 Released</title>
+      <description>Stat points are now allocatable. Health and energy now scale with player level. UI and text refactor. Explosion bug fixes and drone damage nerf.</description>
+      <guid isPermaLink="false">RELEASE/240</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Mon, 21 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.236 Released</title>
+      <description>New skill type: Speed Boots. Drones now fire missiles at player level 5. Drones now explode on terrain impact if offline after level 10. Drones now tunnel through terrain after player level 15. Right clicking now tracks physics objects as well as terrain blocks. Added focus UI element which shows player focus when right clicking. Fixed missile bugs and tweaked explosive damage system.</description>
+      <guid isPermaLink="false">RELEASE/236</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Thu, 17 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.235 Released</title>
+      <description>Drones now explode on terrain impact if offline after level 5. Drones now tunnel through terrain after player level 10. Added chests static instances and key items. Added ray tracing scanner to identify player focus. Major static instance and ray tracking refactor. Added debug text to test ray tracing scanner. Drops, explosives, and missiles now react to being hit with an energy weapon. Asteroids no longer drop blocks on impact.</description>
+      <guid isPermaLink="false">RELEASE/235</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.234 Released</title>
+      <description>New skill type: Portal Beam. Portal Beam allows access to three new fractal world types. Added UI overlay decorations.</description>
+      <guid isPermaLink="false">RELEASE/234</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Fri, 11 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.228-233 Released</title>
+      <description>New weapon type: Auto Beam. Added recoil to weapons. Fixed mandelbulb random distribution. README clarifications.</description>
+      <guid isPermaLink="false">RELEASE/233</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Tue, 8 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.227 Released</title>
+      <description>Added breathing sounds when oxygen is low. Fixed damage stream display bug.</description>
+      <guid isPermaLink="false">RELEASE/227</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Mon, 7 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.226 Released</title>
+      <description>Oxygen system with UI elements. Added carbonate anions, calcium carbonate and magnesium carbonate to item system. Added recipes for crafting oxygen. Consuming oxygen item adds oxygen to tank. Health, energy, and oxygen now persist between saves. Block drop count increased to 50 simultaneous drops. Added walk animation to player gun when walking. Added streaming text when taking damage or missing shots.</description>
+      <guid isPermaLink="false">RELEASE/226</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Sat, 5 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.222-225 Released</title>
+      <description>Added level up alert system. Lowered ore spawn rate. Fixed building using clang++. Added frustum culling to static instances and particles. Fixed grid bugs resulting in memory corruption.</description>
+      <guid isPermaLink="false">RELEASE/225</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Fri, 4 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.221 Released</title>
+      <description>Explosions now drop multiple blocks instead of just one. Level up UI alert added. Player stat attributes added to UI. Player stat attributes scale with player level. Drone spawn count increases with player level. Reduced efficiency of starter beam weapon. Fall damage now scales with player velocity. Stat points now persist between saves. Block drops now grant experience points. Crafting and using consumables now grant experience points. Fixed experience bar rendering artifact. Cooldown reduction applied to skills. Damage multiplier applied to offensive attacks. Drone health is randomly adjusted based on player level. Added player dash ability on LSHIFT key.</description>
+      <guid isPermaLink="false">RELEASE/221</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Tue, 1 May 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.220 Released</title>
+      <description>Added copy/paste terrain editor tool using Ether as currency. LSHIFT now applies crafting/decay in 4x multiples. Default behavior is now 1x. Fixed drone spawning bug where drone event instantly ends.</description>
+      <guid isPermaLink="false">RELEASE/220</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Mon, 30 Apr 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.219 Released</title>
+      <description>Added colored tooltip item descriptions. Drones now respawn if stuck inside terrain geometry. Drones now despawn if player dies. Bug fixed where drones fly inside terrain geometry. Drones now explode on death. Drones now track player position. Drones now play a flying sound and a sound when attacking the player. New background track added. The number of simultaneous missile explosion sounds have been increased to 10. Consuming food now decays into [H+] and [Cl-] and boosts health only. Added ability to craft batteries that can be consumed to boost energy. Pausing the game now closes inventory screen. All nonmetal blocks now decay into Ether.</description>
+      <guid isPermaLink="false">RELEASE/219</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.218 Released</title>
+      <description>Added mandelbulb portals using F key (Temporary). Synchronized drone damage response with all weapon systems. Charge beam now does more damage than single beam. Added ability to eat vegetables. Eating vegetables overcharges health and energy systems.</description>
+      <guid isPermaLink="false">RELEASE/218</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Wed, 25 Apr 2018 00:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Build 0.1.217 Released</title>
+      <description>New weapon type: Scatter Beam. Single beam cost reduced by 50%. New blue crystal shards recipes allow converting ionic items to the non-ionic form. New green crystal shard recipes allow "upping" block type to a higher block level. Modified item decay production counts to avoid duping items. Fixed drone AI pathing bug resulting in memory corruption. Added ability to damage drones with energy weapons.</description>
+      <guid isPermaLink="false">RELEASE/217</guid>
+      <link>https://github.com/Aaron-Sp/bds</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 EST</pubDate>
+    </item>
+  </channel>
+</rss>

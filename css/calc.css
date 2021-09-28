@@ -1,0 +1,162 @@
+header{
+    border: 1px solid grey;
+    color:grey;
+    font-style: italic;
+    padding: 8px;
+}
+
+article.span
+{
+    display:inline-block;
+    vertical-align: top;
+}
+
+div.calc_click{
+    padding-top: 8px;
+}
+
+/* air */
+form.air fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 220px;
+}
+
+/* co2 */
+form.co2 fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 190px;
+}
+
+/* fit */
+form.fit fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 140px;
+}
+
+form.fit fieldset
+{
+    width:300px;
+}
+
+form.fit fieldset div select
+{
+    display: inline-block;
+    float: left;
+    text-align: right;
+    width: 94px;
+}
+
+/* fugacity */
+form.fugacity fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 170px;
+}
+
+/* na2_s2o3 */
+form.na2_s2o3 fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 185px;
+}
+
+/* nh3 */
+form.nh3 fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 150px;
+}
+
+/* pfos */
+form.pfos fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 170px;
+}
+
+/* pr */
+form.pr fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 140px;
+}
+
+/* salt */
+form.salt fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 140px;
+}
+
+/* sizing */
+form.sizing fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 170px;
+}
+
+/* solubility */
+form.solubility fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 220px;
+}
+
+/* sun */
+form.sun fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 100px;
+}
+
+/* thermal */
+form.thermal fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 180px;
+}
+
+/* thermo */
+form.thermo fieldset div label{
+    clear: left;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 240px;
+}
+
+form fieldset div input, output{
+  display: inline-block;
+  float: left;
+  text-align: right;
+  width: 90px;
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/calc.css">
+    <script src="../js/phys_prop.js"></script>
+    <script src="js.js"></script>
+    <title>Water Heater Sizing Calculator</title>
+</head>
+
+<body>
+    <a href="../chem/index.html">Menu</a>
+    <header>
+        <h1>Water Heater Sizing Calculator</h1>
+    </header>
+    <section>
+        <article>
+            <p>This calculator calculates the amount of time needed to heat a volume of water at atmospheric pressure.</p>
+            <p>Water Heater Sizing Calculator is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+                even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        </article>
+        <article>
+            <form class="sizing" onsubmit="return calculate();">
+                <fieldset>
+                    <div>
+                        <label>Start Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature1" min="0.0" value="25.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Stop Temperature (&#176;C):</label>
+                        <input type="number" id="in_temperature2" min="0.0" value="30.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Volume (gallons):</label>
+                        <input type="number" id="in_volume_gal" min="0.0" value="10.0" step="any" required>
+                    </div>
+                    <div>
+                        <label>Heater (W):</label>
+                        <input type="number" id="in_heat_W" min="0.0" value="50.0" step="any" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Water Outputs</legend>
+                    <div>
+                        <label>Energy Change (kJ):</label>
+                        <output id="out_water_energy_change_kJ" for="in_temperature1 in_temperature2 in_volume_gal in_heat_W"></output>
+                    </div>
+                    <div>
+                        <label>Energy Change (kWh):</label>
+                        <output id="out_water_energy_change_kWh" for="in_temperature1 in_temperature2 in_volume_gal in_heat_W"></output>
+                    </div>
+                    <div>
+                        <label>Heating Time (hours):</label>
+                        <output id="out_time_h" for="in_temperature1 in_temperature2 in_volume_gal in_heat_W"></output>
+                    </div>
+                </fieldset>
+                <div class="calc_click">
+                    <input type="submit" value="Calculate">
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+
+</html>
