@@ -1413,10 +1413,10 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 73391: function() {
+ 73663: function() {
   alert("Compilation failed! Reverting to default shader");
  },
- 73449: function($0) {
+ 73721: function($0) {
   var str = UTF8ToString($0) + "\n\n" + "Abort/Retry/Ignore/AlwaysIgnore? [ariA] :";
   var reply = window.prompt(str, "i");
   if (reply === null) {
@@ -1424,7 +1424,7 @@ var ASM_CONSTS = {
   }
   return allocate(intArrayFromString(reply), "i8", ALLOC_NORMAL);
  },
- 73674: function($0, $1, $2) {
+ 73946: function($0, $1, $2) {
   var w = $0;
   var h = $1;
   var pixels = $2;
@@ -1495,7 +1495,7 @@ var ASM_CONSTS = {
   SDL2.ctx.putImageData(SDL2.image, 0, 0);
   return 0;
  },
- 75129: function($0, $1, $2, $3, $4) {
+ 75401: function($0, $1, $2, $3, $4) {
   var w = $0;
   var h = $1;
   var hot_x = $2;
@@ -1532,36 +1532,36 @@ var ASM_CONSTS = {
   stringToUTF8(url, urlBuf, url.length + 1);
   return urlBuf;
  },
- 76118: function($0) {
+ 76390: function($0) {
   if (Module["canvas"]) {
    Module["canvas"].style["cursor"] = UTF8ToString($0);
   }
   return 0;
  },
- 76211: function() {
+ 76483: function() {
   if (Module["canvas"]) {
    Module["canvas"].style["cursor"] = "none";
   }
  },
- 76280: function() {
+ 76552: function() {
   return screen.width;
  },
- 76305: function() {
+ 76577: function() {
   return screen.height;
  },
- 76331: function() {
+ 76603: function() {
   return window.innerWidth;
  },
- 76361: function() {
+ 76633: function() {
   return window.innerHeight;
  },
- 76392: function($0) {
+ 76664: function($0) {
   if (typeof setWindowTitle !== "undefined") {
    setWindowTitle(UTF8ToString($0));
   }
   return 0;
  },
- 76487: function() {
+ 76759: function() {
   if (typeof AudioContext !== "undefined") {
    return 1;
   } else if (typeof webkitAudioContext !== "undefined") {
@@ -1569,7 +1569,7 @@ var ASM_CONSTS = {
   }
   return 0;
  },
- 76624: function() {
+ 76896: function() {
   if (typeof navigator.mediaDevices !== "undefined" && typeof navigator.mediaDevices.getUserMedia !== "undefined") {
    return 1;
   } else if (typeof navigator.webkitGetUserMedia !== "undefined") {
@@ -1577,7 +1577,7 @@ var ASM_CONSTS = {
   }
   return 0;
  },
- 76848: function($0) {
+ 77120: function($0) {
   if (typeof Module["SDL2"] === "undefined") {
    Module["SDL2"] = {};
   }
@@ -1599,11 +1599,11 @@ var ASM_CONSTS = {
   }
   return SDL2.audioContext === undefined ? -1 : 0;
  },
- 77341: function() {
+ 77613: function() {
   var SDL2 = Module["SDL2"];
   return SDL2.audioContext.sampleRate;
  },
- 77409: function($0, $1, $2, $3) {
+ 77681: function($0, $1, $2, $3) {
   var SDL2 = Module["SDL2"];
   var have_microphone = function(stream) {
    if (SDL2.capture.silenceTimer !== undefined) {
@@ -1644,7 +1644,7 @@ var ASM_CONSTS = {
    }, have_microphone, no_microphone);
   }
  },
- 79061: function($0, $1, $2, $3) {
+ 79333: function($0, $1, $2, $3) {
   var SDL2 = Module["SDL2"];
   SDL2.audio.scriptProcessorNode = SDL2.audioContext["createScriptProcessor"]($1, 0, $0);
   SDL2.audio.scriptProcessorNode["onaudioprocess"] = function(e) {
@@ -1656,7 +1656,7 @@ var ASM_CONSTS = {
   };
   SDL2.audio.scriptProcessorNode["connect"](SDL2.audioContext["destination"]);
  },
- 79471: function($0, $1) {
+ 79743: function($0, $1) {
   var SDL2 = Module["SDL2"];
   var numChannels = SDL2.capture.currentCaptureBuffer.numberOfChannels;
   for (var c = 0; c < numChannels; ++c) {
@@ -1675,7 +1675,7 @@ var ASM_CONSTS = {
    }
   }
  },
- 80076: function($0, $1) {
+ 80348: function($0, $1) {
   var SDL2 = Module["SDL2"];
   var numChannels = SDL2.audio.currentOutputBuffer["numberOfChannels"];
   for (var c = 0; c < numChannels; ++c) {
@@ -1688,7 +1688,7 @@ var ASM_CONSTS = {
    }
   }
  },
- 80556: function($0) {
+ 80828: function($0) {
   var SDL2 = Module["SDL2"];
   if ($0) {
    if (SDL2.capture.silenceTimer !== undefined) {
@@ -1912,16 +1912,172 @@ function ExceptionInfo(excPtr) {
  };
 }
 
-var exceptionLast = 0;
+function CatchInfo(ptr) {
+ this.free = function() {
+  _free(this.ptr);
+  this.ptr = 0;
+ };
+ this.set_base_ptr = function(basePtr) {
+  SAFE_HEAP_STORE(this.ptr | 0, basePtr | 0, 4);
+ };
+ this.get_base_ptr = function() {
+  return SAFE_HEAP_LOAD(this.ptr | 0, 4, 0) | 0;
+ };
+ this.set_adjusted_ptr = function(adjustedPtr) {
+  SAFE_HEAP_STORE(this.ptr + 4 | 0, adjustedPtr | 0, 4);
+ };
+ this.get_adjusted_ptr_addr = function() {
+  return this.ptr + 4;
+ };
+ this.get_adjusted_ptr = function() {
+  return SAFE_HEAP_LOAD(this.ptr + 4 | 0, 4, 0) | 0;
+ };
+ this.get_exception_ptr = function() {
+  var isPointer = ___cxa_is_pointer_type(this.get_exception_info().get_type());
+  if (isPointer) {
+   return SAFE_HEAP_LOAD(this.get_base_ptr() | 0, 4, 0) | 0;
+  }
+  var adjusted = this.get_adjusted_ptr();
+  if (adjusted !== 0) return adjusted;
+  return this.get_base_ptr();
+ };
+ this.get_exception_info = function() {
+  return new ExceptionInfo(this.get_base_ptr());
+ };
+ if (ptr === undefined) {
+  this.ptr = _malloc(8);
+  this.set_adjusted_ptr(0);
+ } else {
+  this.ptr = ptr;
+ }
+}
+
+var exceptionCaught = [];
+
+function exception_addRef(info) {
+ info.add_ref();
+}
 
 var uncaughtExceptionCount = 0;
+
+function ___cxa_begin_catch(ptr) {
+ var catchInfo = new CatchInfo(ptr);
+ var info = catchInfo.get_exception_info();
+ if (!info.get_caught()) {
+  info.set_caught(true);
+  uncaughtExceptionCount--;
+ }
+ info.set_rethrown(false);
+ exceptionCaught.push(catchInfo);
+ exception_addRef(info);
+ return catchInfo.get_exception_ptr();
+}
+
+var exceptionLast = 0;
+
+function ___cxa_free_exception(ptr) {
+ try {
+  return _free(new ExceptionInfo(ptr).ptr);
+ } catch (e) {
+  err("exception during cxa_free_exception: " + e);
+ }
+}
+
+function exception_decRef(info) {
+ if (info.release_ref() && !info.get_rethrown()) {
+  var destructor = info.get_destructor();
+  if (destructor) {
+   wasmTable.get(destructor)(info.excPtr);
+  }
+  ___cxa_free_exception(info.excPtr);
+ }
+}
+
+function ___cxa_end_catch() {
+ _setThrew(0);
+ assert(exceptionCaught.length > 0);
+ var catchInfo = exceptionCaught.pop();
+ exception_decRef(catchInfo.get_exception_info());
+ catchInfo.free();
+ exceptionLast = 0;
+}
+
+function ___resumeException(catchInfoPtr) {
+ var catchInfo = new CatchInfo(catchInfoPtr);
+ var ptr = catchInfo.get_base_ptr();
+ if (!exceptionLast) {
+  exceptionLast = ptr;
+ }
+ catchInfo.free();
+ throw ptr;
+}
+
+function ___cxa_find_matching_catch_2() {
+ var thrown = exceptionLast;
+ if (!thrown) {
+  setTempRet0(0);
+  return 0 | 0;
+ }
+ var info = new ExceptionInfo(thrown);
+ var thrownType = info.get_type();
+ var catchInfo = new CatchInfo();
+ catchInfo.set_base_ptr(thrown);
+ catchInfo.set_adjusted_ptr(thrown);
+ if (!thrownType) {
+  setTempRet0(0);
+  return catchInfo.ptr | 0;
+ }
+ var typeArray = Array.prototype.slice.call(arguments);
+ for (var i = 0; i < typeArray.length; i++) {
+  var caughtType = typeArray[i];
+  if (caughtType === 0 || caughtType === thrownType) {
+   break;
+  }
+  if (___cxa_can_catch(caughtType, thrownType, catchInfo.get_adjusted_ptr_addr())) {
+   setTempRet0(caughtType);
+   return catchInfo.ptr | 0;
+  }
+ }
+ setTempRet0(thrownType);
+ return catchInfo.ptr | 0;
+}
+
+function ___cxa_find_matching_catch_3() {
+ var thrown = exceptionLast;
+ if (!thrown) {
+  setTempRet0(0);
+  return 0 | 0;
+ }
+ var info = new ExceptionInfo(thrown);
+ var thrownType = info.get_type();
+ var catchInfo = new CatchInfo();
+ catchInfo.set_base_ptr(thrown);
+ catchInfo.set_adjusted_ptr(thrown);
+ if (!thrownType) {
+  setTempRet0(0);
+  return catchInfo.ptr | 0;
+ }
+ var typeArray = Array.prototype.slice.call(arguments);
+ for (var i = 0; i < typeArray.length; i++) {
+  var caughtType = typeArray[i];
+  if (caughtType === 0 || caughtType === thrownType) {
+   break;
+  }
+  if (___cxa_can_catch(caughtType, thrownType, catchInfo.get_adjusted_ptr_addr())) {
+   setTempRet0(caughtType);
+   return catchInfo.ptr | 0;
+  }
+ }
+ setTempRet0(thrownType);
+ return catchInfo.ptr | 0;
+}
 
 function ___cxa_throw(ptr, type, destructor) {
  var info = new ExceptionInfo(ptr);
  info.init(type, destructor);
  exceptionLast = ptr;
  uncaughtExceptionCount++;
- throw ptr + " - Exception catching is disabled, this exception cannot be caught. Compile with -s NO_DISABLE_EXCEPTION_CATCHING or -s EXCEPTION_CATCHING_ALLOWED=[..] to catch.";
+ throw ptr;
 }
 
 var __sigalrm_handler = 0;
@@ -10399,6 +10555,10 @@ function _fd_write(fd, iov, iovcnt, pnum) {
  }
 }
 
+function _getTempRet0() {
+ return getTempRet0();
+}
+
 function _gettimeofday(ptr) {
  var now = Date.now();
  SAFE_HEAP_STORE(ptr | 0, now / 1e3 | 0 | 0, 4);
@@ -10989,7 +11149,13 @@ function intArrayToString(array) {
 
 var asmLibraryArg = {
  "__cxa_allocate_exception": ___cxa_allocate_exception,
+ "__cxa_begin_catch": ___cxa_begin_catch,
+ "__cxa_end_catch": ___cxa_end_catch,
+ "__cxa_find_matching_catch_2": ___cxa_find_matching_catch_2,
+ "__cxa_find_matching_catch_3": ___cxa_find_matching_catch_3,
+ "__cxa_free_exception": ___cxa_free_exception,
  "__cxa_throw": ___cxa_throw,
+ "__resumeException": ___resumeException,
  "__sigaction": ___sigaction,
  "__sys_fcntl64": ___sys_fcntl64,
  "__sys_ioctl": ___sys_ioctl,
@@ -11344,6 +11510,7 @@ var asmLibraryArg = {
  "fd_read": _fd_read,
  "fd_seek": _fd_seek,
  "fd_write": _fd_write,
+ "getTempRet0": _getTempRet0,
  "gettimeofday": _gettimeofday,
  "glActiveTexture": _glActiveTexture,
  "glAttachShader": _glAttachShader,
@@ -11402,6 +11569,24 @@ var asmLibraryArg = {
  "glUseProgram": _glUseProgram,
  "glVertexAttribPointer": _glVertexAttribPointer,
  "glViewport": _glViewport,
+ "invoke_fi": invoke_fi,
+ "invoke_i": invoke_i,
+ "invoke_ii": invoke_ii,
+ "invoke_iiffffi": invoke_iiffffi,
+ "invoke_iii": invoke_iii,
+ "invoke_iiii": invoke_iiii,
+ "invoke_iiiii": invoke_iiiii,
+ "invoke_v": invoke_v,
+ "invoke_vffff": invoke_vffff,
+ "invoke_vi": invoke_vi,
+ "invoke_vid": invoke_vid,
+ "invoke_vii": invoke_vii,
+ "invoke_viid": invoke_viid,
+ "invoke_viii": invoke_viii,
+ "invoke_viiii": invoke_viiii,
+ "invoke_viiiif": invoke_viiiif,
+ "invoke_viiiifi": invoke_viiiifi,
+ "invoke_viiiii": invoke_viiiii,
  "segfault": segfault,
  "setTempRet0": _setTempRet0,
  "sigaction": _sigaction
@@ -11449,7 +11634,13 @@ var _emscripten_stack_get_free = Module["_emscripten_stack_get_free"] = function
  return (_emscripten_stack_get_free = Module["_emscripten_stack_get_free"] = Module["asm"]["emscripten_stack_get_free"]).apply(null, arguments);
 };
 
+var _setThrew = Module["_setThrew"] = createExportWrapper("setThrew");
+
 var ___cxa_demangle = Module["___cxa_demangle"] = createExportWrapper("__cxa_demangle");
+
+var ___cxa_can_catch = Module["___cxa_can_catch"] = createExportWrapper("__cxa_can_catch");
+
+var ___cxa_is_pointer_type = Module["___cxa_is_pointer_type"] = createExportWrapper("__cxa_is_pointer_type");
 
 var _sbrk = Module["_sbrk"] = createExportWrapper("sbrk");
 
@@ -11458,6 +11649,204 @@ var _emscripten_get_sbrk_ptr = Module["_emscripten_get_sbrk_ptr"] = createExport
 var dynCall_jiji = Module["dynCall_jiji"] = createExportWrapper("dynCall_jiji");
 
 var dynCall_ji = Module["dynCall_ji"] = createExportWrapper("dynCall_ji");
+
+function invoke_viiii(index, a1, a2, a3, a4) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2, a3, a4);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_viii(index, a1, a2, a3) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2, a3);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_iii(index, a1, a2) {
+ var sp = stackSave();
+ try {
+  return wasmTable.get(index)(a1, a2);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_vi(index, a1) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_iiiii(index, a1, a2, a3, a4) {
+ var sp = stackSave();
+ try {
+  return wasmTable.get(index)(a1, a2, a3, a4);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_vii(index, a1, a2) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_iiii(index, a1, a2, a3) {
+ var sp = stackSave();
+ try {
+  return wasmTable.get(index)(a1, a2, a3);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_viiiii(index, a1, a2, a3, a4, a5) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2, a3, a4, a5);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_vid(index, a1, a2) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_vffff(index, a1, a2, a3, a4) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2, a3, a4);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_ii(index, a1) {
+ var sp = stackSave();
+ try {
+  return wasmTable.get(index)(a1);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_iiffffi(index, a1, a2, a3, a4, a5, a6) {
+ var sp = stackSave();
+ try {
+  return wasmTable.get(index)(a1, a2, a3, a4, a5, a6);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_viiiifi(index, a1, a2, a3, a4, a5, a6) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2, a3, a4, a5, a6);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_fi(index, a1) {
+ var sp = stackSave();
+ try {
+  return wasmTable.get(index)(a1);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_viiiif(index, a1, a2, a3, a4, a5) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2, a3, a4, a5);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_i(index) {
+ var sp = stackSave();
+ try {
+  return wasmTable.get(index)();
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_v(index) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)();
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_viid(index, a1, a2, a3) {
+ var sp = stackSave();
+ try {
+  wasmTable.get(index)(a1, a2, a3);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
 
 if (!Object.getOwnPropertyDescriptor(Module, "intArrayFromString")) Module["intArrayFromString"] = function() {
  abort("'intArrayFromString' was not exported. add it to EXPORTED_RUNTIME_METHODS (see the FAQ)");
