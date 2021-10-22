@@ -6,22 +6,45 @@
 </head>
 
 <body onload="loadScript()" style="background-color:black;">
-    <canvas id="demo_canvas" style="width:100%; height:100%"></canvas>
+    <canvas id="tool_render_canvas" style="width:100%; height:100%"></canvas>
     <script type="text/javascript">
         function loadScript() {
             // Load the demo script
             var script = document.createElement("script");
             script.src = "bin/index.js";
             script.onload = function () {
-                Module.canvas = document.getElementById("demo_canvas");
+                Module.canvas = document.getElementById("tool_render_canvas");
 
                 // Load canvas at fullscreen
-                var canvas = document.getElementById("demo_canvas");
+                var canvas = document.getElementById("tool_render_canvas");
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             }
             document.body.appendChild(script);
         }
+
+        // Pointer to the rendering context
+        var last_context_ptr = 0;
+
+        // This function is called once after initialization
+        function context_on_init_js(context_ptr) {
+            // Save the frame pointer
+            last_context_ptr = context_ptr;
+
+            // Trigger window resize
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        // This function is called every frame
+        function context_on_frame_js(context_ptr) {
+            // Save the frame pointer
+            last_context_ptr = context_ptr;
+        }
+
+        function focus_canvas() {
+            document.getElementById("tool_render_canvas").focus()
+        }
+
     </script>
 </body>
 

@@ -39,11 +39,29 @@ body {
     height: 100%;
 }
 
-#tool_shader_text {
+#tool_shader_div {
+    width: 100%;
+    height: calc(100%);
+}
+
+#tool_shader_settings {
+    background: rgb(222, 176, 176);
+    width: 100%;
+    height: 25%;
+}
+
+#shader_tool_shader_text {
     background: lightsteelblue;
     resize: none;
     width: 100%;
     height: calc(100% - 40px);
+}
+
+#edit_shader_tool_shader_text {
+    background: lightsteelblue;
+    resize: none;
+    width: 100%;
+    height: 75%;
 }
 
 #update_shader {
