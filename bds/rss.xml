@@ -6,6 +6,13 @@
     <link>https://aaron-sp.github.io/</link>
     <description>List of patch updates for Beyond Dying Skies</description>
     <item>
+      <title>Beyond Dying Skies 2 Space Simulation Tech Demo Released!</title>
+      <description>Launched BDS2 space simulation web assembly demo</description>
+      <guid isPermaLink="false">DEMO</guid>
+      <link>https://aaron-sp.github.io/space/index.html</link>
+      <pubDate>Sun, 12 Nov 2022 00:00:00 EST</pubDate>
+    </item>
+    <item>
       <title>Development Blog 3 Update</title>
       <description>Whoa! It's July and I haven't updated this blog in over a month! What have I been doing? The truth is that I have no idea![...]</description>
       <content:encoded><![CDATA[<p>As I am writing this, I am reviewing the commit log from the last blog entry until now. I have pushed a commit to this project almost every day and yet I feel like I haven't really achieved anything promising. Therefore I chose to list all of the improvements and let you be the judge <a href="https://aaron-sp.github.io/bds/blog/blog3.html">here</a>.</p><img src="http://aaron-sp.github.io/bds/images/portal.jpg" alt="Beyond Dying Skies">]]></content:encoded>
